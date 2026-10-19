@@ -33,6 +33,20 @@ for pdf in sorted((ROOT / "pdfs").rglob("*.pdf")):
         d = parse(pdf)
     except Exception as e:  # PDF ilegible, escaneado, etc.
         print(f"ERROR {rel}: no se pudo leer ({e})", file=sys.stderr); failed = True; continue
+    # Corrección comprobada para la J2 de Primera: el Inter descansó.
+    # Solo se aplica cuando el equipo está en la clasificación y no jugó partido.
+    if (d.get("temporada"), d.get("division"), d.get("jornada")) == ("2026-2027", "1dvf7", 2):
+        team_id = "el-inter-novella-garcia-old-rokers"
+        candidates = [r for r in d["clasificacion"] if r["equipo_id"] == team_id]
+        playing = any(team_id in (p["local_id"], p["visitante_id"]) for p in d["partidos"])
+        if len(candidates) == 1 and not playing and not d.get("descansa"):
+            d["descansa"] = candidates[0]["equipo"]
+            d["descansa_id"] = team_id
+            print(f"CORREGIDO {rel}: descansa {d['descansa']}")
+        elif len(candidates) != 1 or playing or (d.get("descansa") and d["descansa_id"] != team_id):
+            print(f"ERROR {rel}: no se puede verificar el descanso de J2 Primera", file=sys.stderr)
+            failed = True
+            continue
     errs = validate(d)
     if not all(d.get(k) for k in ("temporada", "division", "jornada")):
         errs.append("No se encontró temporada, división o jornada en el encabezado")
