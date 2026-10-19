@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% from "_macros.html" import chips %}
+{% block title %}{{ nombre }} · {{ div.nombre }}{% endblock %}
+{% block content %}
+<p class="crumbs"><a href="../index.html">← {{ div.nombre }}</a></p>
+<h1>{{ nombre }}</h1>
+{% if row %}
+<p class="muted">{{ row.pos }}º · {{ row.pts }} pts{% if row.sancion %} (sanción −{{ row.sancion }}){% endif %} · {{ row.pj }} PJ · {{ row.pg }} G · {{ row.pe }} E · {{ row.pp }} P · {{ row.gf }}–{{ row.gc }} goles</p>
+<p>{{ chips(row.ultimos) }}</p>
+{% endif %}
+
+<h2>Partidos</h2>
+<div class="scroll"><table>
+<thead><tr><th>J</th><th>Fecha</th><th class="l">Rival</th><th></th><th>Resultado</th></tr></thead>
+<tbody>
+{% for h in hist %}<tr>
+<td>{{ h.n }}</td><td>{{ h.fecha|fecha }}</td>
+{% if h.descansa %}<td class="l muted" colspan="3">Descansa</td>
+{% else %}<td class="l"><a href="{{ h.rival_id }}.html">{{ h.rival }}</a></td><td class="muted">{{ 'L' if h.casa else 'V' }}</td>
+<td>{% if h.res %}{{ chips([h.res]) }} {{ h.gf }}–{{ h.gc }}{% else %}<span class="muted">sin resultado</span>{% endif %}</td>{% endif %}
+</tr>{% endfor %}
+</tbody></table></div>
+
+{% if extra.jugadores %}
+<h2>Plantilla</h2>
+<div class="scroll"><table>
+<thead><tr><th>Dorsal</th><th class="l">Jugador</th><th>Goles</th></tr></thead>
+<tbody>{% for p in extra.jugadores %}<tr><td>{{ p.dorsal or '' }}</td><td class="l">{{ p.nombre }}</td><td>{{ p.goles if p.goles is not none else '' }}</td></tr>{% endfor %}</tbody>
+</table></div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% macro chips(list) %}{% for c in list %}<span class="chip {{ c }}">{{ c }}</span>{% endfor %}{% endmacro %}
+
+{% macro tabla(rows) %}
+<div class="scroll"><table>
+<thead><tr><th>#</th><th class="l">Equipo</th><th>Pts</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DG</th><th class="l">Últimos</th></tr></thead>
+<tbody>
+{% for r in rows %}<tr>
+<td>{{ r.pos }}</td>
+<td class="l"><a href="equipos/{{ r.equipo_id }}.html">{{ r.equipo }}</a></td>
+<td><b>{{ r.pts }}</b>{% if r.sancion %} <small class="muted">(−{{ r.sancion }})</small>{% endif %}</td>
+<td>{{ r.pj }}</td><td>{{ r.pg }}</td><td>{{ r.pe }}</td><td>{{ r.pp }}</td><td>{{ r.gf }}</td><td>{{ r.gc }}</td><td>{{ r.gf - r.gc }}</td>
+<td class="l">{{ chips(r.ultimos) }}</td>
+</tr>{% endfor %}
+</tbody></table></div>
+{% endmacro %}
+
+{% macro resultados(j) %}
+<ul class="matches">
+{% for p in j.partidos %}<li>
+<a class="h" href="equipos/{{ p.local_id }}.html">{{ p.local }}</a>
+{% if p.estado == 'jugado' %}<span class="score">{{ p.goles_local }} – {{ p.goles_visitante }}</span>{% else %}<span class="score pend" title="Sin resultado">– : –</span>{% endif %}
+<a href="equipos/{{ p.visitante_id }}.html">{{ p.visitante }}</a>
+</li>{% endfor %}
+{% if j.descansa %}<li class="rest">Descansa: <a href="equipos/{{ j.descansa_id }}.html">{{ j.descansa }}</a></li>{% endif %}
+</ul>
+{% endmacro %}

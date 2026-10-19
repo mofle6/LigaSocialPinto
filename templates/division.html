@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% from "_macros.html" import tabla, resultados %}
+{% block title %}{{ div.nombre }} · {{ temporada }}{% endblock %}
+{% block content %}
+<p class="crumbs"><a href="{{ root }}index.html">Inicio</a></p>
+<h1>{{ div.nombre }}</h1>
+<p class="muted">Temporada {{ temporada }} · Clasificación tras la jornada {{ last.jornada }} ({{ last.fecha|fecha }})</p>
+{{ tabla(last.clasificacion) }}
+<h2>Resultados · jornada {{ last.jornada }}</h2>
+{{ resultados(last) }}
+<h2>Todas las jornadas</h2>
+<p class="jornadas">{% for n in jornadas|reverse %}<a href="jornada-{{ '%02d'|format(n) }}.html">J{{ n }}</a>{% endfor %}</p>
+{% endblock %}

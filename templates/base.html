@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Liga de Fútbol 7{% endblock %}</title>
+<style>
+:root{--bg:#fff;--fg:#1a1d21;--muted:#667085;--line:#e4e7ec;--accent:#0b7a43;--card:#f7f8fa;--g:#16a34a;--e:#ca8a04;--p:#dc2626}
+@media (prefers-color-scheme:dark){:root{--bg:#111418;--fg:#e8eaed;--muted:#9aa3af;--line:#2a2f36;--accent:#4ade80;--card:#181c21}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{border-bottom:1px solid var(--line);padding:14px 16px}
+header a{color:var(--fg);font-weight:700;text-decoration:none}
+main{max-width:860px;margin:0 auto;padding:16px}
+a{color:var(--accent)}
+h1{font-size:1.5rem;margin:.4em 0 .2em} h2{font-size:1.15rem;margin:1.6em 0 .6em}
+.muted{color:var(--muted)} small{font-size:.8em}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:7px 8px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-size:.75rem;text-transform:uppercase;color:var(--muted)}
+.l{text-align:left}
+.chip{display:inline-block;width:20px;height:20px;line-height:20px;border-radius:4px;color:#fff;font-size:.7rem;font-weight:700;text-align:center;margin-right:2px}
+.chip.G{background:var(--g)} .chip.E{background:var(--e)} .chip.P{background:var(--p)}
+.matches{list-style:none;padding:0;margin:0}
+.matches li{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);align-items:center}
+.matches .h{text-align:right} .score{font-weight:700;background:var(--card);padding:2px 10px;border-radius:6px}
+.matches li.rest{display:block;color:var(--muted)}
+.pend{color:var(--muted)}
+.jornadas a,.cards a{display:inline-block;margin:0 6px 6px 0;padding:6px 12px;border:1px solid var(--line);border-radius:8px;text-decoration:none;background:var(--card)}
+.crumbs{margin:0;font-size:.9rem}
+</style>
+</head>
+<body>
+<header><a href="{{ root }}index.html">⚽ Liga de Fútbol 7</a></header>
+<main>{% block content %}{% endblock %}</main>
+</body>
+</html>

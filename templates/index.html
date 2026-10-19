@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Clasificaciones y resultados</h1>
+{% for temp in items|map(attribute='temporada')|unique %}
+<h2>Temporada {{ temp }}</h2>
+<div class="cards">
+{% for it in items if it.temporada == temp %}<a href="{{ it.temporada }}/{{ it.code }}/index.html"><b>{{ it.nombre }}</b><br><small class="muted">Jornada {{ it.ultima.jornada }} · {{ it.ultima.fecha|fecha }}</small></a>{% endfor %}
+</div>
+{% endfor %}
+{% endblock %}
