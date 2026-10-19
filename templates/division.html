@@ -9,5 +9,5 @@
 <h2>Resultados · jornada {{ last.jornada }}</h2>
 {{ resultados(last) }}
 <h2>Todas las jornadas</h2>
-<p class="jornadas">{% for n in jornadas|reverse %}<a href="jornada-{{ '%02d'|format(n) }}.html">J{{ n }}</a>{% endfor %}</p>
+<p class="jornadas">{% for n in jornadas %}<a href="jornada-{{ '%02d'|format(n) }}.html">J{{ n }}</a>{% endfor %}</p>
 {% endblock %}
