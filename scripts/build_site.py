@@ -72,6 +72,10 @@ def main():
     if OUT.exists():
         shutil.rmtree(OUT)
     OUT.mkdir()
+    # Copy static images into the published GitHub Pages artifact.
+    assets = ROOT / "assets"
+    if assets.exists():
+        shutil.copytree(assets, OUT / "assets", ignore=shutil.ignore_patterns(".gitkeep"))
 
     index = []
     for temp in sorted(seasons, reverse=True):
