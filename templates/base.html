@@ -29,6 +29,22 @@ th{font-size:.75rem;text-transform:uppercase;color:var(--muted)}
 .pend{color:var(--muted)}
 .jornadas a,.cards a{display:inline-block;margin:0 6px 6px 0;padding:6px 12px;border:1px solid var(--line);border-radius:8px;text-decoration:none;background:var(--card)}
 .crumbs{margin:0;font-size:.9rem}
+.name-short{display:none}
+@media(max-width:600px){
+  main{padding:12px 8px}
+  h1{font-size:1.25rem}
+  .name-full{display:none}
+  .name-short{display:inline}
+  .scroll{overflow-x:auto}
+  table{font-size:.78rem;table-layout:auto}
+  th,td{padding:6px 3px}
+  th{font-size:.67rem}
+  .detail-col{display:none}
+  td.l a{overflow-wrap:anywhere;white-space:normal}
+  .matches li{gap:5px;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);font-size:.82rem}
+  .matches li a{overflow-wrap:anywhere;min-width:0}
+  .score{padding:3px 5px}
+}
 </style>
 </head>
 <body>
