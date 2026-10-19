@@ -1,0 +1,65 @@
+
+name: Actualizar Liga Social Pinto
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "pdfs/**"
+      - "data/**"
+      - "scripts/**"
+      - "templates/**"
+      - "requirements.txt"
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Procesar PDFs y publicar web
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Procesar jornadas
+        run: python scripts/ingest.py
+
+      - name: Generar web
+        run: python scripts/build_site.py
+
+      - name: Comprobar archivos generados
+        run: |
+          test -d site
+          test -f site/index.html
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Preparar web para publicar
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
