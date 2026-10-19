@@ -23,6 +23,16 @@ def fix_ids(d, al):
     if d.get("descansa"):
         d["descansa_id"] = al.get(d["descansa"], d.get("descansa_id"))
 
+def set_display_names(d, display_names):
+    """Short labels are presentation-only; canonical team names and IDs stay unchanged."""
+    for row in d["clasificacion"]:
+        row["equipo_corto"] = display_names.get(row["equipo_id"], row["equipo"])
+    for p in d["partidos"]:
+        p["local_corto"] = display_names.get(p["local_id"], p["local"])
+        p["visitante_corto"] = display_names.get(p["visitante_id"], p["visitante"])
+    if d.get("descansa"):
+        d["descansa_corto"] = display_names.get(d["descansa_id"], d["descansa"])
+
 def render(tpl, path, **ctx):
     path.parent.mkdir(parents=True, exist_ok=True)
     depth = len(path.relative_to(OUT).parts) - 1
@@ -43,15 +53,18 @@ def team_history(jornadas, tid):
             res = None if gf is None else ("G" if gf > gc else "P" if gf < gc else "E")
             hist.append({"n": n, "fecha": j["fecha"], "descansa": False, "casa": home, "gf": gf, "gc": gc, "res": res,
                          "rival": p["visitante"] if home else p["local"],
-                         "rival_id": p["visitante_id"] if home else p["local_id"]})
+                         "rival_id": p["visitante_id"] if home else p["local_id"],
+                         "rival_corto": p["visitante_corto"] if home else p["local_corto"]})
     return hist
 
 def main():
     aliases = load(DATA / "alias.json", {})
+    display_names = load(DATA / "display_names.json", {})
     seasons = {}
     for f in sorted(DATA.glob("*/*/j*.json")):
         d = json.loads(f.read_text("utf-8"))
         fix_ids(d, aliases)
+        set_display_names(d, display_names)
         div = seasons.setdefault(d["temporada"], {}).setdefault(d["division"], {"jornadas": {}})
         div["jornadas"][d["jornada"]] = d
         div["nombre"] = d.get("nombre_division") or d["division"]
