@@ -8,10 +8,10 @@
 :root{--bg:#fff;--fg:#1a1d21;--muted:#667085;--line:#e4e7ec;--accent:#0b7a43;--card:#f7f8fa;--g:#16a34a;--e:#ca8a04;--p:#dc2626}
 @media (prefers-color-scheme:dark){:root{--bg:#111418;--fg:#e8eaed;--muted:#9aa3af;--line:#2a2f36;--accent:#4ade80;--card:#181c21}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 header{border-bottom:1px solid var(--line);padding:14px 16px}
 header a{color:var(--fg);font-weight:700;text-decoration:none}
-main{max-width:860px;margin:0 auto;padding:16px}
+main{width:100%;max-width:860px;margin:0 auto;padding:16px;flex:1}
 a{color:var(--accent)}
 h1{font-size:1.5rem;margin:.4em 0 .2em} h2{font-size:1.15rem;margin:1.6em 0 .6em}
 .muted{color:var(--muted)} small{font-size:.8em}
@@ -30,6 +30,27 @@ th{font-size:.75rem;text-transform:uppercase;color:var(--muted)}
 .jornadas a,.cards a{display:inline-block;margin:0 6px 6px 0;padding:6px 12px;border:1px solid var(--line);border-radius:8px;text-decoration:none;background:var(--card)}
 .crumbs{margin:0;font-size:.9rem}
 .name-short{display:none}
+.points-col{font-weight:800;background:color-mix(in srgb,var(--accent) 9%,transparent)}
+th.points-col{color:var(--accent)}
+.league-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;width:100%;max-width:760px;margin:0 auto}
+.league-card{display:block;min-width:0;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:10px;color:var(--fg);text-decoration:none;transition:transform .15s,border-color .15s}
+.league-card:hover{transform:translateY(-2px);border-color:var(--accent)}
+.league-card-photo{width:100%;aspect-ratio:16/6;background-color:var(--card);background-size:cover;background-position:center}
+.league-card-photo.campo01{background-image:url('{{ root }}assets/campo01.jpg')}
+.league-card-photo.campo02{background-image:url('{{ root }}assets/campo02.jpg')}
+.league-card-body{padding:12px;text-align:center}
+.league-card-body strong{display:block;color:var(--accent);font-size:.87rem;line-height:1.35}
+.league-card-body small{display:block;margin-top:6px;color:var(--muted);font-size:.76rem}
+.site-footer{border-top:1px solid var(--line);padding:18px 16px;text-align:center;color:var(--muted);font-size:.78rem;line-height:1.65}
+.site-footer p{max-width:860px;margin:0 auto}
+.site-footer a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:600px){
+  .league-grid{gap:10px}
+  .league-card-body{padding:9px 5px}
+  .league-card-body strong{font-size:.7rem}
+  .league-card-body small{font-size:.65rem}
+  .league-card-photo{aspect-ratio:16/8}
+}
 @media(max-width:600px){
   main{padding:12px 8px}
   h1{font-size:1.25rem}
@@ -50,5 +71,6 @@ th{font-size:.75rem;text-transform:uppercase;color:var(--muted)}
 <body>
 <header><a href="{{ root }}index.html">⚽ Liga de Fútbol 7</a></header>
 <main>{% block content %}{% endblock %}</main>
+<footer class="site-footer"><p>Web independiente, sin ánimo de lucro y de carácter informativo. No pertenece al <a href="https://www.ayto-pinto.es/" target="_blank" rel="noopener noreferrer">Ayuntamiento de Pinto</a> ni a la <a href="https://www.rffm.es/" target="_blank" rel="noopener noreferrer">Real Federación de Fútbol de Madrid (RFFM)</a>. No sustituye la información oficial. Los datos se actualizarán los lunes.</p></footer>
 </body>
 </html>
