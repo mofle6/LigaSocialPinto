@@ -14,6 +14,21 @@ failed, seen = False, {}
 
 for pdf in sorted((ROOT / "pdfs").rglob("*.pdf")):
     rel = pdf.relative_to(ROOT).as_posix()
+    # La J1 de Segunda tiene clasificación reconstruida manualmente.
+    # Verificar el JSON antes de conservarlo; las demás jornadas se procesan normalmente.
+    if rel == "pdfs/J1 2DF7 CLASIFICACIÓN.pdf":
+        fallback = ROOT / "data" / "2026-2027" / "2dvf7" / "j01.json"
+        try:
+            curated = json.loads(fallback.read_text(encoding="utf-8"))
+            key_ok = (curated.get("temporada"), curated.get("division"), curated.get("jornada")) == ("2026-2027", "2dvf7", 1)
+            if not key_ok or curated.get("reconstruida_manualmente") is not True or validate(curated) or len(curated.get("partidos", [])) != 6:
+                raise ValueError("el JSON reconstruido no supera las validaciones")
+            print(f"OK {rel}: se conserva la J1 reconstruida y validada")
+            continue
+        except (OSError, ValueError, TypeError, KeyError) as e:
+            print(f"ERROR {rel}: no se pudo usar la J1 reconstruida ({e})", file=sys.stderr)
+            failed = True
+            continue
     try:
         d = parse(pdf)
     except Exception as e:  # PDF ilegible, escaneado, etc.
