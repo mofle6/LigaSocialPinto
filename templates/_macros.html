@@ -2,12 +2,12 @@
 
 {% macro tabla(rows) %}
 <div class="scroll"><table>
-<thead><tr><th>#</th><th class="l">Equipo</th><th>Pts</th><th>PJ</th><th class="detail-col">G</th><th class="detail-col">E</th><th class="detail-col">P</th><th>GF</th><th>GC</th><th>DG</th><th class="l detail-col">Últimos</th></tr></thead>
+<thead><tr><th>#</th><th class="l">Equipo</th><th class="points-col">Pts</th><th>PJ</th><th class="detail-col">G</th><th class="detail-col">E</th><th class="detail-col">P</th><th>GF</th><th>GC</th><th>DG</th><th class="l detail-col">Últimos</th></tr></thead>
 <tbody>
 {% for r in rows %}<tr>
 <td>{{ r.pos }}</td>
 <td class="l"><a href="equipos/{{ r.equipo_id }}.html"><span class="name-full">{{ r.equipo }}</span><span class="name-short">{{ r.equipo_corto|default(r.equipo) }}</span></a></td>
-<td><b>{{ r.pts }}</b>{% if r.sancion %} <small class="muted">(−{{ r.sancion }})</small>{% endif %}</td>
+<td class="points-col"><strong>{{ r.pts }}</strong>{% if r.sancion %} <small class="muted">(−{{ r.sancion }})</small>{% endif %}</td>
 <td>{{ r.pj }}</td><td class="detail-col">{{ r.pg }}</td><td class="detail-col">{{ r.pe }}</td><td class="detail-col">{{ r.pp }}</td><td>{{ r.gf }}</td><td>{{ r.gc }}</td><td>{{ r.gf - r.gc }}</td>
 <td class="l detail-col">{{ chips(r.ultimos) }}</td>
 </tr>{% endfor %}
