@@ -11,10 +11,38 @@ DATE = re.compile(r"^\\d{2}-\\d{2}-\\d{4}$")
 TIME = re.compile(r"^\\d{2}:\\d{2}$")
 FIELD = re.compile(r"Campo:\\s*CAMPO\\s+(.+?)\\s+F7\\s+(C[12])\\s*-", re.I)
 
+def parse_f11(lines):
+    header = next((m for line in lines if (m := re.search(r"PRIMERA AFICIONADOS F11,.*?Temporada\s+(\d{4}-\d{4})", line))), None)
+    jornada = next((m for line in lines if (m := re.match(r"Jornada\s+(\d+)$", line))), None)
+    if not header or not jornada:
+        raise ValueError("No se encontró temporada o jornada F11")
+    match_line = re.compile(r"^(.+?)\s+(\d{2}-\d{2}-\d{4})\s+(.+)$")
+    games = []
+    for i, line in enumerate(lines):
+        m = match_line.match(line)
+        if not m:
+            continue
+        if i + 2 >= len(lines) or not TIME.fullmatch(lines[i + 1]) or not lines[i + 2].startswith("Campo:"):
+            continue
+        local, raw_date, visitante = m.groups()
+        campo = lines[i + 2].split("Campo:", 1)[1].split(" - ", 1)[0].strip()
+        if campo == "ESTADIO RAFAEL MENDOZA":
+            campo = "Estadio Rafael Mendoza"
+        elif campo == "CAMPO PRINCIPES DE ASTURIAS F11":
+            campo = "Campo Príncipes de Asturias F11"
+        else:
+            raise ValueError("Campo F11 desconocido: " + campo)
+        games.append({"local": local, "local_id": slug(local), "visitante": visitante, "visitante_id": slug(visitante), "fecha": "-".join(reversed(raw_date.split("-"))), "hora": lines[i + 1], "campo": campo, "pista": ""})
+    if len(games) != 5:
+        raise ValueError(f"Se esperaban 5 partidos F11, encontrados {len(games)}")
+    return {"temporada": header[1], "division": "f11", "jornada": int(jornada[1]), "fecha": min(g["fecha"] for g in games), "descansa": None, "descansa_id": None, "partidos": games}
+
 def parse(path):
     with pdfplumber.open(path) as pdf:
         pages = [(p.extract_text() or "", p.extract_words()) for p in pdf.pages]
     lines = [line.strip() for text, _ in pages for line in text.splitlines() if line.strip()]
+    if any("PRIMERA AFICIONADOS F11" in line for line in lines):
+        return parse_f11(lines)
     head = next((m for line in lines if (m := HEADER.search(line))), None)
     jorn = next((m for line in lines if (m := re.search(r"^Jornada\\s+(\\d+)$", line))), None)
     if not head or not jorn:
