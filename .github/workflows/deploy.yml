@@ -44,6 +44,9 @@ jobs:
       - name: Procesar jornadas
         run: python scripts/ingest.py
 
+      - name: Procesar horarios de próximas jornadas
+        run: python scripts/ingest_horarios.py
+
       - name: Generar web
         run: python scripts/build_site.py
 
