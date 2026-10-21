@@ -6,7 +6,7 @@
 <div class="league-grid">
 {% for it in items if it.temporada == temp %}
 <a class="league-card" href="{{ it.temporada }}/{{ it.code }}/index.html">
-  <div class="league-card-photo {% if it.code in ['1dvf7', '2dvf7'] %}campo01{% else %}campo02{% endif %}" role="img" aria-label="Campo de fútbol de la liga"></div>
+  <div class="league-card-photo {% if it.code == 'f11' %}campo03{% elif it.code in ['1dvf7', '2dvf7'] %}campo01{% else %}campo02{% endif %}" role="img" aria-label="Campo de fútbol de la liga"></div>
   <div class="league-card-body">
     <strong>{{ it.nombre }}</strong>
     <small>Jornada {{ it.ultima.jornada }} · {{ it.ultima.fecha|fecha }}</small>
