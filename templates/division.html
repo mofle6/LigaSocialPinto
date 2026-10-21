@@ -8,10 +8,14 @@
 {% if upcoming %}
 <section class="upcoming">
 <h2>Próxima jornada · J{{ upcoming.jornada }}</h2>
+{% if last.division in ["f11", "fs"] %}
+<p class="muted">Consulta la fecha y hora de cada encuentro · Horarios sujetos a cambios</p>
+{% else %}
 <p class="muted">Programada para el {{ upcoming.fecha|fecha }} · Horarios sujetos a cambios</p>
+{% endif %}
 <ul class="matches schedule-list">
 {% for p in upcoming.partidos %}
-<li><a class="h" href="equipos/{{ p.local_id }}.html"><span class="name-full">{{ p.local }}</span><span class="name-short">{{ p.local_corto }}</span></a><span class="schedule-meta"><b>{{ p.hora }}</b><small>{{ p.campo }}{% if p.pista %} · {{ p.pista }}{% endif %}</small></span><a href="equipos/{{ p.visitante_id }}.html"><span class="name-full">{{ p.visitante }}</span><span class="name-short">{{ p.visitante_corto }}</span></a></li>
+<li><a class="h" href="equipos/{{ p.local_id }}.html"><span class="name-full">{{ p.local }}</span><span class="name-short">{{ p.local_corto }}</span></a><span class="schedule-meta"><b>{% if last.division in ["f11", "fs"] %}{{ p.fecha|fecha }} · {% endif %}{{ p.hora }}</b><small>{{ p.campo }}{% if p.pista %} · {{ p.pista }}{% endif %}</small></span><a href="equipos/{{ p.visitante_id }}.html"><span class="name-full">{{ p.visitante }}</span><span class="name-short">{{ p.visitante_corto }}</span></a></li>
 {% endfor %}
 {% if upcoming.descansa %}<li class="rest">Descansa: <a href="equipos/{{ upcoming.descansa_id }}.html">{{ upcoming.descansa }}</a></li>{% endif %}
 </ul>
