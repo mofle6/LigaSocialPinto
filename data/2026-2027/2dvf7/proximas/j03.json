@@ -1,0 +1,70 @@
+{
+  "temporada": "2026-2027",
+  "division": "2dvf7",
+  "jornada": 3,
+  "fecha": "2026-10-25",
+  "descansa": "FREEFURGO FC",
+  "descansa_id": "freefurgo-fc",
+  "partidos": [
+    {
+      "local": "LOS SOLFABIRRAS",
+      "local_id": "los-solfabirras",
+      "visitante": "THE CLOVER UFOS BURGUER",
+      "visitante_id": "the-clover-ufos-burguer",
+      "fecha": "2026-10-25",
+      "hora": "09:00",
+      "campo": "Príncipes de Asturias",
+      "pista": "C1"
+    },
+    {
+      "local": "MALUEMDO",
+      "local_id": "maluemdo",
+      "visitante": "P.S. VETERANOS/DELAIRE 2000, SL",
+      "visitante_id": "p-s-veteranos-delaire-2000-sl",
+      "fecha": "2026-10-25",
+      "hora": "10:05",
+      "campo": "Príncipes de Asturias",
+      "pista": "C1"
+    },
+    {
+      "local": "FAVELA SEVEN",
+      "local_id": "favela-seven",
+      "visitante": "GALACTICOS DEL LOCAL",
+      "visitante_id": "galacticos-del-local",
+      "fecha": "2026-10-25",
+      "hora": "11:10",
+      "campo": "Príncipes de Asturias",
+      "pista": "C1"
+    },
+    {
+      "local": "REFORMAS ROEX",
+      "local_id": "reformas-roex",
+      "visitante": "MACAQUINHIOS FC",
+      "visitante_id": "macaquinhios-fc",
+      "fecha": "2026-10-25",
+      "hora": "12:15",
+      "campo": "Príncipes de Asturias",
+      "pista": "C1"
+    },
+    {
+      "local": "CC JUNIORS",
+      "local_id": "cc-juniors",
+      "visitante": "DRAGONES FC",
+      "visitante_id": "dragones-fc",
+      "fecha": "2026-10-25",
+      "hora": "13:20",
+      "campo": "Príncipes de Asturias",
+      "pista": "C1"
+    },
+    {
+      "local": "HATTRICKI F. C.",
+      "local_id": "hattricki-f-c",
+      "visitante": "KAMIKAZES-PANPINTAO",
+      "visitante_id": "kamikazes-panpintao",
+      "fecha": "2026-10-25",
+      "hora": "14:25",
+      "campo": "Príncipes de Asturias",
+      "pista": "C1"
+    }
+  ]
+}
