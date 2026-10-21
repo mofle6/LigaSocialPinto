@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{% block title %}Liga de Fútbol 7{% endblock %}</title>
+<title>{% block title %}Liga Social Pinto{% endblock %}</title>
 <style>
 :root{--bg:#fff;--fg:#1a1d21;--muted:#667085;--line:#e4e7ec;--accent:#0b7a43;--card:#f7f8fa;--g:#16a34a;--e:#ca8a04;--p:#dc2626}
 @media (prefers-color-scheme:dark){:root{--bg:#111418;--fg:#e8eaed;--muted:#9aa3af;--line:#2a2f36;--accent:#4ade80;--card:#181c21}}
@@ -42,6 +42,8 @@ th{font-size:.75rem;text-transform:uppercase;color:var(--muted)}
 .name-short{display:none}
 .points-col{font-weight:800;background:color-mix(in srgb,var(--accent) 9%,transparent)}
 th.points-col{color:var(--accent)}
+.modality-section{margin:20px 0 32px}
+.modality-heading{font-size:1.05rem;text-transform:uppercase;letter-spacing:.07em;border-bottom:2px solid var(--line);padding-bottom:8px;margin:0 0 16px}
 .league-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;width:100%;max-width:760px;margin:0 auto}
 .league-card{display:block;min-width:0;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:10px;color:var(--fg);text-decoration:none;transition:transform .15s,border-color .15s}
 .league-card:hover{transform:translateY(-2px);border-color:var(--accent)}
@@ -80,7 +82,7 @@ th.points-col{color:var(--accent)}
 </style>
 </head>
 <body>
-<header><a href="{{ root }}index.html">⚽ Liga de Fútbol 7</a></header>
+<header><a href="{{ root }}index.html">⚽ Liga Social Pinto</a></header>
 <main>{% block content %}{% endblock %}</main>
 <footer class="site-footer"><p>Web independiente, sin ánimo de lucro y de carácter informativo. No pertenece al <a href="https://www.ayto-pinto.es/" target="_blank" rel="noopener noreferrer">Ayuntamiento de Pinto</a> ni a la <a href="https://www.rffm.es/" target="_blank" rel="noopener noreferrer">Real Federación de Fútbol de Madrid (RFFM)</a>. No sustituye la información oficial. Los datos se actualizarán los lunes.</p></footer>
 </body>
