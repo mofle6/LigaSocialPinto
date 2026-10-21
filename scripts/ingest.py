@@ -8,12 +8,24 @@ Si un PDF falla la validación, se avisa y el proceso termina con error (no se p
 import json, sys
 from pathlib import Path
 from parse_jornada import parse, validate
+from parse_f11 import parse as parse_f11
+import pdfplumber, re
 
 ROOT = Path(__file__).resolve().parent.parent
 failed, seen = False, {}
 
 for pdf in sorted((ROOT / "pdfs").rglob("*.pdf")):
     rel = pdf.relative_to(ROOT).as_posix()
+    # Los horarios se procesan por ingest_horarios.py; no tienen clasificación.
+    if re.search(r"HO(?:RARIOS|ARIOS)", pdf.name, re.I):
+        continue
+    # En F11 los PDF de resultados sueltos no incluyen tabla; solo se ingiere clasificación.
+    with pdfplumber.open(pdf) as doc:
+        first = (doc.pages[0].extract_text() or "")
+    is_f11 = "PRIMERA AFICIONADOS F11" in first
+    if is_f11 and "Equipos" not in first:
+        print(f"OMITIDO {rel}: PDF F11 de resultados/horarios sin clasificación")
+        continue
     # La J1 de Segunda tiene clasificación reconstruida manualmente.
     # Verificar el JSON antes de conservarlo; las demás jornadas se procesan normalmente.
     if rel == "pdfs/J1 2DF7 CLASIFICACIÓN.pdf":
@@ -30,7 +42,7 @@ for pdf in sorted((ROOT / "pdfs").rglob("*.pdf")):
             failed = True
             continue
     try:
-        d = parse(pdf)
+        d = parse_f11(pdf) if is_f11 else parse(pdf)
     except Exception as e:  # PDF ilegible, escaneado, etc.
         print(f"ERROR {rel}: no se pudo leer ({e})", file=sys.stderr); failed = True; continue
     # Corrección comprobada para la J2 de Primera: el Inter descansó.
