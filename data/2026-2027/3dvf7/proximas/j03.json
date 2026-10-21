@@ -1,0 +1,70 @@
+{
+  "temporada": "2026-2027",
+  "division": "3dvf7",
+  "jornada": 3,
+  "fecha": "2026-10-24",
+  "descansa": "CRISTAL BALAS",
+  "descansa_id": "cristal-balas",
+  "partidos": [
+    {
+      "local": "GERMANS F.C.",
+      "local_id": "germans-f-c",
+      "visitante": "ZORROS DE CHECOSLOVAQUIA",
+      "visitante_id": "zorros-de-checoslovaquia",
+      "fecha": "2026-10-24",
+      "hora": "16:00",
+      "campo": "Patricia Chamorro",
+      "pista": "C1"
+    },
+    {
+      "local": "FUSTER FC",
+      "local_id": "fuster-fc",
+      "visitante": "BAR LOS GEMELOS",
+      "visitante_id": "bar-los-gemelos",
+      "fecha": "2026-10-24",
+      "hora": "16:00",
+      "campo": "Patricia Chamorro",
+      "pista": "C2"
+    },
+    {
+      "local": "AMIAIRE FC",
+      "local_id": "amiaire-fc",
+      "visitante": "GEERTAFE FC",
+      "visitante_id": "geertafe-fc",
+      "fecha": "2026-10-24",
+      "hora": "17:05",
+      "campo": "Patricia Chamorro",
+      "pista": "C1"
+    },
+    {
+      "local": "TARAMBAINAS F7",
+      "local_id": "tarambainas-f7",
+      "visitante": "LA ESPERANZA ESTRELLA COJA CF",
+      "visitante_id": "la-esperanza-estrella-coja-cf",
+      "fecha": "2026-10-24",
+      "hora": "17:05",
+      "campo": "Patricia Chamorro",
+      "pista": "C2"
+    },
+    {
+      "local": "CHELOFE",
+      "local_id": "chelofe",
+      "visitante": "EL PRADO FC",
+      "visitante_id": "el-prado-fc",
+      "fecha": "2026-10-24",
+      "hora": "18:10",
+      "campo": "Patricia Chamorro",
+      "pista": "C1"
+    },
+    {
+      "local": "PAISES PLAJOS",
+      "local_id": "paises-plajos",
+      "visitante": "RAYO DE PINTO LEYENDS",
+      "visitante_id": "rayo-de-pinto-leyends",
+      "fecha": "2026-10-24",
+      "hora": "18:15",
+      "campo": "Patricia Chamorro",
+      "pista": "C2"
+    }
+  ]
+}
