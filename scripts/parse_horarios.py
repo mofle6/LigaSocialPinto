@@ -6,10 +6,10 @@ import sys
 import pdfplumber
 from parse_jornada import slug
 
-HEADER = re.compile(r"AFICIONADO F7,\\s*(\\dDVF7)\\s+(.+?)\\s+Temporada\\s+(\\d{4}-\\d{4})", re.I)
-DATE = re.compile(r"^\\d{2}-\\d{2}-\\d{4}$")
-TIME = re.compile(r"^\\d{2}:\\d{2}$")
-FIELD = re.compile(r"Campo:\\s*CAMPO\\s+(.+?)\\s+F7\\s+(C[12])\\s*-", re.I)
+HEADER = re.compile(r"AFICIONADO F7,\s*(\dDVF7)\s+(.+?)\s+Temporada\s+(\d{4}-\d{4})", re.I)
+DATE = re.compile(r"^\d{2}-\d{2}-\d{4}$")
+TIME = re.compile(r"^\d{2}:\d{2}$")
+FIELD = re.compile(r"Campo:\s*CAMPO\s+(.+?)\s+F7\s+(C[12])\s*-", re.I)
 
 def parse_f11(lines):
     header = next((m for line in lines if (m := re.search(r"PRIMERA AFICIONADOS F11,.*?Temporada\s+(\d{4}-\d{4})", line))), None)
@@ -44,7 +44,7 @@ def parse(path):
     if any("PRIMERA AFICIONADOS F11" in line for line in lines):
         return parse_f11(lines)
     head = next((m for line in lines if (m := HEADER.search(line))), None)
-    jorn = next((m for line in lines if (m := re.search(r"^Jornada\\s+(\\d+)$", line))), None)
+    jorn = next((m for line in lines if (m := re.search(r"^Jornada\s+(\d+)$", line))), None)
     if not head or not jorn:
         raise ValueError("No se encontró división, temporada o jornada")
     games = []
