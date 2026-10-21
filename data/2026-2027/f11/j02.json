@@ -1,0 +1,229 @@
+{
+  "competicion": "PRIMERA AFICIONADOS F11",
+  "division": "f11",
+  "nombre_division": "PRIMERA AFICIONADOS F11",
+  "temporada": "2026-2027",
+  "jornada": 2,
+  "fecha": "2026-10-17",
+  "partidos": [
+    {
+      "local": "BURGUER ANTEUX",
+      "visitante": "TESEPE C.F.",
+      "local_id": "burguer-anteux",
+      "visitante_id": "tesepe-c-f",
+      "goles_local": 1,
+      "goles_visitante": 4,
+      "estado": "jugado"
+    },
+    {
+      "local": "EL SALVADOR TATTOO C.F.",
+      "visitante": "AGUA MARINA",
+      "local_id": "el-salvador-tattoo-c-f",
+      "visitante_id": "agua-marina",
+      "goles_local": 4,
+      "goles_visitante": 1,
+      "estado": "jugado"
+    },
+    {
+      "local": "LA COMPAÑIA DEL BALON",
+      "visitante": "LOS CONRIX",
+      "local_id": "la-compania-del-balon",
+      "visitante_id": "los-conrix",
+      "goles_local": 6,
+      "goles_visitante": 0,
+      "estado": "jugado"
+    },
+    {
+      "local": "RAZZBAR F.C.",
+      "visitante": "FERRETERIA IDF-BAR KATY",
+      "local_id": "razzbar-f-c",
+      "visitante_id": "ferreteria-idf-bar-katy",
+      "goles_local": 1,
+      "goles_visitante": 8,
+      "estado": "jugado"
+    },
+    {
+      "local": "BORDALISMO FC",
+      "visitante": "CROKETONES CITY",
+      "local_id": "bordalismo-fc",
+      "visitante_id": "croketones-city",
+      "goles_local": 3,
+      "goles_visitante": 0,
+      "estado": "jugado"
+    }
+  ],
+  "descansa": null,
+  "descansa_id": null,
+  "clasificacion": [
+    {
+      "pos": 1,
+      "equipo": "FERRETERIA IDF-BAR KATY",
+      "equipo_id": "ferreteria-idf-bar-katy",
+      "pts": 6,
+      "pj": 2,
+      "pg": 2,
+      "pe": 0,
+      "pp": 0,
+      "gf": 14,
+      "gc": 4,
+      "ultimos": [
+        "G",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 2,
+      "equipo": "EL SALVADOR TATTOO C.F.",
+      "equipo_id": "el-salvador-tattoo-c-f",
+      "pts": 6,
+      "pj": 2,
+      "pg": 2,
+      "pe": 0,
+      "pp": 0,
+      "gf": 8,
+      "gc": 3,
+      "ultimos": [
+        "G",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 3,
+      "equipo": "BORDALISMO FC",
+      "equipo_id": "bordalismo-fc",
+      "pts": 6,
+      "pj": 2,
+      "pg": 2,
+      "pe": 0,
+      "pp": 0,
+      "gf": 6,
+      "gc": 1,
+      "ultimos": [
+        "G",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 4,
+      "equipo": "LA COMPAÑIA DEL BALON",
+      "equipo_id": "la-compania-del-balon",
+      "pts": 3,
+      "pj": 2,
+      "pg": 1,
+      "pe": 0,
+      "pp": 1,
+      "gf": 9,
+      "gc": 6,
+      "ultimos": [
+        "P",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 5,
+      "equipo": "TESEPE C.F.",
+      "equipo_id": "tesepe-c-f",
+      "pts": 3,
+      "pj": 2,
+      "pg": 1,
+      "pe": 0,
+      "pp": 1,
+      "gf": 5,
+      "gc": 4,
+      "ultimos": [
+        "P",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 6,
+      "equipo": "AGUA MARINA",
+      "equipo_id": "agua-marina",
+      "pts": 3,
+      "pj": 2,
+      "pg": 1,
+      "pe": 0,
+      "pp": 1,
+      "gf": 6,
+      "gc": 8,
+      "ultimos": [
+        "G",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 7,
+      "equipo": "RAZZBAR F.C.",
+      "equipo_id": "razzbar-f-c",
+      "pts": 3,
+      "pj": 2,
+      "pg": 1,
+      "pe": 0,
+      "pp": 1,
+      "gf": 3,
+      "gc": 9,
+      "ultimos": [
+        "G",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 8,
+      "equipo": "BURGUER ANTEUX",
+      "equipo_id": "burguer-anteux",
+      "pts": 0,
+      "pj": 2,
+      "pg": 0,
+      "pe": 0,
+      "pp": 2,
+      "gf": 5,
+      "gc": 9,
+      "ultimos": [
+        "P",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 9,
+      "equipo": "CROKETONES CITY",
+      "equipo_id": "croketones-city",
+      "pts": 0,
+      "pj": 2,
+      "pg": 0,
+      "pe": 0,
+      "pp": 2,
+      "gf": 1,
+      "gc": 5,
+      "ultimos": [
+        "P",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 10,
+      "equipo": "LOS CONRIX",
+      "equipo_id": "los-conrix",
+      "pts": 0,
+      "pj": 2,
+      "pg": 0,
+      "pe": 0,
+      "pp": 2,
+      "gf": 2,
+      "gc": 10,
+      "ultimos": [
+        "P",
+        "P"
+      ],
+      "sancion": 0
+    }
+  ]
+}
