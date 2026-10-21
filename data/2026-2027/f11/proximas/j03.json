@@ -1,0 +1,60 @@
+{
+  "temporada": "2026-2027",
+  "division": "f11",
+  "jornada": 3,
+  "fecha": "2026-10-24",
+  "descansa": null,
+  "descansa_id": null,
+  "partidos": [
+    {
+      "local": "AGUA MARINA",
+      "local_id": "agua-marina",
+      "visitante": "LA COMPAÑIA DEL BALON",
+      "visitante_id": "la-compania-del-balon",
+      "fecha": "2026-10-24",
+      "hora": "16:00",
+      "campo": "Estadio Rafael Mendoza",
+      "pista": ""
+    },
+    {
+      "local": "TESEPE C.F.",
+      "local_id": "tesepe-c-f",
+      "visitante": "CROKETONES CITY",
+      "visitante_id": "croketones-city",
+      "fecha": "2026-10-24",
+      "hora": "18:00",
+      "campo": "Estadio Rafael Mendoza",
+      "pista": ""
+    },
+    {
+      "local": "FERRETERIA IDF-BAR KATY",
+      "local_id": "ferreteria-idf-bar-katy",
+      "visitante": "BORDALISMO FC",
+      "visitante_id": "bordalismo-fc",
+      "fecha": "2026-10-25",
+      "hora": "09:00",
+      "campo": "Campo Príncipes de Asturias F11",
+      "pista": ""
+    },
+    {
+      "local": "BURGUER ANTEUX",
+      "local_id": "burguer-anteux",
+      "visitante": "EL SALVADOR TATTOO C.F.",
+      "visitante_id": "el-salvador-tattoo-c-f",
+      "fecha": "2026-10-25",
+      "hora": "11:00",
+      "campo": "Campo Príncipes de Asturias F11",
+      "pista": ""
+    },
+    {
+      "local": "LOS CONRIX",
+      "local_id": "los-conrix",
+      "visitante": "RAZZBAR F.C.",
+      "visitante_id": "razzbar-f-c",
+      "fecha": "2026-10-25",
+      "hora": "13:00",
+      "campo": "Campo Príncipes de Asturias F11",
+      "pista": ""
+    }
+  ]
+}

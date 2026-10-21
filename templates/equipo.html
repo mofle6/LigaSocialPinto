@@ -15,7 +15,7 @@
 {% if upcoming.descansa %}
 <p class="rest-notice">Descansa · {{ upcoming.fecha|fecha }}</p>
 {% else %}
-<div class="next-match"><strong>{{ upcoming.local }} — {{ upcoming.visitante }}</strong><span>{{ upcoming.fecha|fecha }} · {{ upcoming.hora }}</span><span>{{ upcoming.campo }} · {{ upcoming.pista }}</span></div>
+<div class="next-match"><strong>{{ upcoming.local }} — {{ upcoming.visitante }}</strong><span>{{ upcoming.fecha|fecha }} · {{ upcoming.hora }}</span><span>{{ upcoming.campo }}{% if upcoming.pista %} · {{ upcoming.pista }}{% endif %}</span></div>
 {% endif %}
 </section>
 {% endif %}
