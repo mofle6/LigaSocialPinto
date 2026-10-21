@@ -3,14 +3,14 @@ import re
 import pdfplumber
 from parse_jornada import slug
 
-SCORE = re.compile(r"^(.+?)\\s+(\\d+)\\s*-\\s*(\\d+)\\s+(.+)$")
-ROW = re.compile(r"^(\\d+)\\s+(.+?)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+((?:[GEP]\\s*)+)\\s+(\\d+)$")
+SCORE = re.compile(r"^(.+?)\s+(\d+)\s*-\s*(\d+)\s+(.+)$")
+ROW = re.compile(r"^(\d+)\s+(.+?)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+((?:[GEP]\s*)+)\s+(\d+)$")
 
 def parse(path):
     with pdfplumber.open(path) as pdf:
         lines = [x.strip() for page in pdf.pages for x in (page.extract_text() or "").splitlines() if x.strip()]
-    header = next((m for line in lines if (m := re.search(r"PRIMERA AFICIONADOS F11,.*?Temporada\\s+(\\d{4}-\\d{4})", line))), None)
-    jornada = next((m for line in lines if (m := re.search(r"^Jornada\\s+(\\d+)\\s+\\((\\d{2}-\\d{2}-\\d{4})\\)", line))), None)
+    header = next((m for line in lines if (m := re.search(r"PRIMERA AFICIONADOS F11,.*?Temporada\s+(\d{4}-\d{4})", line))), None)
+    jornada = next((m for line in lines if (m := re.search(r"^Jornada\s+(\d+)\s+\((\d{2}-\d{2}-\d{4})\)", line))), None)
     if not header or not jornada:
         raise ValueError("El PDF no es una clasificación F11 reconocible")
     start = next(i for i, line in enumerate(lines) if line.startswith("Equipos"))
