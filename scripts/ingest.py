@@ -9,6 +9,7 @@ import json, sys
 from pathlib import Path
 from parse_jornada import parse, validate
 from parse_f11 import parse as parse_f11
+from parse_fs import parse as parse_fs
 import pdfplumber, re
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -23,6 +24,7 @@ for pdf in sorted((ROOT / "pdfs").rglob("*.pdf")):
     with pdfplumber.open(pdf) as doc:
         first = (doc.pages[0].extract_text() or "")
     is_f11 = "PRIMERA AFICIONADOS F11" in first
+    is_fs = "TORNEO APERTURA F.SALA" in first
     if is_f11 and "Equipos" not in first:
         print(f"OMITIDO {rel}: PDF F11 de resultados/horarios sin clasificación")
         continue
@@ -42,7 +44,7 @@ for pdf in sorted((ROOT / "pdfs").rglob("*.pdf")):
             failed = True
             continue
     try:
-        d = parse_f11(pdf) if is_f11 else parse(pdf)
+        d = parse_f11(pdf) if is_f11 else parse_fs(pdf) if is_fs else parse(pdf)
     except Exception as e:  # PDF ilegible, escaneado, etc.
         print(f"ERROR {rel}: no se pudo leer ({e})", file=sys.stderr); failed = True; continue
     # Corrección comprobada para la J2 de Primera: el Inter descansó.
