@@ -3,10 +3,20 @@
 <h1>Clasificaciones y resultados</h1>
 {% for temp in items|map(attribute='temporada')|unique %}
 <h2>Temporada {{ temp }}</h2>
+{% for modalidad, titulo in [('f7', 'Fútbol 7'), ('f11', 'Fútbol 11'), ('fs', 'Fútbol Sala')] %}
+{% set ligas = items|selectattr('temporada', 'equalto', temp)|list %}
+{% if modalidad == 'f7' %}
+{% set ligas = ligas|rejectattr('code', 'equalto', 'f11')|rejectattr('code', 'equalto', 'fs')|list %}
+{% else %}
+{% set ligas = ligas|selectattr('code', 'equalto', modalidad)|list %}
+{% endif %}
+{% if ligas %}
+<section class="modality-section" aria-label="{{ titulo }}">
+<h3 class="modality-heading">{{ titulo }}</h3>
 <div class="league-grid">
-{% for it in items if it.temporada == temp %}
+{% for it in ligas %}
 <a class="league-card" href="{{ it.temporada }}/{{ it.code }}/index.html">
-  <div class="league-card-photo {% if it.code == 'f11' %}campo03{% elif it.code in ['1dvf7', '2dvf7'] %}campo01{% else %}campo02{% endif %}" role="img" aria-label="Campo de fútbol de la liga"></div>
+  <div class="league-card-photo {% if it.code == 'f11' %}campo03{% elif it.code == 'fs' %}campo02{% elif it.code in ['1dvf7', '2dvf7'] %}campo01{% else %}campo02{% endif %}" role="img" aria-label="Campo de fútbol de la liga"></div>
   <div class="league-card-body">
     <strong>{{ it.nombre }}</strong>
     <small>Jornada {{ it.ultima.jornada }} · {{ it.ultima.fecha|fecha }}</small>
@@ -14,5 +24,8 @@
 </a>
 {% endfor %}
 </div>
+</section>
+{% endif %}
+{% endfor %}
 {% endfor %}
 {% endblock %}
