@@ -24,7 +24,7 @@ assert "PRIMERA AFICIONADOS F11" in home
 assert "campo03" in home
 league = (out / "index.html").read_text("utf-8")
 assert "Próxima jornada" in league and "Clasificación" in league
-assert league.index("Próxima jornada") < league.index("Clasificación")
+assert league.index("<h2>Próxima jornada") < league.index("<h2>Clasificación</h2>")
 for match in next_round["partidos"]:
     for term in (match["local"], match["visitante"], match["hora"], match["campo"]):
         assert term in league, f"Falta {term} en liga F11"
