@@ -1,0 +1,30 @@
+name: Verificar Fútbol Sala (sin publicar)
+on:
+  pull_request:
+    paths:
+      - "data/**"
+      - "templates/**"
+      - "scripts/**"
+      - "assets/**"
+      - ".github/workflows/check-fs.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+      - name: Verificar sintaxis
+        run: python -m compileall -q scripts
+      - name: Generar web
+        run: python scripts/build_site.py
+      - name: Verificar Fútbol Sala
+        run: python scripts/check_fs_site.py
