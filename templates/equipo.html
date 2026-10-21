@@ -9,6 +9,16 @@
 <p>{{ chips(row.ultimos) }}</p>
 {% endif %}
 
+{% if upcoming %}
+<section class="upcoming">
+<h2>Próxima jornada · J{{ upcoming.jornada }}</h2>
+{% if upcoming.descansa %}
+<p class="rest-notice">Descansa · {{ upcoming.fecha|fecha }}</p>
+{% else %}
+<div class="next-match"><strong>{{ upcoming.local }} — {{ upcoming.visitante }}</strong><span>{{ upcoming.fecha|fecha }} · {{ upcoming.hora }}</span><span>{{ upcoming.campo }} · {{ upcoming.pista }}</span></div>
+{% endif %}
+</section>
+{% endif %}
 <h2>Partidos</h2>
 <div class="scroll"><table>
 <thead><tr><th>J</th><th>Fecha</th><th class="l">Rival</th><th></th><th>Resultado</th></tr></thead>
