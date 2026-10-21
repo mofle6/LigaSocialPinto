@@ -13,7 +13,7 @@ aliases = json.loads((DATA / "alias.json").read_text("utf-8")) if (DATA / "alias
 failed = False
 seen = set()
 for pdf in sorted((ROOT / "pdfs").rglob("*.pdf")):
-    if not re.search(r"HO(?:R|A)ARIOS?", pdf.name, re.I):
+    if not re.search(r"HO(?:RARIOS|ARIOS)", pdf.name, re.I):
         continue
     try:
         d = parse(pdf)
