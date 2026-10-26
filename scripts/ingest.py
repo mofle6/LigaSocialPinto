@@ -10,6 +10,7 @@ from pathlib import Path
 from parse_jornada import parse, validate
 from parse_f11 import parse as parse_f11
 from parse_fs import parse as parse_fs
+from j3_updates import apply as apply_j3_updates
 import pdfplumber, re
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -61,6 +62,12 @@ for pdf in sorted((ROOT / "pdfs").rglob("*.pdf")):
             print(f"ERROR {rel}: no se puede verificar el descanso de J2 Primera", file=sys.stderr)
             failed = True
             continue
+    try:
+        d = apply_j3_updates(d)
+    except ValueError as e:
+        print(f'ERROR {rel}: {e}', file=sys.stderr)
+        failed = True
+        continue
     errs = validate(d)
     if not all(d.get(k) for k in ("temporada", "division", "jornada")):
         errs.append("No se encontró temporada, división o jornada en el encabezado")
