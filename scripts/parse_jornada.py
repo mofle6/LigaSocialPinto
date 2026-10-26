@@ -10,7 +10,8 @@ import pdfplumber
 RE_HEAD = re.compile(r"^(?P<comp>.+?),\s*(?P<code>\S+)\s+(?P<name>.+?)\s+Temporada\s+(?P<season>\d{4}-\d{4})$")
 RE_JORN = re.compile(r"^Jornada\s+(?P<n>\d+)\s+\((?P<date>\d{2}-\d{2}-\d{4})\)$")
 RE_SCORED = re.compile(r"^(?P<home>.+?)\s+(?P<hg>\d+)\s+-\s+(?P<ag>\d+)\s+(?P<away>.+)$")
-RE_REST = re.compile(r"^(?P<team>.+?)\s+-\s+Descansa$")
+RE_REST = re.compile(r"^(?:Descansa\s+-\s+(?P<right>.+)|(?P<left>.+?)\s+-\s+Descansa)$")
+RE_SUSPENDED = re.compile(r"^(?P<home>.+?)\s+(?:S\s*-|-\s*S)\s+(?P<away>.+)$")
 RE_PENDING = re.compile(r"^(?P<home>.+?)\s+-\s+(?P<away>.+)$")
 RE_ROW = re.compile(
     r"^(?P<pos>\d+)\s+(?P<team>.+?)\s+(?P<pts>\d+)\s+(?P<j>\d+)\s+(?P<g>\d+)\s+(?P<e>\d+)\s+"
@@ -25,6 +26,14 @@ def parse(path):
     with pdfplumber.open(path) as pdf:
         lines = [l.strip() for pg in pdf.pages for l in (pg.extract_text() or "").splitlines() if l.strip()]
 
+    # PDF extraction can split a long team name around the score line.
+    # Normalize the verified J3 Primera case without guessing either team.
+    for i in range(len(lines) - 2):
+        if lines[i].endswith(" LA OSTRA") and re.fullmatch(r"\d+\s*-\s*\d+", lines[i + 1]) and lines[i + 2] == "ROKERS":
+            home = lines[i][:-len(" LA OSTRA")] + " ROKERS"
+            lines[i:i+3] = [home + " " + lines[i + 1] + " LA OSTRA"]
+            break
+
     out = {"competicion": None, "division": None, "nombre_division": None, "temporada": None, "jornada": None,
            "fecha": None, "partidos": [], "descansa": None, "clasificacion": []}
     in_matches = False
@@ -38,10 +47,13 @@ def parse(path):
             in_matches = False
         elif in_matches:
             if (m := RE_REST.match(l)):
-                out["descansa"] = m["team"]
+                out["descansa"] = m["right"] or m["left"]
             elif (m := RE_SCORED.match(l)):
                 out["partidos"].append({"local": m["home"], "visitante": m["away"],
                                         "goles_local": int(m["hg"]), "goles_visitante": int(m["ag"]), "estado": "jugado"})
+            elif (m := RE_SUSPENDED.match(l)):
+                out["partidos"].append({"local": m["home"], "visitante": m["away"],
+                                        "goles_local": None, "goles_visitante": None, "estado": "suspendido"})
             elif (m := RE_PENDING.match(l)):
                 out["partidos"].append({"local": m["home"], "visitante": m["away"],
                                         "goles_local": None, "goles_visitante": None, "estado": "sin_resultado"})

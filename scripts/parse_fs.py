@@ -6,6 +6,8 @@ from parse_jornada import slug
 HEAD = re.compile(r"TORNEO APERTURA F\.SALA,.*Temporada\s+(\d{4}-\d{4})")
 ROUND = re.compile(r"Jornada\s+(\d+)\s+\((\d{2}-\d{2}-\d{4})\)")
 MATCH = re.compile(r"^(.+?)\s+(\d+)\s*-\s*(\d+)\s+(.+)$")
+PENDING = re.compile(r"^(.+?)\s+-\s+(.+)$")
+SUSPENDED = re.compile(r"^(.+?)\s+(?:S\s*-|-\s*S)\s+(.+)$")
 ROW = re.compile(r"^(\d+)\s+(.+?)\s+\d+,\d{4}\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+((?:[GEP]\s*)+)\s+(\d+)$")
 
 def parse(path):
@@ -22,6 +24,14 @@ def parse(path):
             a, x, y, b = m.groups()
             matches.append({"local": a, "visitante": b, "local_id": slug(a), "visitante_id": slug(b),
                             "goles_local": int(x), "goles_visitante": int(y), "estado": "jugado"})
+        elif m := SUSPENDED.match(line):
+            a, b = m.groups()
+            matches.append({"local": a, "visitante": b, "local_id": slug(a), "visitante_id": slug(b),
+                            "goles_local": None, "goles_visitante": None, "estado": "suspendido"})
+        elif m := PENDING.match(line):
+            a, b = m.groups()
+            matches.append({"local": a, "visitante": b, "local_id": slug(a), "visitante_id": slug(b),
+                            "goles_local": None, "goles_visitante": None, "estado": "sin_resultado"})
     rows = []
     for line in lines[start+1:]:
         if m := ROW.match(line):

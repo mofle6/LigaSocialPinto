@@ -21,6 +21,11 @@
 </ul>
 </section>
 {% endif %}
+{% set pendientes = last.partidos|selectattr("estado", "equalto", "sin_resultado")|list %}
+{% set suspendidos = last.partidos|selectattr("estado", "equalto", "suspendido")|list %}
+{% if pendientes or suspendidos %}
+<aside class="results-notice" role="note"><strong>Resultados pendientes de actualización</strong><p>La clasificación refleja únicamente los resultados publicados en el documento oficial. {% if pendientes %}Hay {{ pendientes|length }} partido{{ "s" if pendientes|length != 1 else "" }} sin marcador comunicado; esto no implica suspensión.{% endif %} {% if suspendidos %}Hay {{ suspendidos|length }} partido{{ "s" if suspendidos|length != 1 else "" }} identificado{{ "s" if suspendidos|length != 1 else "" }} como suspendido{{ "s" if suspendidos|length != 1 else "" }} (S).{% endif %} Los datos se actualizarán cuando se publiquen los resultados.</p></aside>
+{% endif %}
 <h2>Clasificación</h2>
 {{ tabla(last.clasificacion) }}
 <h2>Resultados · jornada {{ last.jornada }}</h2>

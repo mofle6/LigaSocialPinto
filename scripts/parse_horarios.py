@@ -45,6 +45,9 @@ def parse_fs(lines):
     match_line = re.compile(r"^(.+?)\s+(\d{2}-\d{2}-\d{4})\s+(.+)$")
     games = []
     for i, line in enumerate(lines):
+        # The PDF may wrap a long home-team name onto the preceding line.
+        if i and lines[i - 1] == "FERRETERIA TEIDE" and line.startswith("CARPINTERIA "):
+            line = "FERRETERIA TEIDE " + line
         m = match_line.match(line)
         if not m or i + 2 >= len(lines) or not TIME.fullmatch(lines[i + 1]):
             continue
@@ -100,6 +103,8 @@ def parse(path):
     if len(games) != 6:
         raise ValueError(f"Se esperaban 6 encuentros, encontrados {len(games)}")
     rest = next((line[len("Descansa "):].strip() for line in lines if line.startswith("Descansa ")), None)
+    if rest is None:
+        rest = next((line[:-len(" Descansa")].strip() for line in lines if line.endswith(" Descansa")), None)
     return {"temporada": head[3], "division": head[1].lower(), "jornada": int(jorn[1]), "fecha": min(g["fecha"] for g in games), "descansa": rest, "descansa_id": slug(rest) if rest else None, "partidos": games}
 
 if __name__ == "__main__":
