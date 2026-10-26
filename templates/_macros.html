@@ -18,7 +18,7 @@
 <ul class="matches">
 {% for p in j.partidos %}<li>
 <a class="h" href="equipos/{{ p.local_id }}.html"><span class="name-full">{{ p.local }}</span><span class="name-short">{{ p.local_corto|default(p.local) }}</span></a>
-{% if p.estado == 'jugado' %}<span class="score">{{ p.goles_local }} – {{ p.goles_visitante }}</span>{% else %}<span class="score pend" title="Sin resultado">– : –</span>{% endif %}
+{% if p.estado == 'jugado' %}<span class="score">{{ p.goles_local }} – {{ p.goles_visitante }}</span>{% elif p.estado == 'suspendido' %}<span class="score pend" title="Partido suspendido">S · Suspendido</span>{% else %}<span class="score pend" title="Resultado todavía no publicado">Pendiente</span>{% endif %}
 <a href="equipos/{{ p.visitante_id }}.html"><span class="name-full">{{ p.visitante }}</span><span class="name-short">{{ p.visitante_corto|default(p.visitante) }}</span></a>
 </li>{% endfor %}
 {% if j.descansa %}<li class="rest">Descansa: <a href="equipos/{{ j.descansa_id }}.html"><span class="name-full">{{ j.descansa }}</span><span class="name-short">{{ j.descansa_corto|default(j.descansa) }}</span></a></li>{% endif %}
