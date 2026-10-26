@@ -27,7 +27,7 @@
 <td>{{ h.n }}</td><td>{{ h.fecha|fecha }}</td>
 {% if h.descansa %}<td class="l muted" colspan="3">Descansa</td>
 {% else %}<td class="l"><a href="{{ h.rival_id }}.html"><span class="name-full">{{ h.rival }}</span><span class="name-short">{{ h.rival_corto|default(h.rival) }}</span></a></td><td class="muted">{{ 'L' if h.casa else 'V' }}</td>
-<td>{% if h.res %}{{ chips([h.res]) }} {{ h.gf }}–{{ h.gc }}{% else %}<span class="muted">{% if h.estado == "suspendido" %}Suspendido (S){% else %}Pendiente de resultado{% endif %}</span>{% endif %}</td>{% endif %}
+<td>{% if h.res %}{{ chips([h.res]) }} {{ h.gf }}–{{ h.gc }}{% else %}<span class="muted">{% if h.estado == "suspendido" %}Suspendido (S){% elif h.estado == "aplazado" %}Aplazado al {{ h.fecha_aplazada|fecha }} · {{ h.hora_aplazada }}{% else %}Pendiente de resultado{% endif %}</span>{% endif %}</td>{% endif %}
 </tr>{% endfor %}
 </tbody></table></div>
 

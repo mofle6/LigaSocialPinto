@@ -99,7 +99,7 @@ def team_history(jornadas, tid):
             hist.append({"n": n, "fecha": j["fecha"], "descansa": False, "casa": home, "gf": gf, "gc": gc, "res": res,
                          "rival": p["visitante"] if home else p["local"],
                          "rival_id": p["visitante_id"] if home else p["local_id"],
-                         "rival_corto": p["visitante_corto"] if home else p["local_corto"], "estado": p.get("estado", "jugado")})
+                         "rival_corto": p["visitante_corto"] if home else p["local_corto"], "estado": p.get("estado", "jugado"), "fecha_aplazada": p.get("fecha_aplazada"), "hora_aplazada": p.get("hora_aplazada")})
     return hist
 
 def main():
