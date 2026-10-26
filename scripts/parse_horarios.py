@@ -19,9 +19,6 @@ def parse_f11(lines):
     match_line = re.compile(r"^(.+?)\s+(\d{2}-\d{2}-\d{4})\s+(.+)$")
     games = []
     for i, line in enumerate(lines):
-        # The PDF may wrap a long home-team name onto the preceding line.
-        if i and lines[i - 1] == "FERRETERIA TEIDE" and line.startswith("CARPINTERIA "):
-            line = "FERRETERIA TEIDE " + line
         m = match_line.match(line)
         if not m:
             continue
@@ -48,6 +45,9 @@ def parse_fs(lines):
     match_line = re.compile(r"^(.+?)\s+(\d{2}-\d{2}-\d{4})\s+(.+)$")
     games = []
     for i, line in enumerate(lines):
+        # The PDF may wrap a long home-team name onto the preceding line.
+        if i and lines[i - 1] == "FERRETERIA TEIDE" and line.startswith("CARPINTERIA "):
+            line = "FERRETERIA TEIDE " + line
         m = match_line.match(line)
         if not m or i + 2 >= len(lines) or not TIME.fullmatch(lines[i + 1]):
             continue
