@@ -39,7 +39,7 @@ jobs:
               assert j['jornada'] == 3 and len(j['clasificacion']) == count and len(j['partidos']) == games, code
               assert h['jornada'] == 4 and len(h['partidos']) == games, code
               assert all(p['fecha'] and p['hora'] and p['campo'] for p in h['partidos']), code
-              assert all(p['estado'] in ('jugado','sin_resultado','suspendido') for p in j['partidos']), code
+              assert all(p['estado'] in ('jugado','sin_resultado','suspendido','aplazado') for p in j['partidos']), code
               print(code, 'J3 OK, J4 OK')
           PY
       - name: Generar web
