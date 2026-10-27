@@ -80,6 +80,49 @@ th.points-col{color:var(--accent)}
   .score{padding:3px 5px}
 }
 .results-notice{border:1px solid #e3b35c;background:rgba(227,179,92,.10);border-radius:10px;padding:12px 16px;margin:18px 0}.results-notice p{margin:7px 0 0;line-height:1.5}
+
+/* Team profiles: visual refresh. Shared league styling stays unchanged. */
+main:has(.team-page){max-width:1120px}
+.team-page{--team-surface:var(--card);--team-inner:color-mix(in srgb,var(--bg) 83%,#000);--team-radius:15px}
+.team-page .crumbs{margin:5px 0 17px}
+.team-hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:22px;align-items:center;background:var(--team-surface);border:1px solid var(--line);border-radius:var(--team-radius);padding:25px;margin-bottom:18px}
+.team-identity{display:flex;align-items:center;gap:20px;min-width:0}
+.team-crest{width:125px;height:125px;object-fit:contain;flex:none;filter:drop-shadow(0 5px 9px rgba(0,0,0,.18))}
+.team-identity-copy{min-width:0}
+.team-identity h1{font-size:clamp(1.1rem,2vw,1.65rem);line-height:1.2;margin:0 0 8px;overflow-wrap:anywhere}
+.team-division{font-size:.78rem;color:var(--muted);margin:0 0 15px}
+.team-form{display:flex;flex-wrap:wrap;gap:4px}
+.team-form .chip{width:25px;height:25px;line-height:25px;font-size:.8rem;margin:0}
+.team-fixtures{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:0}
+.fixture-card{min-width:0}
+.fixture-card h2{font-size:.84rem;margin:0 0 6px}
+.fixture-card>.fixture-league,.fixture-card>.fixture-empty,.fixture-card>.fixture-content,.fixture-card>.fixture-venue{background:var(--team-inner)}
+.fixture-league{margin:0;padding:10px 11px 4px;color:var(--muted);font-size:.68rem;border-radius:9px 9px 0 0;overflow-wrap:anywhere}
+.fixture-content{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;padding:7px 11px 12px;border-radius:0 0 9px 9px;align-items:center;min-height:76px}
+.fixture-time{display:flex;flex-direction:column;gap:6px;color:var(--muted);font-size:.73rem;white-space:nowrap}
+.fixture-teams{min-width:0;display:grid;gap:7px}
+.fixture-teams>div{display:flex;justify-content:space-between;gap:8px;font-size:.75rem;line-height:1.25}
+.fixture-teams span{overflow-wrap:anywhere}
+.fixture-teams strong{color:var(--fg)}
+.fixture-empty{margin:0;padding:18px 12px;border-radius:9px;color:var(--muted);font-size:.8rem;min-height:84px}
+.fixture-venue{margin:0;padding:0 10px 10px;color:var(--muted);font-size:.68rem;overflow-wrap:anywhere}
+.team-panel{background:var(--team-surface);border:1px solid var(--line);border-radius:var(--team-radius);padding:22px 24px;margin:18px 0}
+.team-panel h2{font-size:1.15rem;margin:0 0 19px}
+.team-stats h2{text-align:center}
+.team-stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px 28px;max-width:850px;margin:0 auto}
+.team-stat{text-align:center;min-width:0}
+.team-stat span{display:block;font-size:.73rem;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
+.team-stat strong{display:block;background:var(--team-inner);border:1px solid var(--line);border-radius:5px;padding:8px 10px;max-width:135px;margin:auto;font-size:1.35rem;font-variant-numeric:tabular-nums}
+.team-sanction{text-align:center;margin:14px 0 0}
+.team-history h2,.team-roster h2{margin-bottom:12px}
+.team-history table th,.team-history table td{padding:11px 12px}
+.team-history tbody tr:hover{background:color-mix(in srgb,var(--accent) 5%,transparent)}
+.team-history .chip{vertical-align:middle}
+.team-score{font-variant-numeric:tabular-nums}
+.team-rest-badge{display:inline-block;background:#7c3aed;color:white;border-radius:4px;font-size:.72rem;font-weight:700;padding:1px 6px;margin-right:5px}
+@media(max-width:900px){.team-hero{grid-template-columns:1fr}.team-fixtures{max-width:none}.team-identity{justify-content:center}.team-identity-copy{flex:1}}
+@media(max-width:600px){.team-hero{padding:16px;gap:18px}.team-crest{width:85px;height:85px}.team-identity{gap:12px}.team-identity h1{font-size:1.12rem}.team-division{font-size:.7rem}.team-fixtures{grid-template-columns:1fr}.team-panel{padding:15px 11px}.team-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px 10px}.team-stat strong{font-size:1.1rem}.team-history table th,.team-history table td{padding:9px 6px}.team-history table{font-size:.77rem}}
+
 </style>
 </head>
 <body>
