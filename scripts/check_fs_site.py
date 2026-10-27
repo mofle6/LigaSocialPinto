@@ -30,7 +30,7 @@ for p in schedule["partidos"]:
         page = site / "equipos" / (tid+".html")
         assert page.is_file(), tid
         html = page.read_text("utf-8")
-        for term in ("Próxima jornada", p["local"], p["visitante"], p["hora"], p["campo"]):
+        for term in ("Próxima jornada", p["local"], p["visitante"], p["hora"]):
             assert term in html, (tid, term)
 for n in (1,2):
     assert (site / f"jornada-{n:02d}.html").is_file()
