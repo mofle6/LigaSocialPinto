@@ -8,7 +8,7 @@
   {% set previous = played[-1] if played else none %}
   <section class="team-hero" aria-label="Resumen del equipo">
     <div class="team-identity">
-      <img class="team-crest" src="{{ root }}assets/logos/{{ 'kamikazes-panpintao.png' if row and row.equipo_id == 'kamikazes-panpintao' else 'logo-no-disponible.png' }}" alt="Escudo de {{ nombre }}" width="128" height="128">
+      <img class="team-crest" src="{{ root }}assets/logos/{{ 'kamikazes-panpintao.png' if row and row.equipo_id == 'kamikazes-panpintao' else 'logo-no-disponible.png' }}" alt="Escudo de {{ nombre }}" width="128" height="128" onerror="this.onerror=null;this.src=&#39;{{ root }}assets/logos/logo-no-disponible.svg&#39;">
       <div class="team-identity-copy">
         <h1>{{ nombre }}</h1>
         <p class="team-division">⚽ {{ div.nombre }}</p>
