@@ -2,40 +2,106 @@
 {% from "_macros.html" import chips %}
 {% block title %}{{ nombre }} · {{ div.nombre }}{% endblock %}
 {% block content %}
-<p class="crumbs"><a href="../index.html">← {{ div.nombre }}</a></p>
-<h1>{{ nombre }}</h1>
-{% if row %}
-<p class="muted">{{ row.pos }}º · {{ row.pts }} pts{% if row.sancion %} (sanción −{{ row.sancion }}){% endif %} · {{ row.pj }} PJ · {{ row.pg }} G · {{ row.pe }} E · {{ row.pp }} P · {{ row.gf }}–{{ row.gc }} goles</p>
-<p>{{ chips(row.ultimos) }}</p>
-{% endif %}
+<div class="team-page">
+  <p class="crumbs"><a href="../index.html">← {{ div.nombre }}</a></p>
+  {% set played = hist|selectattr('res')|list %}
+  {% set previous = played[-1] if played else none %}
+  <section class="team-hero" aria-label="Resumen del equipo">
+    <div class="team-identity">
+      <img class="team-crest" src="{{ root }}assets/logos/{{ 'kamikazes-panpintao.png' if row and row.equipo_id == 'kamikazes-panpintao' else 'logo-no-disponible.png' }}" alt="Escudo de {{ nombre }}" width="128" height="128">
+      <div class="team-identity-copy">
+        <h1>{{ nombre }}</h1>
+        <p class="team-division">⚽ {{ div.nombre }}</p>
+        {% if row %}
+        <div class="team-form" aria-label="Últimos resultados">
+          {% if row.ultimos %}{{ chips(row.ultimos) }}{% else %}<span class="muted">Sin resultados disputados</span>{% endif %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="team-fixtures">
+      <article class="fixture-card">
+        <h2>Último partido</h2>
+        {% if previous %}
+          <p class="fixture-league">{{ div.nombre }}</p>
+          <div class="fixture-content">
+            <div class="fixture-time"><span>J{{ previous.n }}</span><span>{{ previous.fecha|fecha }}</span></div>
+            <div class="fixture-teams">
+              <div><span>{{ nombre if previous.casa else previous.rival }}</span><strong>{{ previous.gf if previous.casa else previous.gc }}</strong></div>
+              <div><span>{{ previous.rival if previous.casa else nombre }}</span><strong>{{ previous.gc if previous.casa else previous.gf }}</strong></div>
+            </div>
+          </div>
+        {% else %}<p class="fixture-empty">Todavía no hay partidos con resultado.</p>{% endif %}
+      </article>
+      <article class="fixture-card">
+        <h2>Próximo partido</h2>
+        {% if upcoming %}
+          <p class="fixture-league">{{ div.nombre }} · J{{ upcoming.jornada }}</p>
+          {% if upcoming.descansa %}
+            <p class="fixture-empty">Descansa{% if upcoming.fecha %} · {{ upcoming.fecha|fecha }}{% endif %}</p>
+          {% else %}
+            <div class="fixture-content">
+              <div class="fixture-time"><span>{{ upcoming.fecha|fecha }}</span><span>{{ upcoming.hora }}</span></div>
+              <div class="fixture-teams">
+                <div><span>{{ upcoming.local }}</span></div>
+                <div><span>{{ upcoming.visitante }}</span></div>
+              </div>
+            </div>
+            {% if upcoming.campo %}<p class="fixture-venue">{{ upcoming.campo }}{% if upcoming.pista %} · {{ upcoming.pista }}{% endif %}</p>{% endif %}
+          {% endif %}
+        {% else %}<p class="fixture-empty">Próxima jornada todavía no publicada.</p>{% endif %}
+      </article>
+    </div>
+  </section>
 
-{% if upcoming %}
-<section class="upcoming">
-<h2>Próxima jornada · J{{ upcoming.jornada }}</h2>
-{% if upcoming.descansa %}
-<p class="rest-notice">Descansa · {{ upcoming.fecha|fecha }}</p>
-{% else %}
-<div class="next-match"><strong>{{ upcoming.local }} — {{ upcoming.visitante }}</strong><span>{{ upcoming.fecha|fecha }} · {{ upcoming.hora }}</span><span>{{ upcoming.campo }}{% if upcoming.pista %} · {{ upcoming.pista }}{% endif %}</span></div>
-{% endif %}
-</section>
-{% endif %}
-<h2>Partidos</h2>
-<div class="scroll"><table>
-<thead><tr><th>J</th><th>Fecha</th><th class="l">Rival</th><th></th><th>Resultado</th></tr></thead>
-<tbody>
-{% for h in hist %}<tr>
-<td>{{ h.n }}</td><td>{{ h.fecha|fecha }}</td>
-{% if h.descansa %}<td class="l muted" colspan="3">Descansa</td>
-{% else %}<td class="l"><a href="{{ h.rival_id }}.html"><span class="name-full">{{ h.rival }}</span><span class="name-short">{{ h.rival_corto|default(h.rival) }}</span></a></td><td class="muted">{{ 'L' if h.casa else 'V' }}</td>
-<td>{% if h.res %}{{ chips([h.res]) }} {{ h.gf }}–{{ h.gc }}{% else %}<span class="muted">{% if h.estado == "suspendido" %}Suspendido (S){% elif h.estado == "aplazado" %}Aplazado al {{ h.fecha_aplazada|fecha }} · {{ h.hora_aplazada }}{% else %}Pendiente de resultado{% endif %}</span>{% endif %}</td>{% endif %}
-</tr>{% endfor %}
-</tbody></table></div>
+  {% if row %}
+  <section class="team-panel team-stats" aria-label="Estadísticas del equipo">
+    <h2>Estadísticas</h2>
+    <div class="team-stat-grid">
+      <div class="team-stat"><span>Posición</span><strong>{{ row.pos }}º</strong></div>
+      <div class="team-stat"><span>Partidos</span><strong>{{ row.pj }}</strong></div>
+      <div class="team-stat"><span>Goles a favor</span><strong>{{ row.gf }}</strong></div>
+      <div class="team-stat"><span>Goles en contra</span><strong>{{ row.gc }}</strong></div>
+      <div class="team-stat"><span>Puntos</span><strong>{{ row.pts }}</strong></div>
+      <div class="team-stat"><span>Ganados</span><strong>{{ row.pg }}</strong></div>
+      <div class="team-stat"><span>Empatados</span><strong>{{ row.pe }}</strong></div>
+      <div class="team-stat"><span>Perdidos</span><strong>{{ row.pp }}</strong></div>
+    </div>
+    {% if row.sancion %}<p class="muted team-sanction">Sanción: −{{ row.sancion }} puntos</p>{% endif %}
+  </section>
+  {% endif %}
 
-{% if extra.jugadores %}
-<h2>Plantilla</h2>
-<div class="scroll"><table>
-<thead><tr><th>Dorsal</th><th class="l">Jugador</th><th>Goles</th></tr></thead>
-<tbody>{% for p in extra.jugadores %}<tr><td>{{ p.dorsal or '' }}</td><td class="l">{{ p.nombre }}</td><td>{{ p.goles if p.goles is not none else '' }}</td></tr>{% endfor %}</tbody>
-</table></div>
-{% endif %}
+  <section class="team-panel team-history">
+    <h2>Partidos</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>J</th><th>Fecha</th><th class="l">Rival</th><th>Local/Visitante</th><th>Resultado</th></tr></thead>
+      <tbody>
+      {% for h in hist %}
+      <tr>
+        <td>{{ h.n }}</td>
+        <td>{{ h.fecha|fecha }}</td>
+        {% if h.descansa %}
+          <td class="l muted" colspan="3"><span class="team-rest-badge">D</span> Descansa</td>
+        {% else %}
+          <td class="l"><a href="{{ h.rival_id }}.html"><span class="name-full">{{ h.rival }}</span><span class="name-short">{{ h.rival_corto|default(h.rival) }}</span></a></td>
+          <td class="muted">{{ 'L' if h.casa else 'V' }}</td>
+          <td>{% if h.res %}{{ chips([h.res]) }} <strong class="team-score">{{ h.gf }}–{{ h.gc }}</strong>
+          {% else %}<span class="muted">{% if h.estado == "suspendido" %}Suspendido (S){% elif h.estado == "aplazado" %}Aplazado al {{ h.fecha_aplazada|fecha }} · {{ h.hora_aplazada }}{% else %}Pendiente de resultado{% endif %}</span>{% endif %}</td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table></div>
+  </section>
+
+  {% if extra.jugadores %}
+  <section class="team-panel team-roster">
+    <h2>Plantilla</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>Dorsal</th><th class="l">Jugador</th><th>Goles</th></tr></thead>
+      <tbody>{% for p in extra.jugadores %}<tr><td>{{ p.dorsal or '' }}</td><td class="l">{{ p.nombre }}</td><td>{{ p.goles if p.goles is not none else '' }}</td></tr>{% endfor %}</tbody>
+    </table></div>
+  </section>
+  {% endif %}
+</div>
 {% endblock %}
