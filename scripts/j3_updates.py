@@ -35,7 +35,49 @@ FS_POSTPONED = {
     ("EL QUIOSCO DEL BETIS", "BAR LA OSTRA 93"): ("2026-10-28", "21:30"),
 }
 
+
+# J2 Bronce: clasificación oficial del 27/10/2026 11:30.
+BRONCE_J2_RESULTS = {("LA ESPERANZA ESTRELLA COJA CF", "PAISES PLAJOS"): (1, 5)}
+BRONCE_J2_TABLE = {
+    "FUSTER FC": (1, 6, 2, 2, 0, 0, 14, 3, "GG"),
+    "CRISTAL BALAS": (2, 6, 2, 2, 0, 0, 13, 4, "GG"),
+    "EL PRADO FC": (3, 6, 2, 2, 0, 0, 10, 1, "GG"),
+    "PAISES PLAJOS": (4, 6, 2, 2, 0, 0, 12, 6, "GG"),
+    "GERMANS F.C.": (5, 4, 2, 1, 1, 0, 7, 4, "EG"),
+    "AMIAIRE FC": (6, 3, 2, 1, 0, 1, 5, 3, "GP"),
+    "GEERTAFE FC": (7, 1, 2, 0, 1, 1, 7, 9, "PE"),
+    "LA ESPERANZA ESTRELLA COJA CF": (8, 1, 2, 0, 1, 1, 3, 7, "EP"),
+    "TARAMBAINAS F7": (9, 1, 2, 0, 1, 1, 2, 9, "PE"),
+    "CHELOFE": (10, 0, 1, 0, 0, 1, 0, 4, "P"),
+    "BAR LOS GEMELOS": (11, 0, 1, 0, 0, 1, 2, 8, "P"),
+    "RAYO DE PINTO LEYENDS": (12, 0, 2, 0, 0, 2, 4, 11, "PP"),
+    "ZORROS DE CHECOSLOVAQUIA": (13, 0, 2, 0, 0, 2, 3, 13, "PP"),
+}
+
+def apply_j2(d):
+    if (d.get("temporada"), d.get("division"), d.get("jornada")) != ("2026-2027", "3dvf7", 2):
+        return d
+    if {r["equipo"] for r in d["clasificacion"]} != set(BRONCE_J2_TABLE):
+        raise ValueError("Bronce J2: equipos diferentes de la clasificación oficial")
+    matching = [p for p in d["partidos"]
+                if (p["local"], p["visitante"]) == ("LA ESPERANZA ESTRELLA COJA CF", "PAISES PLAJOS")]
+    if len(matching) != 1:
+        raise ValueError("Bronce J2: no se encontró el partido corregido")
+    match = matching[0]
+    if match["estado"] != "jugado":
+        match.update(goles_local=1, goles_visitante=5, estado="jugado")
+        for row in d["clasificacion"]:
+            pos, pts, pj, pg, pe, pp, gf, gc, form = BRONCE_J2_TABLE[row["equipo"]]
+            row.update(pos=pos, pts=pts, pj=pj, pg=pg, pe=pe, pp=pp, gf=gf, gc=gc,
+                       ultimos=list(form), sancion=0)
+        d["clasificacion"].sort(key=lambda row: row["pos"])
+        d["actualizacion_manual"] = "Clasificación J2 3DVF7, 27/10/2026 11:30"
+    elif (match["goles_local"], match["goles_visitante"]) != (1, 5):
+        raise ValueError("Bronce J2: el PDF original tiene otro marcador; revisar")
+    return d
+
 def apply(d):
+    d = apply_j2(d)
     if (d.get("temporada"), d.get("jornada")) != ("2026-2027", 3):
         return d
 
