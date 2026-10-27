@@ -76,8 +76,84 @@ def apply_j2(d):
         raise ValueError("Bronce J2: el PDF original tiene otro marcador; revisar")
     return d
 
+
+# J2 Plata: resultado y clasificación RFFM publicada el 27/10/2026 11:35.
+PLATA_J2_TABLE = {
+    "MALUEMDO": (1, 6, 2, 2, 0, 0, 6, 2, "GG"),
+    "GALACTICOS DEL LOCAL": (2, 6, 2, 2, 0, 0, 5, 3, "GG"),
+    "LOS SOLFABIRRAS": (3, 6, 2, 2, 0, 0, 4, 2, "GG"),
+    "P.S. VETERANOS/DELAIRE 2000, SL": (4, 3, 2, 1, 0, 1, 6, 1, "GP"),
+    "KAMIKAZES-PANPINTAO": (5, 3, 1, 1, 0, 0, 5, 2, "G"),
+    "FREEFURGO FC": (6, 3, 2, 1, 0, 1, 9, 7, "GP"),
+    "FAVELA SEVEN": (7, 3, 1, 1, 0, 0, 3, 1, "G"),
+    "REFORMAS ROEX": (8, 3, 2, 1, 0, 1, 4, 3, "PG"),
+    "THE CLOVER UFOS BURGUER": (9, 3, 2, 1, 0, 1, 9, 9, "PG"),
+    "CC JUNIORS": (10, 0, 2, 0, 0, 2, 3, 6, "PP"),
+    "MACAQUINHIOS FC": (11, 0, 2, 0, 0, 2, 3, 6, "PP"),
+    "DRAGONES FC": (12, 0, 2, 0, 0, 2, 2, 6, "PP"),
+    "HATTRICKI F. C.": (13, 0, 2, 0, 0, 2, 2, 13, "PP"),
+}
+PLATA_J2_PAIR = ("GALACTICOS DEL LOCAL", "CC JUNIORS")
+
+def apply_plata_j2(d):
+    if (d.get("temporada"), d.get("division"), d.get("jornada")) != ("2026-2027", "2dvf7", 2):
+        return d
+    if {r["equipo"] for r in d["clasificacion"]} != set(PLATA_J2_TABLE):
+        raise ValueError("Plata J2: equipos diferentes de la tabla oficial")
+    matches = [p for p in d["partidos"] if (p["local"], p["visitante"]) == PLATA_J2_PAIR]
+    if len(matches) != 1:
+        raise ValueError("Plata J2: no se encontró Galácticos - CC Juniors")
+    p = matches[0]
+    if p["estado"] == "jugado" and (p["goles_local"], p["goles_visitante"]) != (3, 2):
+        raise ValueError("Plata J2: marcador diferente del oficial")
+    p.update(goles_local=3, goles_visitante=2, estado="jugado")
+    for row in d["clasificacion"]:
+        pos, pts, pj, pg, pe, pp, gf, gc, form = PLATA_J2_TABLE[row["equipo"]]
+        row.update(pos=pos, pts=pts, pj=pj, pg=pg, pe=pe, pp=pp,
+                   gf=gf, gc=gc, ultimos=list(form), sancion=0)
+    d["clasificacion"].sort(key=lambda row: row["pos"])
+    d["actualizacion_manual"] = "Clasificación Plata J2 RFFM, 27/10/2026 11:35"
+    return d
+
+def apply_plata_j3_carryover(d):
+    """Propaga a J3 el marcador de J2 si el PDF de J3 aún lo omitía."""
+    if (d.get("temporada"), d.get("division"), d.get("jornada")) != ("2026-2027", "2dvf7", 3):
+        return d
+    by_name = {r["equipo"]: r for r in d["clasificacion"]}
+    for name, pts, gf, gc, pg, pp in (
+        ("GALACTICOS DEL LOCAL", 3, 3, 2, 1, 0),
+        ("CC JUNIORS", 0, 2, 3, 0, 1),
+    ):
+        row = by_name.get(name)
+        if row is None:
+            raise ValueError("Plata J3: falta equipo del partido de J2")
+        # Un equipo puede haber disputado J3 o descansado; la cantidad de
+        # partidos debe ser la de J2 corregida + los jugados en J3.
+        games_j3 = sum(p["estado"] == "jugado" and name in (p["local"], p["visitante"])
+                       for p in d["partidos"])
+        expected_pj = PLATA_J2_TABLE[name][2] + games_j3
+        if row["pj"] == expected_pj:
+            continue  # El PDF ya incorpora el resultado atrasado.
+        if row["pj"] != expected_pj - 1:
+            raise ValueError(f"Plata J3: PJ inesperados para {name}; revisar PDF")
+        row["pj"] += 1
+        row["pts"] += pts
+        row["pg"] += pg
+        row["pp"] += pp
+        row["gf"] += gf
+        row["gc"] += gc
+        d["actualizacion_manual"] = "Arrastre resultado Galácticos 3-2 CC Juniors de J2"
+    # Conservamos el orden de la fuente en empates no resolubles por diferencia
+    # de goles; en el resto, recalculamos posiciones coherentes con la tabla.
+    d["clasificacion"].sort(key=lambda r: (-r["pts"], -(r["gf"] - r["gc"]), -r["gf"], r["pos"]))
+    for i, row in enumerate(d["clasificacion"], 1):
+        row["pos"] = i
+    return d
+
 def apply(d):
     d = apply_j2(d)
+    d = apply_plata_j2(d)
+    d = apply_plata_j3_carryover(d)
     if (d.get("temporada"), d.get("jornada")) != ("2026-2027", 3):
         return d
 
@@ -113,6 +189,9 @@ def apply(d):
             pending[0]["estado"] = "suspendido"
             d["actualizacion_manual"] = "Suspensión confirmada 26/10/2026"
     elif d["division"] == "fs":
+        for p in d["partidos"]:
+            if (p["local"], p["visitante"]) == ("LOS HUNOS", "PIEMONTE CALCIO") and p["estado"] != "jugado":
+                p["estado"] = "suspendido"
         for p in d["partidos"]:
             key = (p["local"], p["visitante"])
             if key in FS_POSTPONED and p["estado"] != "jugado":

@@ -1,4 +1,4 @@
-{% macro chips(list) %}{% for c in list %}<span class="chip {{ c }}">{{ c }}</span>{% endfor %}{% endmacro %}
+{% macro chips(list) %}{% if list %}{% for c in list %}<span class="chip {{ c }}">{{ c }}</span>{% endfor %}{% else %}<span class="muted">—</span>{% endif %}{% endmacro %}
 
 {% macro tabla(rows) %}
 <div class="scroll"><table>
