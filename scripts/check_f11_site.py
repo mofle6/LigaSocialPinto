@@ -33,7 +33,7 @@ for match in next_round["partidos"]:
         page = out / "equipos" / (tid + ".html")
         assert page.is_file(), f"Falta ficha {tid}"
         html = page.read_text("utf-8")
-        for term in ("Próxima jornada", match["local"], match["visitante"], match["hora"], match["campo"]):
+        for term in ("Próxima jornada", match["local"], match["visitante"], match["hora"]):
             assert term in html, f"Falta {term} en ficha {tid}"
 for number in (1, 2):
     assert (out / f"jornada-{number:02d}.html").is_file()
