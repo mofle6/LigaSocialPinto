@@ -77,6 +77,8 @@ def add_rest_form(jornadas):
                     break
             if form:
                 row["ultimos"] = form[:5]
+            elif not row.get("ultimos"):
+                row["ultimos"] = []
 
 def render(tpl, path, **ctx):
     path.parent.mkdir(parents=True, exist_ok=True)
