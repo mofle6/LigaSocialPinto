@@ -1,1 +1,329 @@
-{}
+{
+  "competicion": "TORNEO APERTURA F.SALA",
+  "division": "fs",
+  "nombre_division": "TORNEO APERTURA F.SALA",
+  "temporada": "2026-2027",
+  "jornada": 3,
+  "fecha": "2026-10-19",
+  "partidos": [
+    {
+      "local": "CAÑITOS F.S The Ufos Burguer",
+      "visitante": "COFEMA-FERRALIA F.S",
+      "local_id": "canitos-f-s-the-ufos-burguer",
+      "visitante_id": "cofema-ferralia-f-s",
+      "goles_local": 3,
+      "goles_visitante": 14,
+      "estado": "jugado"
+    },
+    {
+      "local": "AVV CASERIO DE PERALES",
+      "visitante": "FERRETERIA TEIDE CARPINTERIA",
+      "local_id": "avv-caserio-de-perales",
+      "visitante_id": "ferreteria-teide-carpinteria",
+      "goles_local": 4,
+      "goles_visitante": 4,
+      "estado": "jugado"
+    },
+    {
+      "local": "RATAS CF",
+      "visitante": "LEGENDARIOS",
+      "local_id": "ratas-cf",
+      "visitante_id": "legendarios",
+      "goles_local": 6,
+      "goles_visitante": 2,
+      "estado": "jugado"
+    },
+    {
+      "local": "LOS HUNOS",
+      "visitante": "PIEMONTE CALCIO",
+      "local_id": "los-hunos",
+      "visitante_id": "piemonte-calcio",
+      "goles_local": 0,
+      "goles_visitante": 6,
+      "estado": "jugado"
+    },
+    {
+      "local": "JACHAL",
+      "visitante": "SPORTING ROSARITO",
+      "local_id": "jachal",
+      "visitante_id": "sporting-rosarito",
+      "goles_local": 4,
+      "goles_visitante": 2,
+      "estado": "jugado"
+    },
+    {
+      "local": "EL QUIOSCO DEL BETIS",
+      "visitante": "BAR LA OSTRA 93",
+      "local_id": "el-quiosco-del-betis",
+      "visitante_id": "bar-la-ostra-93",
+      "goles_local": 3,
+      "goles_visitante": 5,
+      "estado": "jugado"
+    },
+    {
+      "local": "TUPA FC",
+      "visitante": "CASA PALMI FC",
+      "local_id": "tupa-fc",
+      "visitante_id": "casa-palmi-fc",
+      "goles_local": 3,
+      "goles_visitante": 1,
+      "estado": "jugado"
+    }
+  ],
+  "descansa": null,
+  "descansa_id": null,
+  "clasificacion": [
+    {
+      "pos": 1,
+      "equipo": "COFEMA-FERRALIA F.S",
+      "equipo_id": "cofema-ferralia-f-s",
+      "pts": 9,
+      "pj": 3,
+      "gf": 33,
+      "gc": 8,
+      "pg": 3,
+      "pe": 0,
+      "pp": 0,
+      "ultimos": [
+        "G",
+        "G",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 2,
+      "equipo": "PIEMONTE CALCIO",
+      "equipo_id": "piemonte-calcio",
+      "pts": 9,
+      "pj": 3,
+      "gf": 14,
+      "gc": 5,
+      "pg": 3,
+      "pe": 0,
+      "pp": 0,
+      "ultimos": [
+        "G",
+        "G",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 3,
+      "equipo": "BAR LA OSTRA 93",
+      "equipo_id": "bar-la-ostra-93",
+      "pts": 9,
+      "pj": 3,
+      "gf": 10,
+      "gc": 5,
+      "pg": 3,
+      "pe": 0,
+      "pp": 0,
+      "ultimos": [
+        "G",
+        "G",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 4,
+      "equipo": "FERRETERIA TEIDE CARPINTERIA",
+      "equipo_id": "ferreteria-teide-carpinteria",
+      "pts": 7,
+      "pj": 3,
+      "gf": 18,
+      "gc": 8,
+      "pg": 2,
+      "pe": 1,
+      "pp": 0,
+      "ultimos": [
+        "G",
+        "G",
+        "E"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 5,
+      "equipo": "JACHAL",
+      "equipo_id": "jachal",
+      "pts": 6,
+      "pj": 3,
+      "gf": 20,
+      "gc": 7,
+      "pg": 2,
+      "pe": 0,
+      "pp": 1,
+      "ultimos": [
+        "G",
+        "P",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 6,
+      "equipo": "AVV CASERIO DE PERALES",
+      "equipo_id": "avv-caserio-de-perales",
+      "pts": 4,
+      "pj": 3,
+      "gf": 14,
+      "gc": 12,
+      "pg": 1,
+      "pe": 1,
+      "pp": 1,
+      "ultimos": [
+        "G",
+        "P",
+        "E"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 7,
+      "equipo": "TUPA FC",
+      "equipo_id": "tupa-fc",
+      "pts": 4,
+      "pj": 3,
+      "gf": 8,
+      "gc": 7,
+      "pg": 1,
+      "pe": 1,
+      "pp": 1,
+      "ultimos": [
+        "P",
+        "E",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 8,
+      "equipo": "EL QUIOSCO DEL BETIS",
+      "equipo_id": "el-quiosco-del-betis",
+      "pts": 3,
+      "pj": 3,
+      "gf": 12,
+      "gc": 8,
+      "pg": 1,
+      "pe": 0,
+      "pp": 2,
+      "ultimos": [
+        "P",
+        "G",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 9,
+      "equipo": "SPORTING ROSARITO",
+      "equipo_id": "sporting-rosarito",
+      "pts": 3,
+      "pj": 3,
+      "gf": 6,
+      "gc": 12,
+      "pg": 1,
+      "pe": 0,
+      "pp": 2,
+      "ultimos": [
+        "G",
+        "P",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 10,
+      "equipo": "LOS HUNOS",
+      "equipo_id": "los-hunos",
+      "pts": 3,
+      "pj": 3,
+      "gf": 7,
+      "gc": 17,
+      "pg": 1,
+      "pe": 0,
+      "pp": 2,
+      "ultimos": [
+        "P",
+        "G",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 11,
+      "equipo": "RATAS CF",
+      "equipo_id": "ratas-cf",
+      "pts": 3,
+      "pj": 3,
+      "gf": 9,
+      "gc": 22,
+      "pg": 1,
+      "pe": 0,
+      "pp": 2,
+      "ultimos": [
+        "P",
+        "P",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 12,
+      "equipo": "CAÑITOS F.S The Ufos Burguer",
+      "equipo_id": "canitos-f-s-the-ufos-burguer",
+      "pts": 1,
+      "pj": 3,
+      "gf": 9,
+      "gc": 24,
+      "pg": 0,
+      "pe": 1,
+      "pp": 2,
+      "ultimos": [
+        "P",
+        "E",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 13,
+      "equipo": "CASA PALMI FC",
+      "equipo_id": "casa-palmi-fc",
+      "pts": 0,
+      "pj": 3,
+      "gf": 3,
+      "gc": 10,
+      "pg": 0,
+      "pe": 0,
+      "pp": 3,
+      "ultimos": [
+        "P",
+        "P",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 14,
+      "equipo": "LEGENDARIOS",
+      "equipo_id": "legendarios",
+      "pts": 0,
+      "pj": 3,
+      "gf": 6,
+      "gc": 24,
+      "pg": 0,
+      "pe": 0,
+      "pp": 3,
+      "ultimos": [
+        "P",
+        "P",
+        "P"
+      ],
+      "sancion": 0
+    }
+  ]
+}
