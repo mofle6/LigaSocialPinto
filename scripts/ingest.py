@@ -44,6 +44,23 @@ for pdf in sorted((ROOT / "pdfs").rglob("*.pdf")):
             print(f"ERROR {rel}: no se pudo usar la J1 reconstruida ({e})", file=sys.stderr)
             failed = True
             continue
+    # La clasificación FS J3 se actualizó con el PDF RFFM del 29/10,
+    # posterior al PDF antiguo que sigue guardado en pdfs/.
+    # Evitar que la publicación restaure aplazamientos ya resueltos.
+    if is_fs and "Jornada 3" in first and "2026-2027" in first:
+        curated_path = ROOT / "data/2026-2027/fs/j03.json"
+        curated = json.loads(curated_path.read_text(encoding="utf-8"))
+        if (curated.get("division"), curated.get("jornada"), curated.get("temporada")) != ("fs", 3, "2026-2027"):
+            print(f"ERROR {rel}: identificación FS J3 incorrecta", file=sys.stderr)
+            failed = True
+            continue
+        games = curated.get("partidos", [])
+        if len(games) != 7 or any(p.get("estado") != "jugado" or p.get("goles_local") is None or p.get("goles_visitante") is None for p in games) or validate(curated):
+            print(f"ERROR {rel}: clasificación FS J3 consolidada inválida", file=sys.stderr)
+            failed = True
+            continue
+        print(f"OK {rel}: se conserva FS J3 consolidada (RFFM 29/10/2026)")
+        continue
     try:
         d = parse_f11(pdf) if is_f11 else parse_fs(pdf) if is_fs else parse(pdf)
     except Exception as e:  # PDF ilegible, escaneado, etc.

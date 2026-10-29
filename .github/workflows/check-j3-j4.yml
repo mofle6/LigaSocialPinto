@@ -61,8 +61,8 @@ jobs:
               assert by3[team]["gf"] >= by2[team]["gf"], team
           fs = json.loads(Path("data/2026-2027/fs/j03.json").read_text())
           hunos = next(p for p in fs["partidos"] if p["local"] == "LOS HUNOS" and p["visitante"] == "PIEMONTE CALCIO")
-          assert hunos["estado"] == "suspendido"
-          print("J2 Plata, arrastre J3 y suspensión FS: OK")
+          assert (hunos["estado"], hunos["goles_local"], hunos["goles_visitante"]) == ("jugado", 0, 6)
+          print("J2 Plata, arrastre J3 y resultado FS J3: OK")
           PY
       - name: Generar web
         run: python scripts/build_site.py
