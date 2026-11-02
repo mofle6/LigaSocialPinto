@@ -1,0 +1,80 @@
+{
+  "temporada": "2026-2027",
+  "division": "fs",
+  "jornada": 5,
+  "fecha": "2026-11-03",
+  "descansa": null,
+  "descansa_id": null,
+  "partidos": [
+    {
+      "local": "TUPA FC",
+      "local_id": "tupa-fc",
+      "visitante": "EL QUIOSCO DEL BETIS",
+      "visitante_id": "el-quiosco-del-betis",
+      "fecha": "2026-11-03",
+      "hora": "20:30",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    },
+    {
+      "local": "AVV CASERIO DE PERALES",
+      "local_id": "avv-caserio-de-perales",
+      "visitante": "PIEMONTE CALCIO",
+      "visitante_id": "piemonte-calcio",
+      "fecha": "2026-11-03",
+      "hora": "21:30",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    },
+    {
+      "local": "CAÑITOS F.S The Ufos Burguer",
+      "local_id": "canitos-f-s-the-ufos-burguer",
+      "visitante": "LEGENDARIOS",
+      "visitante_id": "legendarios",
+      "fecha": "2026-11-04",
+      "hora": "20:30",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    },
+    {
+      "local": "COFEMA-FERRALIA F.S",
+      "local_id": "cofema-ferralia-f-s",
+      "visitante": "FERRETERIA TEIDE CARPINTERIA",
+      "visitante_id": "ferreteria-teide-carpinteria",
+      "fecha": "2026-11-04",
+      "hora": "21:30",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    },
+    {
+      "local": "JACHAL",
+      "local_id": "jachal",
+      "visitante": "CASA PALMI FC",
+      "visitante_id": "casa-palmi-fc",
+      "fecha": "2026-11-05",
+      "hora": "20:00",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    },
+    {
+      "local": "RATAS CF",
+      "local_id": "ratas-cf",
+      "visitante": "SPORTING ROSARITO",
+      "visitante_id": "sporting-rosarito",
+      "fecha": "2026-11-05",
+      "hora": "21:00",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    },
+    {
+      "local": "LOS HUNOS",
+      "local_id": "los-hunos",
+      "visitante": "BAR LA OSTRA 93",
+      "visitante_id": "bar-la-ostra-93",
+      "fecha": "2026-11-05",
+      "hora": "22:00",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    }
+  ]
+}
