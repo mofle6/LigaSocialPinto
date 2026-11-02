@@ -8,15 +8,22 @@ site = ROOT / "site/2026-2027/fs"
 j1 = json.loads((data / "j01.json").read_text("utf-8"))
 j2 = json.loads((data / "j02.json").read_text("utf-8"))
 j3 = json.loads((data / "j03.json").read_text("utf-8"))
+j4 = json.loads((data / "j04.json").read_text("utf-8"))
+j5 = json.loads((data / "proximas/j05.json").read_text("utf-8"))
 teams = {r["equipo_id"] for r in j2["clasificacion"]}
 assert len(teams) == 14
-for j in (j1, j2, j3):
+for j in (j1, j2, j3, j4):
     assert len(j["partidos"]) == 7 and len(j["clasificacion"]) == 14
     assert sum(r["gf"] for r in j["clasificacion"]) == sum(r["gc"] for r in j["clasificacion"])
     assert all(r["pj"] == r["pg"] + r["pe"] + r["pp"] and r["pts"] == 3*r["pg"] + r["pe"] - r["sancion"] for r in j["clasificacion"])
 assert {p[side+"_id"] for p in j3["partidos"] for side in ("local","visitante")} == teams
 assert all(p["estado"] == "jugado" and p["goles_local"] is not None and p["goles_visitante"] is not None for p in j3["partidos"])
 assert [r["pts"] for r in j3["clasificacion"][:3]] == [9, 9, 9]
+assert all(p["estado"] == "jugado" for p in j4["partidos"])
+assert [r["pts"] for r in j4["clasificacion"][:4]] == [12, 12, 9, 9]
+assert len(j5["partidos"]) == 7
+assert {p[side+"_id"] for p in j5["partidos"] for side in ("local","visitante")} == teams
+assert {p["fecha"] for p in j5["partidos"]} == {"2026-11-03", "2026-11-04", "2026-11-05"}
 assert (ROOT / "site/assets/campo02.jpg").is_file()
 home = (ROOT / "site/index.html").read_text("utf-8")
 assert "Fútbol Sala" in home and "TORNEO APERTURA F.SALA" in home
@@ -32,6 +39,10 @@ for p in j3["partidos"]:
         assert page.is_file(), tid
         html = page.read_text("utf-8")
         assert "Último partido" in html and "Partidos" in html, tid
-for n in (1, 2, 3):
+for n in (1, 2, 3, 4):
     assert (site / f"jornada-{n:02d}.html").is_file()
-print("OK: futsal 14 teams, J1/J2/J3, seven J3 results and all team pages")
+assert "Próxima jornada" in league and "J5" in league
+for p in j5["partidos"]:
+    page = (site / "equipos" / (p["local_id"] + ".html")).read_text("utf-8")
+    assert p["hora"] in page and p["fecha"][-2:] in page
+print("OK: futsal J1–J4, complete J4 standings and J5 schedule")
