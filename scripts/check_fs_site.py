@@ -9,7 +9,6 @@ j1 = json.loads((data / "j01.json").read_text("utf-8"))
 j2 = json.loads((data / "j02.json").read_text("utf-8"))
 j3 = json.loads((data / "j03.json").read_text("utf-8"))
 j4 = json.loads((data / "j04.json").read_text("utf-8"))
-j5 = json.loads((data / "proximas/j05.json").read_text("utf-8"))
 j5 = json.loads((data / "j05.json").read_text("utf-8"))
 j6 = json.loads((data / "proximas/j06.json").read_text("utf-8"))
 teams = {r["equipo_id"] for r in j2["clasificacion"]}
@@ -25,7 +24,7 @@ assert all(p["estado"] == "jugado" for p in j4["partidos"])
 assert [r["pts"] for r in j4["clasificacion"][:4]] == [12, 12, 9, 9]
 assert len(j5["partidos"]) == 7
 assert {p[side+"_id"] for p in j5["partidos"] for side in ("local","visitante")} == teams
-assert {p["fecha"] for p in j5["partidos"]} == {"2026-11-03", "2026-11-04", "2026-11-05"}
+assert all(p["estado"] == "jugado" for p in j5["partidos"])
 assert (ROOT / "site/assets/campo02.jpg").is_file()
 home = (ROOT / "site/index.html").read_text("utf-8")
 assert "Fútbol Sala" in home and "TORNEO APERTURA F.SALA" in home
