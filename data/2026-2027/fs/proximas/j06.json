@@ -1,0 +1,80 @@
+{
+  "temporada": "2026-2027",
+  "division": "fs",
+  "jornada": 6,
+  "fecha": "2026-11-10",
+  "descansa": null,
+  "descansa_id": null,
+  "partidos": [
+    {
+      "local": "BAR LA OSTRA 93",
+      "local_id": "bar-la-ostra-93",
+      "visitante": "RATAS CF",
+      "visitante_id": "ratas-cf",
+      "fecha": "2026-11-10",
+      "hora": "20:30",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    },
+    {
+      "local": "EL QUIOSCO DEL BETIS",
+      "local_id": "el-quiosco-del-betis",
+      "visitante": "JACHAL",
+      "visitante_id": "jachal",
+      "fecha": "2026-11-10",
+      "hora": "21:30",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    },
+    {
+      "local": "LEGENDARIOS",
+      "local_id": "legendarios",
+      "visitante": "COFEMA-FERRALIA F.S",
+      "visitante_id": "cofema-ferralia-f-s",
+      "fecha": "2026-11-11",
+      "hora": "20:30",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    },
+    {
+      "local": "SPORTING ROSARITO",
+      "local_id": "sporting-rosarito",
+      "visitante": "AVV CASERIO DE PERALES",
+      "visitante_id": "avv-caserio-de-perales",
+      "fecha": "2026-11-11",
+      "hora": "21:30",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    },
+    {
+      "local": "CASA PALMI FC",
+      "local_id": "casa-palmi-fc",
+      "visitante": "LOS HUNOS",
+      "visitante_id": "los-hunos",
+      "fecha": "2026-11-12",
+      "hora": "20:00",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    },
+    {
+      "local": "PIEMONTE CALCIO",
+      "local_id": "piemonte-calcio",
+      "visitante": "CAÑITOS F.S The Ufos Burguer",
+      "visitante_id": "canitos-f-s-the-ufos-burguer",
+      "fecha": "2026-11-12",
+      "hora": "21:00",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    },
+    {
+      "local": "FERRETERIA TEIDE CARPINTERIA",
+      "local_id": "ferreteria-teide-carpinteria",
+      "visitante": "TUPA FC",
+      "visitante_id": "tupa-fc",
+      "fecha": "2026-11-12",
+      "hora": "22:00",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    }
+  ]
+}

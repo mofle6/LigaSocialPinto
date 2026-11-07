@@ -9,10 +9,11 @@ j1 = json.loads((data / "j01.json").read_text("utf-8"))
 j2 = json.loads((data / "j02.json").read_text("utf-8"))
 j3 = json.loads((data / "j03.json").read_text("utf-8"))
 j4 = json.loads((data / "j04.json").read_text("utf-8"))
-j5 = json.loads((data / "proximas/j05.json").read_text("utf-8"))
+j5 = json.loads((data / "j05.json").read_text("utf-8"))
+j6 = json.loads((data / "proximas/j06.json").read_text("utf-8"))
 teams = {r["equipo_id"] for r in j2["clasificacion"]}
 assert len(teams) == 14
-for j in (j1, j2, j3, j4):
+for j in (j1, j2, j3, j4, j5):
     assert len(j["partidos"]) == 7 and len(j["clasificacion"]) == 14
     assert sum(r["gf"] for r in j["clasificacion"]) == sum(r["gc"] for r in j["clasificacion"])
     assert all(r["pj"] == r["pg"] + r["pe"] + r["pp"] and r["pts"] == 3*r["pg"] + r["pe"] - r["sancion"] for r in j["clasificacion"])
@@ -23,7 +24,7 @@ assert all(p["estado"] == "jugado" for p in j4["partidos"])
 assert [r["pts"] for r in j4["clasificacion"][:4]] == [12, 12, 9, 9]
 assert len(j5["partidos"]) == 7
 assert {p[side+"_id"] for p in j5["partidos"] for side in ("local","visitante")} == teams
-assert {p["fecha"] for p in j5["partidos"]} == {"2026-11-03", "2026-11-04", "2026-11-05"}
+assert all(p["estado"] == "jugado" for p in j5["partidos"])
 assert (ROOT / "site/assets/campo02.jpg").is_file()
 home = (ROOT / "site/index.html").read_text("utf-8")
 assert "Fútbol Sala" in home and "TORNEO APERTURA F.SALA" in home
@@ -39,10 +40,14 @@ for p in j3["partidos"]:
         assert page.is_file(), tid
         html = page.read_text("utf-8")
         assert "Último partido" in html and "Partidos" in html, tid
-for n in (1, 2, 3, 4):
+for n in (1, 2, 3, 4, 5):
     assert (site / f"jornada-{n:02d}.html").is_file()
-assert "Próxima jornada" in league and "J5" in league
-for p in j5["partidos"]:
+assert [r["pts"] for r in j5["clasificacion"][:4]] == [15, 15, 12, 12]
+assert len(j6["partidos"]) == 7
+assert {p[side+"_id"] for p in j6["partidos"] for side in ("local", "visitante")} == teams
+assert {p["fecha"] for p in j6["partidos"]} == {"2026-11-10", "2026-11-11", "2026-11-12"}
+assert "Próxima jornada" in league and "J6" in league
+for p in j6["partidos"]:
     page = (site / "equipos" / (p["local_id"] + ".html")).read_text("utf-8")
     assert p["hora"] in page and p["fecha"][-2:] in page
-print("OK: futsal J1–J4, complete J4 standings and J5 schedule")
+print("OK: futsal J1–J5, complete J5 standings and J6 schedule")
