@@ -11,6 +11,7 @@ on:
       - "scripts/**"
       - "templates/**"
       - "requirements.txt"
+      - "tests/**"
       - ".github/workflows/deploy.yml"
   workflow_dispatch:
 
@@ -31,6 +32,8 @@ jobs:
     steps:
       - name: Descargar repositorio
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Instalar Python
         uses: actions/setup-python@v5
@@ -41,11 +44,27 @@ jobs:
       - name: Instalar dependencias
         run: pip install -r requirements.txt
 
-      - name: Procesar jornadas
-        run: python scripts/ingest.py
+      - name: Pruebas de importación
+        run: python -m unittest discover -s tests -v
 
-      - name: Procesar horarios de próximas jornadas
-        run: python scripts/ingest_horarios.py
+      - name: Procesar y validar PDFs conjuntamente
+        env:
+          BEFORE: ${{ github.event.before }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          args=()
+          if [[ -n "$BEFORE" && ! "$BEFORE" =~ ^0+$ ]]; then args=(--base-ref "$BEFORE"); fi
+          python scripts/import_pdfs.py "${args[@]}" | tee pdf-import-report.txt
+
+      - name: Guardar informe y datos generados
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdf-import
+          path: |
+            pdf-import-report.txt
+            data/
+
 
       - name: Generar web
         run: python scripts/build_site.py

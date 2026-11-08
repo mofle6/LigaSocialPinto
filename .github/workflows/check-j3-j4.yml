@@ -1,16 +1,16 @@
-name: Verificar J3 y horarios J4 (sin publicar)
+name: Verificar ligas y horarios
 on:
   pull_request:
     paths:
       - "pdfs/**"
+      - "data/**"
       - "scripts/**"
+      - "tests/**"
       - "templates/**"
-      - ".github/workflows/check-j3-j4.yml"
+      - ".github/workflows/**"
   workflow_dispatch:
-
 permissions:
   contents: read
-
 jobs:
   comprobar:
     runs-on: ubuntu-latest
@@ -19,80 +19,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Dependencias
-        run: pip install -r requirements.txt
-      - name: Validar sintaxis
-        run: python -m compileall -q scripts
-      - name: Leer y validar clasificaciones
-        run: python scripts/ingest.py
-      - name: Leer y validar horarios
-        run: python scripts/ingest_horarios.py
-      - name: Comprobar seis ligas y jornadas
+      - run: pip install -r requirements.txt
+      - run: python -m compileall -q scripts
+      - run: python scripts/import_pdfs.py
+      - run: python scripts/build_site.py
+      - name: Comprobar las seis ligas
         run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          for code, count, games in [('1dvf7',13,6),('2dvf7',13,6),('3dvf7',13,6),('4dvf7',12,6),('f11',10,5),('fs',14,7)]:
-              base = Path('data/2026-2027') / code
-              j = json.loads((base/'j03.json').read_text())
-              h = json.loads((base/'proximas/j04.json').read_text())
-              assert j['jornada'] == 3 and len(j['clasificacion']) == count and len(j['partidos']) == games, code
-              assert h['jornada'] == 4 and len(h['partidos']) == games, code
-              assert all(p['fecha'] and p['hora'] and p['campo'] for p in h['partidos']), code
-              assert all(p['estado'] in ('jugado','sin_resultado','suspendido','aplazado') for p in j['partidos']), code
-              print(code, 'J3 OK, J4 OK')
-          PY
-      - name: Verificar resultado atrasado y clasificación de Plata
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          root = Path("data/2026-2027/2dvf7")
-          j2 = json.loads((root / "j02.json").read_text())
-          j3 = json.loads((root / "j03.json").read_text())
-          match = next(p for p in j2["partidos"] if p["local"] == "GALACTICOS DEL LOCAL" and p["visitante"] == "CC JUNIORS")
-          assert (match["goles_local"], match["goles_visitante"], match["estado"]) == (3, 2, "jugado")
-          by2 = {r["equipo"]: r for r in j2["clasificacion"]}
-          assert (by2["GALACTICOS DEL LOCAL"]["pos"], by2["GALACTICOS DEL LOCAL"]["pts"]) == (2, 6)
-          assert (by2["CC JUNIORS"]["pj"], by2["CC JUNIORS"]["gc"]) == (2, 6)
-          by3 = {r["equipo"]: r for r in j3["clasificacion"]}
-          for team in ("GALACTICOS DEL LOCAL", "CC JUNIORS"):
-              assert by3[team]["pj"] >= by2[team]["pj"], team
-              assert by3[team]["gf"] >= by2[team]["gf"], team
-          fs = json.loads(Path("data/2026-2027/fs/j03.json").read_text())
-          hunos = next(p for p in fs["partidos"] if p["local"] == "LOS HUNOS" and p["visitante"] == "PIEMONTE CALCIO")
-          assert (hunos["estado"], hunos["goles_local"], hunos["goles_visitante"]) == ("jugado", 0, 6)
-          print("J2 Plata, arrastre J3 y resultado FS J3: OK")
-          PY
-      - name: Generar web
-        run: python scripts/build_site.py
-      - name: Verificar J4 y horarios J5 de Plata y Zinc
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          for code, count, rest in (("2dvf7", 13, "HATTRICKI F. C."), ("4dvf7", 12, None)):
-              base = Path("data/2026-2027") / code
-              j4 = json.loads((base / "j04.json").read_text(encoding="utf-8"))
-              j5 = json.loads((base / "proximas/j05.json").read_text(encoding="utf-8"))
-              rows = j4["clasificacion"]
-              assert j4["jornada"] == 4 and j5["jornada"] == 5
-              assert len(rows) == count and len(j4["partidos"]) == 6 and len(j5["partidos"]) == 6
-              assert all(p["estado"] == "jugado" for p in j4["partidos"])
-              assert sum(r["gf"] for r in rows) == sum(r["gc"] for r in rows)
-              assert all(r["pts"] == 3*r["pg"] + r["pe"] - r["sancion"] for r in rows)
-              assert j5["descansa"] == rest
-              known = {r["equipo_id"] for r in rows}
-              scheduled = [p[side + "_id"] for p in j5["partidos"] for side in ("local", "visitante")]
-              if j5["descansa_id"]:
-                  scheduled.append(j5["descansa_id"])
-              assert set(scheduled) == known and len(scheduled) == len(set(scheduled))
-              assert all(p["fecha"] == "2026-11-15" and p["hora"] and p["campo"] for p in j5["partidos"])
-              page = Path("site/2026-2027") / code / "index.html"
-              html = page.read_text(encoding="utf-8")
-              assert "J5" in html and "Clasificación" in html
-              for p in j5["partidos"]:
-                  team_html = (page.parent / "equipos" / (p["local_id"] + ".html")).read_text(encoding="utf-8")
-                  assert p["hora"] in team_html
-              print(code, "J4 y J5 OK")
+          PYTHONPATH=scripts python - <<'PY'
+          from check_league_site import check
+          for code, count in [('1dvf7',13),('2dvf7',13),('3dvf7',13),('4dvf7',12),('f11',10),('fs',14)]:
+              check(code,count)
           PY

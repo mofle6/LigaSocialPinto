@@ -1,0 +1,288 @@
+{
+  "competicion": "AFICIONADO F7",
+  "division": "1dvf7",
+  "nombre_division": "PRIMERA AFICIONADO F7 (ORO)",
+  "temporada": "2026-2027",
+  "jornada": 2,
+  "fecha": "2026-10-18",
+  "partidos": [
+    {
+      "local": "LA OSTRA",
+      "visitante": "ASTON BIRRA",
+      "goles_local": 1,
+      "goles_visitante": 2,
+      "estado": "jugado",
+      "local_id": "la-ostra",
+      "visitante_id": "aston-birra"
+    },
+    {
+      "local": "MACHOTES DE ANTONIO",
+      "visitante": "WEST HAMMOND",
+      "goles_local": 2,
+      "goles_visitante": 5,
+      "estado": "jugado",
+      "local_id": "machotes-de-antonio",
+      "visitante_id": "west-hammond"
+    },
+    {
+      "local": "RAYO VATICANO FC",
+      "visitante": "TEAM X REST KUNTUR WASI",
+      "goles_local": 3,
+      "goles_visitante": 2,
+      "estado": "jugado",
+      "local_id": "rayo-vaticano-fc",
+      "visitante_id": "team-x-rest-kuntur-wasi"
+    },
+    {
+      "local": "UD SARAGOZA",
+      "visitante": "NORTE DE PATO",
+      "goles_local": 0,
+      "goles_visitante": 4,
+      "estado": "jugado",
+      "local_id": "ud-saragoza",
+      "visitante_id": "norte-de-pato"
+    },
+    {
+      "local": "YAYO VAYACAÑO CF",
+      "visitante": "MACABBI DE LEVANTAR",
+      "goles_local": 3,
+      "goles_visitante": 0,
+      "estado": "jugado",
+      "local_id": "yayo-vayacano-cf",
+      "visitante_id": "macabbi-de-levantar"
+    },
+    {
+      "local": "BORUSSIA DONUTS",
+      "visitante": "LA COMPAÑIA DEL BALON",
+      "goles_local": 3,
+      "goles_visitante": 4,
+      "estado": "jugado",
+      "local_id": "borussia-donuts",
+      "visitante_id": "la-compania-del-balon"
+    }
+  ],
+  "descansa": "EL INTER NOVELLA & GARCIA OLD ROKERS",
+  "clasificacion": [
+    {
+      "pos": 1,
+      "equipo": "NORTE DE PATO",
+      "equipo_id": "norte-de-pato",
+      "pts": 6,
+      "pj": 2,
+      "pg": 2,
+      "pe": 0,
+      "pp": 0,
+      "gf": 8,
+      "gc": 1,
+      "ultimos": [
+        "G",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 2,
+      "equipo": "YAYO VAYACAÑO CF",
+      "equipo_id": "yayo-vayacano-cf",
+      "pts": 6,
+      "pj": 2,
+      "pg": 2,
+      "pe": 0,
+      "pp": 0,
+      "gf": 7,
+      "gc": 1,
+      "ultimos": [
+        "G",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 3,
+      "equipo": "WEST HAMMOND",
+      "equipo_id": "west-hammond",
+      "pts": 4,
+      "pj": 2,
+      "pg": 1,
+      "pe": 1,
+      "pp": 0,
+      "gf": 7,
+      "gc": 4,
+      "ultimos": [
+        "E",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 4,
+      "equipo": "EL INTER NOVELLA & GARCIA OLD ROKERS",
+      "equipo_id": "el-inter-novella-garcia-old-rokers",
+      "pts": 3,
+      "pj": 1,
+      "pg": 1,
+      "pe": 0,
+      "pp": 0,
+      "gf": 3,
+      "gc": 1,
+      "ultimos": [
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 5,
+      "equipo": "TEAM X REST KUNTUR WASI",
+      "equipo_id": "team-x-rest-kuntur-wasi",
+      "pts": 3,
+      "pj": 2,
+      "pg": 1,
+      "pe": 0,
+      "pp": 1,
+      "gf": 4,
+      "gc": 4,
+      "ultimos": [
+        "G",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 6,
+      "equipo": "ASTON BIRRA",
+      "equipo_id": "aston-birra",
+      "pts": 3,
+      "pj": 2,
+      "pg": 1,
+      "pe": 0,
+      "pp": 1,
+      "gf": 3,
+      "gc": 4,
+      "ultimos": [
+        "P",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 7,
+      "equipo": "LA COMPAÑIA DEL BALON",
+      "equipo_id": "la-compania-del-balon",
+      "pts": 3,
+      "pj": 2,
+      "pg": 1,
+      "pe": 0,
+      "pp": 1,
+      "gf": 5,
+      "gc": 7,
+      "ultimos": [
+        "P",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 8,
+      "equipo": "MACABBI DE LEVANTAR",
+      "equipo_id": "macabbi-de-levantar",
+      "pts": 3,
+      "pj": 2,
+      "pg": 1,
+      "pe": 0,
+      "pp": 1,
+      "gf": 4,
+      "gc": 6,
+      "ultimos": [
+        "G",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 9,
+      "equipo": "RAYO VATICANO FC",
+      "equipo_id": "rayo-vaticano-fc",
+      "pts": 3,
+      "pj": 2,
+      "pg": 1,
+      "pe": 0,
+      "pp": 1,
+      "gf": 4,
+      "gc": 6,
+      "ultimos": [
+        "P",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 10,
+      "equipo": "LA OSTRA",
+      "equipo_id": "la-ostra",
+      "pts": 1,
+      "pj": 2,
+      "pg": 0,
+      "pe": 1,
+      "pp": 1,
+      "gf": 3,
+      "gc": 4,
+      "ultimos": [
+        "E",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 11,
+      "equipo": "BORUSSIA DONUTS",
+      "equipo_id": "borussia-donuts",
+      "pts": 0,
+      "pj": 1,
+      "pg": 0,
+      "pe": 0,
+      "pp": 1,
+      "gf": 3,
+      "gc": 4,
+      "ultimos": [
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 12,
+      "equipo": "MACHOTES DE ANTONIO",
+      "equipo_id": "machotes-de-antonio",
+      "pts": 0,
+      "pj": 2,
+      "pg": 0,
+      "pe": 0,
+      "pp": 2,
+      "gf": 3,
+      "gc": 7,
+      "ultimos": [
+        "P",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 13,
+      "equipo": "UD SARAGOZA",
+      "equipo_id": "ud-saragoza",
+      "pts": 0,
+      "pj": 2,
+      "pg": 0,
+      "pe": 0,
+      "pp": 2,
+      "gf": 3,
+      "gc": 8,
+      "ultimos": [
+        "P",
+        "P"
+      ],
+      "sancion": 0
+    }
+  ],
+  "descansa_id": "el-inter-novella-garcia-old-rokers",
+  "origen": "pdfs/J2 1DF7 CLASIFICACIÓN.pdf"
+}

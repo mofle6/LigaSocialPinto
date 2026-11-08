@@ -1,0 +1,70 @@
+{
+  "temporada": "2026-2027",
+  "division": "4dvf7",
+  "jornada": 4,
+  "fecha": "2026-11-07",
+  "descansa": null,
+  "descansa_id": null,
+  "partidos": [
+    {
+      "local": "ESFINGER DE MILAN",
+      "local_id": "esfinger-de-milan",
+      "visitante": "AKAGAMI FC",
+      "visitante_id": "akagami-fc",
+      "fecha": "2026-11-07",
+      "hora": "16:00",
+      "campo": "Patricia Chamorro",
+      "pista": "C1"
+    },
+    {
+      "local": "BAYERN DE LOS CAIDOS FC",
+      "local_id": "bayern-de-los-caidos-fc",
+      "visitante": "CELTIC DE PINTO",
+      "visitante_id": "celtic-de-pinto",
+      "fecha": "2026-11-07",
+      "hora": "16:00",
+      "campo": "Patricia Chamorro",
+      "pista": "C2"
+    },
+    {
+      "local": "NEO BARETA",
+      "local_id": "neo-bareta",
+      "visitante": "ADYCTOS FC",
+      "visitante_id": "adyctos-fc",
+      "fecha": "2026-11-07",
+      "hora": "17:05",
+      "campo": "Patricia Chamorro",
+      "pista": "C1"
+    },
+    {
+      "local": "AGRUPA2",
+      "local_id": "agrupa2",
+      "visitante": "FC VIRGEN DE LA ASUNCION",
+      "visitante_id": "fc-virgen-de-la-asuncion",
+      "fecha": "2026-11-07",
+      "hora": "17:05",
+      "campo": "Patricia Chamorro",
+      "pista": "C2"
+    },
+    {
+      "local": "BEBESIKTAS",
+      "local_id": "bebesiktas",
+      "visitante": "UNITED FC",
+      "visitante_id": "united-fc",
+      "fecha": "2026-11-07",
+      "hora": "18:10",
+      "campo": "Patricia Chamorro",
+      "pista": "C1"
+    },
+    {
+      "local": "PADRENETA FC",
+      "local_id": "padreneta-fc",
+      "visitante": "NOTTINGHAM MIEDO",
+      "visitante_id": "nottingham-miedo",
+      "fecha": "2026-11-07",
+      "hora": "18:10",
+      "campo": "Patricia Chamorro",
+      "pista": "C2"
+    }
+  ]
+}

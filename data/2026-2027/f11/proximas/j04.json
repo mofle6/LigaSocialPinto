@@ -1,0 +1,60 @@
+{
+  "temporada": "2026-2027",
+  "division": "f11",
+  "jornada": 4,
+  "fecha": "2026-11-07",
+  "descansa": null,
+  "descansa_id": null,
+  "partidos": [
+    {
+      "local": "BORDALISMO FC",
+      "local_id": "bordalismo-fc",
+      "visitante": "LOS CONRIX",
+      "visitante_id": "los-conrix",
+      "fecha": "2026-11-07",
+      "hora": "09:00",
+      "campo": "Campo Príncipes de Asturias F11",
+      "pista": ""
+    },
+    {
+      "local": "CROKETONES CITY",
+      "local_id": "croketones-city",
+      "visitante": "FERRETERIA IDF-BAR KATY",
+      "visitante_id": "ferreteria-idf-bar-katy",
+      "fecha": "2026-11-07",
+      "hora": "16:00",
+      "campo": "Estadio Rafael Mendoza",
+      "pista": ""
+    },
+    {
+      "local": "LA COMPAÑIA DEL BALON",
+      "local_id": "la-compania-del-balon",
+      "visitante": "BURGUER ANTEUX",
+      "visitante_id": "burguer-anteux",
+      "fecha": "2026-11-07",
+      "hora": "18:00",
+      "campo": "Estadio Rafael Mendoza",
+      "pista": ""
+    },
+    {
+      "local": "RAZZBAR F.C.",
+      "local_id": "razzbar-f-c",
+      "visitante": "AGUA MARINA",
+      "visitante_id": "agua-marina",
+      "fecha": "2026-11-08",
+      "hora": "11:00",
+      "campo": "Campo Príncipes de Asturias F11",
+      "pista": ""
+    },
+    {
+      "local": "EL SALVADOR TATTOO C.F.",
+      "local_id": "el-salvador-tattoo-c-f",
+      "visitante": "TESEPE C.F.",
+      "visitante_id": "tesepe-c-f",
+      "fecha": "2026-11-08",
+      "hora": "13:00",
+      "campo": "Campo Príncipes de Asturias F11",
+      "pista": ""
+    }
+  ]
+}

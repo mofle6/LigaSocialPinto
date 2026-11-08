@@ -1,0 +1,240 @@
+{
+  "competicion": "PRIMERA AFICIONADOS F11",
+  "division": "f11",
+  "nombre_division": "PRIMERA AFICIONADOS F11",
+  "temporada": "2026-2027",
+  "jornada": 3,
+  "fecha": "2026-10-24",
+  "partidos": [
+    {
+      "local": "BURGUER ANTEUX",
+      "visitante": "EL SALVADOR TATTOO C.F.",
+      "goles_local": 3,
+      "goles_visitante": 6,
+      "local_id": "burguer-anteux",
+      "visitante_id": "el-salvador-tattoo-c-f",
+      "estado": "jugado"
+    },
+    {
+      "local": "AGUA MARINA",
+      "visitante": "LA COMPAÑIA DEL BALON",
+      "goles_local": 3,
+      "goles_visitante": 2,
+      "local_id": "agua-marina",
+      "visitante_id": "la-compania-del-balon",
+      "estado": "jugado"
+    },
+    {
+      "local": "LOS CONRIX",
+      "visitante": "RAZZBAR F.C.",
+      "goles_local": 4,
+      "goles_visitante": 2,
+      "local_id": "los-conrix",
+      "visitante_id": "razzbar-f-c",
+      "estado": "jugado"
+    },
+    {
+      "local": "FERRETERIA IDF-BAR KATY",
+      "visitante": "BORDALISMO FC",
+      "goles_local": 6,
+      "goles_visitante": 4,
+      "local_id": "ferreteria-idf-bar-katy",
+      "visitante_id": "bordalismo-fc",
+      "estado": "jugado"
+    },
+    {
+      "local": "TESEPE C.F.",
+      "visitante": "CROKETONES CITY",
+      "goles_local": 2,
+      "goles_visitante": 1,
+      "local_id": "tesepe-c-f",
+      "visitante_id": "croketones-city",
+      "estado": "jugado"
+    }
+  ],
+  "descansa": null,
+  "descansa_id": null,
+  "clasificacion": [
+    {
+      "pos": 1,
+      "equipo": "FERRETERIA IDF-BAR KATY",
+      "equipo_id": "ferreteria-idf-bar-katy",
+      "pts": 9,
+      "pj": 3,
+      "pg": 3,
+      "pe": 0,
+      "pp": 0,
+      "gf": 20,
+      "gc": 8,
+      "ultimos": [
+        "G",
+        "G",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 2,
+      "equipo": "EL SALVADOR TATTOO C.F.",
+      "equipo_id": "el-salvador-tattoo-c-f",
+      "pts": 9,
+      "pj": 3,
+      "pg": 3,
+      "pe": 0,
+      "pp": 0,
+      "gf": 14,
+      "gc": 6,
+      "ultimos": [
+        "G",
+        "G",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 3,
+      "equipo": "BORDALISMO FC",
+      "equipo_id": "bordalismo-fc",
+      "pts": 6,
+      "pj": 3,
+      "pg": 2,
+      "pe": 0,
+      "pp": 1,
+      "gf": 10,
+      "gc": 7,
+      "ultimos": [
+        "G",
+        "G",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 4,
+      "equipo": "TESEPE C.F.",
+      "equipo_id": "tesepe-c-f",
+      "pts": 6,
+      "pj": 3,
+      "pg": 2,
+      "pe": 0,
+      "pp": 1,
+      "gf": 7,
+      "gc": 5,
+      "ultimos": [
+        "P",
+        "G",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 5,
+      "equipo": "AGUA MARINA",
+      "equipo_id": "agua-marina",
+      "pts": 6,
+      "pj": 3,
+      "pg": 2,
+      "pe": 0,
+      "pp": 1,
+      "gf": 9,
+      "gc": 10,
+      "ultimos": [
+        "G",
+        "P",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 6,
+      "equipo": "LA COMPAÑIA DEL BALON",
+      "equipo_id": "la-compania-del-balon",
+      "pts": 3,
+      "pj": 3,
+      "pg": 1,
+      "pe": 0,
+      "pp": 2,
+      "gf": 11,
+      "gc": 9,
+      "ultimos": [
+        "P",
+        "G",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 7,
+      "equipo": "LOS CONRIX",
+      "equipo_id": "los-conrix",
+      "pts": 3,
+      "pj": 3,
+      "pg": 1,
+      "pe": 0,
+      "pp": 2,
+      "gf": 6,
+      "gc": 12,
+      "ultimos": [
+        "P",
+        "P",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 8,
+      "equipo": "RAZZBAR F.C.",
+      "equipo_id": "razzbar-f-c",
+      "pts": 3,
+      "pj": 3,
+      "pg": 1,
+      "pe": 0,
+      "pp": 2,
+      "gf": 5,
+      "gc": 13,
+      "ultimos": [
+        "G",
+        "P",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 9,
+      "equipo": "CROKETONES CITY",
+      "equipo_id": "croketones-city",
+      "pts": 0,
+      "pj": 3,
+      "pg": 0,
+      "pe": 0,
+      "pp": 3,
+      "gf": 2,
+      "gc": 7,
+      "ultimos": [
+        "P",
+        "P",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 10,
+      "equipo": "BURGUER ANTEUX",
+      "equipo_id": "burguer-anteux",
+      "pts": 0,
+      "pj": 3,
+      "pg": 0,
+      "pe": 0,
+      "pp": 3,
+      "gf": 8,
+      "gc": 15,
+      "ultimos": [
+        "P",
+        "P",
+        "P"
+      ],
+      "sancion": 0
+    }
+  ],
+  "origen": "pdfs/Clasificación_j3_f11.pdf"
+}
