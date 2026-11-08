@@ -66,3 +66,33 @@ jobs:
           PY
       - name: Generar web
         run: python scripts/build_site.py
+      - name: Verificar J4 y horarios J5 de Plata y Zinc
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for code, count, rest in (("2dvf7", 13, "HATTRICKI F. C."), ("4dvf7", 12, None)):
+              base = Path("data/2026-2027") / code
+              j4 = json.loads((base / "j04.json").read_text(encoding="utf-8"))
+              j5 = json.loads((base / "proximas/j05.json").read_text(encoding="utf-8"))
+              rows = j4["clasificacion"]
+              assert j4["jornada"] == 4 and j5["jornada"] == 5
+              assert len(rows) == count and len(j4["partidos"]) == 6 and len(j5["partidos"]) == 6
+              assert all(p["estado"] == "jugado" for p in j4["partidos"])
+              assert sum(r["gf"] for r in rows) == sum(r["gc"] for r in rows)
+              assert all(r["pts"] == 3*r["pg"] + r["pe"] - r["sancion"] for r in rows)
+              assert j5["descansa"] == rest
+              known = {r["equipo_id"] for r in rows}
+              scheduled = [p[side + "_id"] for p in j5["partidos"] for side in ("local", "visitante")]
+              if j5["descansa_id"]:
+                  scheduled.append(j5["descansa_id"])
+              assert set(scheduled) == known and len(scheduled) == len(set(scheduled))
+              assert all(p["fecha"] == "2026-11-15" and p["hora"] and p["campo"] for p in j5["partidos"])
+              page = Path("site/2026-2027") / code / "index.html"
+              html = page.read_text(encoding="utf-8")
+              assert "J5" in html and "Clasificación" in html
+              for p in j5["partidos"]:
+                  team_html = (page.parent / "equipos" / (p["local_id"] + ".html")).read_text(encoding="utf-8")
+                  assert p["hora"] in team_html
+              print(code, "J4 y J5 OK")
+          PY

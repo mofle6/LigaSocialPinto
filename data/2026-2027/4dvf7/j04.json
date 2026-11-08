@@ -1,0 +1,297 @@
+{
+  "competicion": "AFICIONADO F7",
+  "division": "4dvf7",
+  "nombre_division": "CUARTA AFICIONADOS F7 (ZINC)",
+  "temporada": "2026-2027",
+  "jornada": 4,
+  "fecha": "2026-11-07",
+  "partidos": [
+    {
+      "local": "BEBESIKTAS",
+      "visitante": "UNITED FC",
+      "goles_local": 0,
+      "goles_visitante": 2,
+      "estado": "jugado",
+      "local_id": "bebesiktas",
+      "visitante_id": "united-fc"
+    },
+    {
+      "local": "ESFINGER DE MILAN",
+      "visitante": "AKAGAMI FC",
+      "goles_local": 1,
+      "goles_visitante": 1,
+      "estado": "jugado",
+      "local_id": "esfinger-de-milan",
+      "visitante_id": "akagami-fc"
+    },
+    {
+      "local": "NEO BARETA",
+      "visitante": "ADYCTOS FC",
+      "goles_local": 0,
+      "goles_visitante": 2,
+      "estado": "jugado",
+      "local_id": "neo-bareta",
+      "visitante_id": "adyctos-fc"
+    },
+    {
+      "local": "PADRENETA FC",
+      "visitante": "NOTTINGHAM MIEDO",
+      "goles_local": 1,
+      "goles_visitante": 3,
+      "estado": "jugado",
+      "local_id": "padreneta-fc",
+      "visitante_id": "nottingham-miedo"
+    },
+    {
+      "local": "AGRUPA2",
+      "visitante": "FC VIRGEN DE LA ASUNCION",
+      "goles_local": 4,
+      "goles_visitante": 4,
+      "estado": "jugado",
+      "local_id": "agrupa2",
+      "visitante_id": "fc-virgen-de-la-asuncion"
+    },
+    {
+      "local": "BAYERN DE LOS CAIDOS FC",
+      "visitante": "CELTIC DE PINTO",
+      "goles_local": 4,
+      "goles_visitante": 1,
+      "estado": "jugado",
+      "local_id": "bayern-de-los-caidos-fc",
+      "visitante_id": "celtic-de-pinto"
+    }
+  ],
+  "descansa": null,
+  "descansa_id": null,
+  "clasificacion": [
+    {
+      "pos": 1,
+      "equipo": "ADYCTOS FC",
+      "equipo_id": "adyctos-fc",
+      "pts": 12,
+      "pj": 4,
+      "pg": 4,
+      "pe": 0,
+      "pp": 0,
+      "gf": 14,
+      "gc": 5,
+      "ultimos": [
+        "G",
+        "G",
+        "G",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 2,
+      "equipo": "BAYERN DE LOS CAIDOS FC",
+      "equipo_id": "bayern-de-los-caidos-fc",
+      "pts": 10,
+      "pj": 4,
+      "pg": 3,
+      "pe": 1,
+      "pp": 0,
+      "gf": 21,
+      "gc": 6,
+      "ultimos": [
+        "G",
+        "G",
+        "E",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 3,
+      "equipo": "UNITED FC",
+      "equipo_id": "united-fc",
+      "pts": 10,
+      "pj": 4,
+      "pg": 3,
+      "pe": 1,
+      "pp": 0,
+      "gf": 9,
+      "gc": 3,
+      "ultimos": [
+        "G",
+        "G",
+        "E",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 4,
+      "equipo": "FC VIRGEN DE LA ASUNCION",
+      "equipo_id": "fc-virgen-de-la-asuncion",
+      "pts": 8,
+      "pj": 4,
+      "pg": 2,
+      "pe": 2,
+      "pp": 0,
+      "gf": 14,
+      "gc": 7,
+      "ultimos": [
+        "G",
+        "E",
+        "G",
+        "E"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 5,
+      "equipo": "BEBESIKTAS",
+      "equipo_id": "bebesiktas",
+      "pts": 6,
+      "pj": 4,
+      "pg": 2,
+      "pe": 0,
+      "pp": 2,
+      "gf": 11,
+      "gc": 8,
+      "ultimos": [
+        "G",
+        "P",
+        "G",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 6,
+      "equipo": "CELTIC DE PINTO",
+      "equipo_id": "celtic-de-pinto",
+      "pts": 6,
+      "pj": 4,
+      "pg": 2,
+      "pe": 0,
+      "pp": 2,
+      "gf": 8,
+      "gc": 9,
+      "ultimos": [
+        "G",
+        "P",
+        "G",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 7,
+      "equipo": "NOTTINGHAM MIEDO",
+      "equipo_id": "nottingham-miedo",
+      "pts": 5,
+      "pj": 4,
+      "pg": 1,
+      "pe": 2,
+      "pp": 1,
+      "gf": 8,
+      "gc": 11,
+      "ultimos": [
+        "P",
+        "E",
+        "E",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 8,
+      "equipo": "PADRENETA FC",
+      "equipo_id": "padreneta-fc",
+      "pts": 3,
+      "pj": 4,
+      "pg": 1,
+      "pe": 0,
+      "pp": 3,
+      "gf": 5,
+      "gc": 17,
+      "ultimos": [
+        "P",
+        "G",
+        "P",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 9,
+      "equipo": "NEO BARETA",
+      "equipo_id": "neo-bareta",
+      "pts": 2,
+      "pj": 4,
+      "pg": 0,
+      "pe": 2,
+      "pp": 2,
+      "gf": 5,
+      "gc": 9,
+      "ultimos": [
+        "P",
+        "E",
+        "E",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 10,
+      "equipo": "ESFINGER DE MILAN",
+      "equipo_id": "esfinger-de-milan",
+      "pts": 2,
+      "pj": 4,
+      "pg": 0,
+      "pe": 2,
+      "pp": 2,
+      "gf": 5,
+      "gc": 14,
+      "ultimos": [
+        "P",
+        "E",
+        "P",
+        "E"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 11,
+      "equipo": "AKAGAMI FC",
+      "equipo_id": "akagami-fc",
+      "pts": 1,
+      "pj": 4,
+      "pg": 0,
+      "pe": 1,
+      "pp": 3,
+      "gf": 5,
+      "gc": 10,
+      "ultimos": [
+        "P",
+        "P",
+        "P",
+        "E"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 12,
+      "equipo": "AGRUPA2",
+      "equipo_id": "agrupa2",
+      "pts": 1,
+      "pj": 4,
+      "pg": 0,
+      "pe": 1,
+      "pp": 3,
+      "gf": 8,
+      "gc": 14,
+      "ultimos": [
+        "P",
+        "P",
+        "P",
+        "E"
+      ],
+      "sancion": 0
+    }
+  ],
+  "origen": "Clasificación J4 RFFM, 08/11/2026"
+}
