@@ -22,17 +22,43 @@ def slug(s):
     s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode()
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 
+def normalize_wrapped_results(lines):
+    """Resolve three-line score rows using only exact names in the official table."""
+    known = [m['team'] for line in lines if (m := RE_ROW.match(line))]
+    normalized = list(lines)
+    i = 1
+    while i < len(normalized) - 1:
+        score = re.fullmatch(r"(\d+)\s*-\s*(\d+)", normalized[i])
+        if not score:
+            i += 1
+            continue
+        prefix, suffix = normalized[i - 1], normalized[i + 1]
+        candidates = set()
+        for home in known:
+            for away in known:
+                if home == away:
+                    continue
+                # A wrapped name can belong to either side of the score.
+                for team, is_home in ((home, True), (away, False)):
+                    words = team.split()
+                    for cut in range(1, len(words)):
+                        first, rest = ' '.join(words[:cut]), ' '.join(words[cut:])
+                        expected = first + ' ' + away if is_home else home + ' ' + first
+                        if prefix == expected and suffix == rest:
+                            candidates.add((home, away))
+        if len(candidates) != 1:
+            raise ValueError('Resultado en varias líneas sin equipos inequívocos en la tabla: ' + prefix)
+        home, away = candidates.pop()
+        normalized[i-1:i+2] = [f'{home} {score[1]} - {score[2]} {away}']
+        i = max(1, i - 1)
+    return normalized
+
+
 def parse(path):
     with pdfplumber.open(path) as pdf:
         lines = [l.strip() for pg in pdf.pages for l in (pg.extract_text() or "").splitlines() if l.strip()]
 
-    # PDF extraction can split a long team name around the score line.
-    # Normalize the verified J3 Primera case without guessing either team.
-    for i in range(len(lines) - 2):
-        if lines[i].endswith(" LA OSTRA") and re.fullmatch(r"\d+\s*-\s*\d+", lines[i + 1]) and lines[i + 2] == "ROKERS":
-            home = lines[i][:-len(" LA OSTRA")] + " ROKERS"
-            lines[i:i+3] = [home + " " + lines[i + 1] + " LA OSTRA"]
-            break
+    lines = normalize_wrapped_results(lines)
 
     out = {"competicion": None, "division": None, "nombre_division": None, "temporada": None, "jornada": None,
            "fecha": None, "partidos": [], "descansa": None, "clasificacion": []}
