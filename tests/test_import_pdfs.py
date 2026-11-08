@@ -126,6 +126,26 @@ class ImportTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'inmutables'):
                     imp.check_git_changes(self.root, 'base')
 
+    def test_actual_oro_j4_wrapped_away_team(self):
+        d = parse(ROOT / 'pdfs/2026-2027/CLASIFICACION_1DVF7_J04_20261108.pdf')
+        imp.check_results(d)
+        self.assertEqual(len(d['partidos']), 6)
+        game = next(p for p in d['partidos'] if p['local'] == 'MACHOTES DE ANTONIO')
+        self.assertEqual(game['visitante'], 'EL INTER NOVELLA & GARCIA OLD ROKERS')
+        self.assertEqual((game['goles_local'], game['goles_visitante']), (4, 4))
+
+    def test_actual_oro_j3_wrapped_home_team(self):
+        d = parse(ROOT / 'pdfs/Clasificación_j3_f7_oro.pdf')
+        self.assertFalse(imp.validate(d))
+        self.assertEqual(len(d['partidos']), 6)
+        game = next(p for p in d['partidos'] if p['local'] == 'EL INTER NOVELLA & GARCIA OLD ROKERS')
+        self.assertEqual(game['visitante'], 'LA OSTRA')
+
+    def test_wrapped_unknown_teams_fail_instead_of_guessing(self):
+        from parse_jornada import normalize_wrapped_results
+        with self.assertRaisesRegex(ValueError, 'inequívocos'):
+            normalize_wrapped_results(['UNKNOWN TEAMS', '4 - 4', 'ROKERS'])
+
     def test_actual_pdf_all_f7_teams_and_scores(self):
         pdf = ROOT / 'pdfs/Clasificación_j3_f7_zinc2.pdf'
         d = parse(pdf)
