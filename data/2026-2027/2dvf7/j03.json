@@ -1,0 +1,300 @@
+{
+  "competicion": "AFICIONADO F7",
+  "division": "2dvf7",
+  "nombre_division": "SEGUNDA AFICIONADO F7 (PLATA)",
+  "temporada": "2026-2027",
+  "jornada": 3,
+  "fecha": "2026-10-25",
+  "partidos": [
+    {
+      "local": "FAVELA SEVEN",
+      "visitante": "GALACTICOS DEL LOCAL",
+      "goles_local": 6,
+      "goles_visitante": 4,
+      "estado": "jugado",
+      "local_id": "favela-seven",
+      "visitante_id": "galacticos-del-local"
+    },
+    {
+      "local": "CC JUNIORS",
+      "visitante": "DRAGONES FC",
+      "goles_local": 2,
+      "goles_visitante": 1,
+      "estado": "jugado",
+      "local_id": "cc-juniors",
+      "visitante_id": "dragones-fc"
+    },
+    {
+      "local": "REFORMAS ROEX",
+      "visitante": "MACAQUINHIOS FC",
+      "goles_local": 1,
+      "goles_visitante": 3,
+      "estado": "jugado",
+      "local_id": "reformas-roex",
+      "visitante_id": "macaquinhios-fc"
+    },
+    {
+      "local": "MALUEMDO",
+      "visitante": "P.S. VETERANOS/DELAIRE 2000, SL",
+      "goles_local": 1,
+      "goles_visitante": 4,
+      "estado": "jugado",
+      "local_id": "maluemdo",
+      "visitante_id": "p-s-veteranos-delaire-2000-sl"
+    },
+    {
+      "local": "LOS SOLFABIRRAS",
+      "visitante": "THE CLOVER UFOS BURGUER",
+      "goles_local": 2,
+      "goles_visitante": 4,
+      "estado": "jugado",
+      "local_id": "los-solfabirras",
+      "visitante_id": "the-clover-ufos-burguer"
+    },
+    {
+      "local": "HATTRICKI F. C.",
+      "visitante": "KAMIKAZES-PANPINTAO",
+      "goles_local": 0,
+      "goles_visitante": 6,
+      "estado": "jugado",
+      "local_id": "hattricki-f-c",
+      "visitante_id": "kamikazes-panpintao"
+    }
+  ],
+  "descansa": "FREEFURGO FC",
+  "clasificacion": [
+    {
+      "pos": 1,
+      "equipo": "KAMIKAZES-PANPINTAO",
+      "equipo_id": "kamikazes-panpintao",
+      "pts": 6,
+      "pj": 2,
+      "pg": 2,
+      "pe": 0,
+      "pp": 0,
+      "gf": 11,
+      "gc": 2,
+      "ultimos": [
+        "G",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 2,
+      "equipo": "P.S. VETERANOS/DELAIRE 2000, SL",
+      "equipo_id": "p-s-veteranos-delaire-2000-sl",
+      "pts": 6,
+      "pj": 3,
+      "pg": 2,
+      "pe": 0,
+      "pp": 1,
+      "gf": 10,
+      "gc": 2,
+      "ultimos": [
+        "G",
+        "P",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 3,
+      "equipo": "FAVELA SEVEN",
+      "equipo_id": "favela-seven",
+      "pts": 6,
+      "pj": 2,
+      "pg": 2,
+      "pe": 0,
+      "pp": 0,
+      "gf": 9,
+      "gc": 5,
+      "ultimos": [
+        "G",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 4,
+      "equipo": "THE CLOVER UFOS BURGUER",
+      "equipo_id": "the-clover-ufos-burguer",
+      "pts": 6,
+      "pj": 3,
+      "pg": 2,
+      "pe": 0,
+      "pp": 1,
+      "gf": 13,
+      "gc": 11,
+      "ultimos": [
+        "P",
+        "G",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 5,
+      "equipo": "MALUEMDO",
+      "equipo_id": "maluemdo",
+      "pts": 6,
+      "pj": 3,
+      "pg": 2,
+      "pe": 0,
+      "pp": 1,
+      "gf": 7,
+      "gc": 6,
+      "ultimos": [
+        "G",
+        "G",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 6,
+      "equipo": "GALACTICOS DEL LOCAL",
+      "equipo_id": "galacticos-del-local",
+      "pts": 6,
+      "pj": 3,
+      "pg": 2,
+      "pe": 0,
+      "pp": 1,
+      "gf": 9,
+      "gc": 9,
+      "ultimos": [
+        "G",
+        "G",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 7,
+      "equipo": "LOS SOLFABIRRAS",
+      "equipo_id": "los-solfabirras",
+      "pts": 6,
+      "pj": 3,
+      "pg": 2,
+      "pe": 0,
+      "pp": 1,
+      "gf": 6,
+      "gc": 6,
+      "ultimos": [
+        "G",
+        "G",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 8,
+      "equipo": "FREEFURGO FC",
+      "equipo_id": "freefurgo-fc",
+      "pts": 3,
+      "pj": 2,
+      "pg": 1,
+      "pe": 0,
+      "pp": 1,
+      "gf": 9,
+      "gc": 7,
+      "ultimos": [
+        "G",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 9,
+      "equipo": "MACAQUINHIOS FC",
+      "equipo_id": "macaquinhios-fc",
+      "pts": 3,
+      "pj": 3,
+      "pg": 1,
+      "pe": 0,
+      "pp": 2,
+      "gf": 6,
+      "gc": 7,
+      "ultimos": [
+        "P",
+        "P",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 10,
+      "equipo": "REFORMAS ROEX",
+      "equipo_id": "reformas-roex",
+      "pts": 3,
+      "pj": 3,
+      "pg": 1,
+      "pe": 0,
+      "pp": 2,
+      "gf": 5,
+      "gc": 6,
+      "ultimos": [
+        "P",
+        "G",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 11,
+      "equipo": "CC JUNIORS",
+      "equipo_id": "cc-juniors",
+      "pts": 3,
+      "pj": 3,
+      "pg": 1,
+      "pe": 0,
+      "pp": 2,
+      "gf": 5,
+      "gc": 7,
+      "ultimos": [
+        "P",
+        "P",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 12,
+      "equipo": "DRAGONES FC",
+      "equipo_id": "dragones-fc",
+      "pts": 0,
+      "pj": 3,
+      "pg": 0,
+      "pe": 0,
+      "pp": 3,
+      "gf": 3,
+      "gc": 8,
+      "ultimos": [
+        "P",
+        "P",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 13,
+      "equipo": "HATTRICKI F. C.",
+      "equipo_id": "hattricki-f-c",
+      "pts": 0,
+      "pj": 3,
+      "pg": 0,
+      "pe": 0,
+      "pp": 3,
+      "gf": 2,
+      "gc": 19,
+      "ultimos": [
+        "P",
+        "P",
+        "P"
+      ],
+      "sancion": 0
+    }
+  ],
+  "descansa_id": "freefurgo-fc",
+  "origen": "pdfs/Clasificación_j3_f7_plata2.pdf"
+}

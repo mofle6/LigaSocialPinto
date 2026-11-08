@@ -1,0 +1,301 @@
+{
+  "competicion": "AFICIONADO F7",
+  "division": "3dvf7",
+  "nombre_division": "TERCERA AFICINADO F7 (BRONCE)",
+  "temporada": "2026-2027",
+  "jornada": 3,
+  "fecha": "2026-10-24",
+  "partidos": [
+    {
+      "local": "CHELOFE",
+      "visitante": "EL PRADO FC",
+      "goles_local": 0,
+      "goles_visitante": 11,
+      "estado": "jugado",
+      "local_id": "chelofe",
+      "visitante_id": "el-prado-fc"
+    },
+    {
+      "local": "AMIAIRE FC",
+      "visitante": "GEERTAFE FC",
+      "goles_local": 1,
+      "goles_visitante": 3,
+      "estado": "jugado",
+      "local_id": "amiaire-fc",
+      "visitante_id": "geertafe-fc"
+    },
+    {
+      "local": "TARAMBAINAS F7",
+      "visitante": "LA ESPERANZA ESTRELLA COJA CF",
+      "goles_local": 4,
+      "goles_visitante": 5,
+      "estado": "jugado",
+      "local_id": "tarambainas-f7",
+      "visitante_id": "la-esperanza-estrella-coja-cf"
+    },
+    {
+      "local": "PAISES PLAJOS",
+      "visitante": "RAYO DE PINTO LEYENDS",
+      "goles_local": 5,
+      "goles_visitante": 1,
+      "estado": "jugado",
+      "local_id": "paises-plajos",
+      "visitante_id": "rayo-de-pinto-leyends"
+    },
+    {
+      "local": "GERMANS F.C.",
+      "visitante": "ZORROS DE CHECOSLOVAQUIA",
+      "goles_local": 3,
+      "goles_visitante": 6,
+      "estado": "jugado",
+      "local_id": "germans-f-c",
+      "visitante_id": "zorros-de-checoslovaquia"
+    },
+    {
+      "local": "FUSTER FC",
+      "visitante": "BAR LOS GEMELOS",
+      "goles_local": 6,
+      "goles_visitante": 2,
+      "estado": "jugado",
+      "local_id": "fuster-fc",
+      "visitante_id": "bar-los-gemelos"
+    }
+  ],
+  "descansa": "CRISTAL BALAS",
+  "clasificacion": [
+    {
+      "pos": 1,
+      "equipo": "EL PRADO FC",
+      "equipo_id": "el-prado-fc",
+      "pts": 9,
+      "pj": 3,
+      "pg": 3,
+      "pe": 0,
+      "pp": 0,
+      "gf": 21,
+      "gc": 1,
+      "ultimos": [
+        "G",
+        "G",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 2,
+      "equipo": "FUSTER FC",
+      "equipo_id": "fuster-fc",
+      "pts": 9,
+      "pj": 3,
+      "pg": 3,
+      "pe": 0,
+      "pp": 0,
+      "gf": 20,
+      "gc": 5,
+      "ultimos": [
+        "G",
+        "G",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 3,
+      "equipo": "PAISES PLAJOS",
+      "equipo_id": "paises-plajos",
+      "pts": 9,
+      "pj": 3,
+      "pg": 3,
+      "pe": 0,
+      "pp": 0,
+      "gf": 17,
+      "gc": 7,
+      "ultimos": [
+        "G",
+        "G",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 4,
+      "equipo": "CRISTAL BALAS",
+      "equipo_id": "cristal-balas",
+      "pts": 6,
+      "pj": 2,
+      "pg": 2,
+      "pe": 0,
+      "pp": 0,
+      "gf": 13,
+      "gc": 4,
+      "ultimos": [
+        "G",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 5,
+      "equipo": "GEERTAFE FC",
+      "equipo_id": "geertafe-fc",
+      "pts": 4,
+      "pj": 3,
+      "pg": 1,
+      "pe": 1,
+      "pp": 1,
+      "gf": 10,
+      "gc": 10,
+      "ultimos": [
+        "P",
+        "E",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 6,
+      "equipo": "GERMANS F.C.",
+      "equipo_id": "germans-f-c",
+      "pts": 4,
+      "pj": 3,
+      "pg": 1,
+      "pe": 1,
+      "pp": 1,
+      "gf": 10,
+      "gc": 10,
+      "ultimos": [
+        "E",
+        "G",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 7,
+      "equipo": "LA ESPERANZA ESTRELLA COJA CF",
+      "equipo_id": "la-esperanza-estrella-coja-cf",
+      "pts": 4,
+      "pj": 3,
+      "pg": 1,
+      "pe": 1,
+      "pp": 1,
+      "gf": 8,
+      "gc": 11,
+      "ultimos": [
+        "E",
+        "P",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 8,
+      "equipo": "AMIAIRE FC",
+      "equipo_id": "amiaire-fc",
+      "pts": 3,
+      "pj": 3,
+      "pg": 1,
+      "pe": 0,
+      "pp": 2,
+      "gf": 6,
+      "gc": 6,
+      "ultimos": [
+        "G",
+        "P",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 9,
+      "equipo": "ZORROS DE CHECOSLOVAQUIA",
+      "equipo_id": "zorros-de-checoslovaquia",
+      "pts": 3,
+      "pj": 3,
+      "pg": 1,
+      "pe": 0,
+      "pp": 2,
+      "gf": 9,
+      "gc": 16,
+      "ultimos": [
+        "P",
+        "P",
+        "G"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 10,
+      "equipo": "TARAMBAINAS F7",
+      "equipo_id": "tarambainas-f7",
+      "pts": 1,
+      "pj": 3,
+      "pg": 0,
+      "pe": 1,
+      "pp": 2,
+      "gf": 6,
+      "gc": 14,
+      "ultimos": [
+        "P",
+        "E",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 11,
+      "equipo": "BAR LOS GEMELOS",
+      "equipo_id": "bar-los-gemelos",
+      "pts": 0,
+      "pj": 2,
+      "pg": 0,
+      "pe": 0,
+      "pp": 2,
+      "gf": 4,
+      "gc": 14,
+      "ultimos": [
+        "P",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 12,
+      "equipo": "RAYO DE PINTO LEYENDS",
+      "equipo_id": "rayo-de-pinto-leyends",
+      "pts": 0,
+      "pj": 3,
+      "pg": 0,
+      "pe": 0,
+      "pp": 3,
+      "gf": 5,
+      "gc": 16,
+      "ultimos": [
+        "P",
+        "P",
+        "P"
+      ],
+      "sancion": 0
+    },
+    {
+      "pos": 13,
+      "equipo": "CHELOFE",
+      "equipo_id": "chelofe",
+      "pts": 0,
+      "pj": 2,
+      "pg": 0,
+      "pe": 0,
+      "pp": 2,
+      "gf": 0,
+      "gc": 15,
+      "ultimos": [
+        "P",
+        "P"
+      ],
+      "sancion": 0
+    }
+  ],
+  "descansa_id": "cristal-balas",
+  "actualizacion_manual": "Clasificacion_j3_3df7.pdf (26/10/2026 16:30)",
+  "origen": "pdfs/Clasificación_j3_f7_bronce2.pdf"
+}

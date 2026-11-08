@@ -1,0 +1,70 @@
+{
+  "temporada": "2026-2027",
+  "division": "1dvf7",
+  "jornada": 4,
+  "fecha": "2026-11-08",
+  "descansa": "LA OSTRA",
+  "descansa_id": "la-ostra",
+  "partidos": [
+    {
+      "local": "RAYO VATICANO FC",
+      "local_id": "rayo-vaticano-fc",
+      "visitante": "ASTON BIRRA",
+      "visitante_id": "aston-birra",
+      "fecha": "2026-11-08",
+      "hora": "09:00",
+      "campo": "Príncipes De Asturias",
+      "pista": "C1"
+    },
+    {
+      "local": "YAYO VAYACAÑO CF",
+      "local_id": "yayo-vayacano-cf",
+      "visitante": "TEAM X REST KUNTUR WASI",
+      "visitante_id": "team-x-rest-kuntur-wasi",
+      "fecha": "2026-11-08",
+      "hora": "10:05",
+      "campo": "Príncipes De Asturias",
+      "pista": "C1"
+    },
+    {
+      "local": "UD SARAGOZA",
+      "local_id": "ud-saragoza",
+      "visitante": "WEST HAMMOND",
+      "visitante_id": "west-hammond",
+      "fecha": "2026-11-08",
+      "hora": "11:10",
+      "campo": "Príncipes De Asturias",
+      "pista": "C1"
+    },
+    {
+      "local": "LA COMPAÑIA DEL BALON",
+      "local_id": "la-compania-del-balon",
+      "visitante": "MACABBI DE LEVANTAR",
+      "visitante_id": "macabbi-de-levantar",
+      "fecha": "2026-11-08",
+      "hora": "12:15",
+      "campo": "Príncipes De Asturias",
+      "pista": "C1"
+    },
+    {
+      "local": "MACHOTES DE ANTONIO",
+      "local_id": "machotes-de-antonio",
+      "visitante": "EL INTER NOVELLA & GARCIA OLD ROKERS",
+      "visitante_id": "el-inter-novella-garcia-old-rokers",
+      "fecha": "2026-11-08",
+      "hora": "13:20",
+      "campo": "Príncipes De Asturias",
+      "pista": "C1"
+    },
+    {
+      "local": "BORUSSIA DONUTS",
+      "local_id": "borussia-donuts",
+      "visitante": "NORTE DE PATO",
+      "visitante_id": "norte-de-pato",
+      "fecha": "2026-11-08",
+      "hora": "14:25",
+      "campo": "Príncipes De Asturias",
+      "pista": "C1"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "temporada": "2026-2027",
+  "division": "fs",
+  "jornada": 4,
+  "fecha": "2026-10-26",
+  "descansa": null,
+  "descansa_id": null,
+  "partidos": [
+    {
+      "local": "BAR LA OSTRA 93",
+      "local_id": "bar-la-ostra-93",
+      "visitante": "JACHAL",
+      "visitante_id": "jachal",
+      "fecha": "2026-10-26",
+      "hora": "20:30",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    },
+    {
+      "local": "CASA PALMI FC",
+      "local_id": "casa-palmi-fc",
+      "visitante": "EL QUIOSCO DEL BETIS",
+      "visitante_id": "el-quiosco-del-betis",
+      "fecha": "2026-10-26",
+      "hora": "21:30",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    },
+    {
+      "local": "SPORTING ROSARITO",
+      "local_id": "sporting-rosarito",
+      "visitante": "LOS HUNOS",
+      "visitante_id": "los-hunos",
+      "fecha": "2026-10-27",
+      "hora": "20:30",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    },
+    {
+      "local": "PIEMONTE CALCIO",
+      "local_id": "piemonte-calcio",
+      "visitante": "RATAS CF",
+      "visitante_id": "ratas-cf",
+      "fecha": "2026-10-27",
+      "hora": "21:30",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    },
+    {
+      "local": "FERRETERIA TEIDE CARPINTERIA",
+      "local_id": "ferreteria-teide-carpinteria",
+      "visitante": "CAÑITOS F.S The Ufos Burguer",
+      "visitante_id": "canitos-f-s-the-ufos-burguer",
+      "fecha": "2026-10-29",
+      "hora": "20:00",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    },
+    {
+      "local": "COFEMA-FERRALIA F.S",
+      "local_id": "cofema-ferralia-f-s",
+      "visitante": "TUPA FC",
+      "visitante_id": "tupa-fc",
+      "fecha": "2026-10-29",
+      "hora": "21:00",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    },
+    {
+      "local": "LEGENDARIOS",
+      "local_id": "legendarios",
+      "visitante": "AVV CASERIO DE PERALES",
+      "visitante_id": "avv-caserio-de-perales",
+      "fecha": "2026-10-29",
+      "hora": "22:00",
+      "campo": "Pabellón Patricia Chamorro",
+      "pista": ""
+    }
+  ]
+}
