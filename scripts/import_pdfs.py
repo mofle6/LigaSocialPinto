@@ -148,6 +148,22 @@ def protect_history(before, after, changed, choices):
                     raise ValueError(f'{later}: clasificación incompatible con los resultados conocidos de {r["equipo"]}')
 
 
+def preserve_pending_states(old, new):
+    """An unspecified pending PDF does not revoke a confirmed suspension."""
+    existing = {(p['local_id'], p['visitante_id']): p for p in old['partidos']}
+    notes = []
+    for p in new['partidos']:
+        prior = existing.get((p['local_id'], p['visitante_id']))
+        if (prior and prior['estado'] in ('suspendido', 'aplazado')
+                and p['estado'] == 'sin_resultado'
+                and all(m.get(k) is None for m in (prior, p) for k in ('goles_local', 'goles_visitante'))):
+            p['estado'] = prior['estado']
+            notes.append(f"{p['local']} - {p['visitante']}: se conserva {p['estado']}; el PDF no especifica estado")
+    if notes:
+        new['observaciones_importacion'] = notes
+    return notes
+
+
 def prepare(root, staged):
     choices = select(root)
     aliases = read(root / 'data/alias.json')
@@ -170,7 +186,12 @@ def prepare(root, staged):
         if (d.get('temporada'), d.get('division'), d.get('jornada')) != key[:3]:
             raise ValueError(f'{pdf}: nombre/directorio no coincide con el encabezado del PDF')
         if kind == 'CLASIFICACION':
-            check_results(d)
+            if old:
+                preserve_pending_states(old, d)
+            try:
+                check_results(d)
+            except ValueError as exc:
+                raise ValueError(f'{pdf}: {exc}') from exc
             if old:
                 existing = {(p['local_id'], p['visitante_id']): p for p in old['partidos']}
                 incoming = {(p['local_id'], p['visitante_id']): p for p in d['partidos']}
@@ -205,10 +226,28 @@ def prepare(root, staged):
     return changed, report
 
 
+def verified_archive(root, base, source):
+    """Allow only documented, byte-preserving moves out of the active PDF set."""
+    manifest = root / 'data/pdf-archive.json'
+    entry = read(manifest).get(source) if manifest.exists() else None
+    if not entry or (root / source).exists():
+        return False
+    destination = entry.get('destino', '')
+    if not destination.startswith('archivo/pdfs/'):
+        return False
+    archived = (root / destination).resolve()
+    if not archived.is_relative_to((root / 'archivo/pdfs').resolve()) or not archived.is_file():
+        return False
+    original = subprocess.check_output(['git', 'show', f'{base}:{source}'], cwd=root)
+    return hashlib.sha256(original).hexdigest() == entry.get('sha256') == digest(archived)
+
+
 def check_git_changes(root, base):
     changes = subprocess.check_output(['git', 'diff', '--name-status', '-z', '--no-renames', base, 'HEAD', '--', 'pdfs/'], cwd=root).decode('utf-8').split('\0')
     for status, path in zip(changes[0::2], changes[1::2]):
         if status in ('D', 'M', 'T') and NAME.fullmatch(Path(path).name):
+            if status == 'D' and verified_archive(root, base, path):
+                continue
             raise ValueError(f'{path}: versiones inmutables; conserva el PDF y añade otra fecha o _V2')
 
 
