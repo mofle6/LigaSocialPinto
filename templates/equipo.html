@@ -13,7 +13,7 @@
         <h1>{{ nombre }}</h1>
         <p class="team-division">⚽ {{ div.nombre }}</p>
         {% if row %}
-        <div class="team-form" aria-label="Últimos resultados">
+        <div class="team-form" aria-label="Últimas cinco jornadas">
           {% if row.ultimos %}{{ chips(row.ultimos) }}{% else %}<span class="muted">Sin resultados disputados</span>{% endif %}
         </div>
         {% endif %}
@@ -85,7 +85,7 @@
           <td class="l"><a href="{{ h.rival_id }}.html"><span class="name-full">{{ h.rival }}</span><span class="name-short">{{ h.rival_corto|default(h.rival) }}</span></a></td>
           <td class="muted">{{ 'L' if h.casa else 'V' }}</td>
           <td>{% if h.res %}{{ chips([h.res]) }} <strong class="team-score">{{ h.gf }}–{{ h.gc }}</strong>
-          {% else %}<span class="muted">{% if h.estado == "suspendido" %}Suspendido (S){% elif h.estado == "aplazado" %}Aplazado al {{ h.fecha_aplazada|fecha }} · {{ h.hora_aplazada }}{% else %}Pendiente de resultado{% endif %}</span>{% endif %}</td>
+          {% else %}{{ chips(['S' if h.estado == 'suspendido' else 'A' if h.estado == 'aplazado' else '?']) }} <span class="muted">{% if h.estado == "suspendido" %}Suspendido{% elif h.estado == "aplazado" %}Aplazado{% if h.fecha_aplazada %} al {{ h.fecha_aplazada|fecha }}{% endif %}{% if h.hora_aplazada %} · {{ h.hora_aplazada }}{% endif %}{% else %}Pendiente de resultado{% endif %}</span>{% endif %}</td>
         {% endif %}
       </tr>
       {% endfor %}
