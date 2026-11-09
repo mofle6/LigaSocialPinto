@@ -1,4 +1,4 @@
-{% macro chips(list) %}{% if list %}{% for c in list %}<span class="chip {{ c }}">{{ c }}</span>{% endfor %}{% else %}<span class="muted">—</span>{% endif %}{% endmacro %}
+{% macro chips(list) %}{% set labels = {'G': 'Victoria', 'P': 'Derrota', 'E': 'Empate', 'D': 'Descansa', 'A': 'Aplazado', 'S': 'Suspendido', '?': 'Pendiente de resultado'} %}{% if list %}{% for c in list %}<span class="chip {{ 'pending' if c == '?' else c }}" title="{{ labels.get(c, c) }}" aria-label="{{ labels.get(c, c) }}">{{ c }}</span>{% endfor %}{% else %}<span class="muted">—</span>{% endif %}{% endmacro %}
 
 {% macro tabla(rows) %}
 <div class="scroll"><table>

@@ -53,32 +53,31 @@ def upcoming_for_team(schedule, tid):
     return None
 
 def add_rest_form(jornadas):
-    """Rebuild last-five form with D for rests, newest first."""
+    """Show five recent round entries, including rests and unplayed fixtures."""
+    pending = {'suspendido': 'S', 'aplazado': 'A'}
     for n in sorted(jornadas):
-        j = jornadas[n]
-        for row in j["clasificacion"]:
-            tid = row["equipo_id"]
+        for row in jornadas[n]['clasificacion']:
+            tid = row['equipo_id']
             form = []
             for k in sorted((x for x in jornadas if x <= n), reverse=True):
                 prior = jornadas[k]
-                if prior.get("descansa_id") == tid:
-                    form.append("D")
-                    continue
-                for p in prior["partidos"]:
-                    if tid not in (p["local_id"], p["visitante_id"]):
-                        continue
-                    a, b = p["goles_local"], p["goles_visitante"]
-                    if a is None or b is None:
+                if prior.get('descansa_id') == tid:
+                    form.append('D')
+                else:
+                    for p in prior['partidos']:
+                        if tid not in (p['local_id'], p['visitante_id']):
+                            continue
+                        a, b = p['goles_local'], p['goles_visitante']
+                        if a is None or b is None:
+                            form.append(pending.get(p.get('estado'), '?'))
+                        else:
+                            gf, gc = (a, b) if tid == p['local_id'] else (b, a)
+                            form.append('G' if gf > gc else 'P' if gf < gc else 'E')
                         break
-                    gf, gc = (a,b) if tid == p["local_id"] else (b,a)
-                    form.append("G" if gf > gc else "P" if gf < gc else "E")
+                if len(form) == 5:
                     break
-                if len(form) >= 5:
-                    break
-            if form:
-                row["ultimos"] = form[:5]
-            elif not row.get("ultimos"):
-                row["ultimos"] = []
+            row['ultimos'] = form or row.get('ultimos', [])[:5]
+
 
 def render(tpl, path, **ctx):
     path.parent.mkdir(parents=True, exist_ok=True)
