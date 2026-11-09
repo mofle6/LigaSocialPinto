@@ -98,3 +98,9 @@ lectores anteriores; los JSON ya existentes se han conservado byte por byte.
 Las correcciones antiguas de `j3_updates.py` quedan como referencia y no se aplican
 a los documentos nuevos. La cantidad de equipos se configura en `COUNTS` del importador;
 una temporada con estructura distinta requiere actualizar esa configuración.
+
+## Incidencias de documentos conservados
+
+Los nombres de descanso cuyo guion queda en otra línea se reconstruyen solo si el nombre coincide exactamente con un equipo de la tabla. Un PDF que deja un partido pendiente sin especificar estado conserva el suspendido/aplazado ya confirmado; un resultado jugado válido sí lo resuelve. La conservación queda anotada en el JSON generado.
+
+El archivo de Sala erróneamente nombrado J6 contenía J5. Se ha conservado, con sus bytes originales, fuera de `pdfs/`, en `archivo/pdfs/`. Su traslado queda documentado en `data/pdf-archive.json`. La protección de versiones solo permite una retirada archivada si verifica las huellas del documento del commit anterior y su copia. Las demás modificaciones y borrados de versiones siguen bloqueados.

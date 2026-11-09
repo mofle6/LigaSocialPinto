@@ -54,11 +54,32 @@ def normalize_wrapped_results(lines):
     return normalized
 
 
+def normalize_wrapped_rest(lines):
+    """Join an explicit rest label and its separately extracted dash."""
+    known = {m['team'] for line in lines if (m := RE_ROW.match(line))}
+    normalized = []
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        if i + 1 < len(lines) and lines[i + 1] == '-':
+            if line.endswith(' Descansa') and line[:-len(' Descansa')] in known:
+                normalized.append(line[:-len(' Descansa')] + ' - Descansa')
+                i += 2
+                continue
+            if line.startswith('Descansa ') and line[len('Descansa '):] in known:
+                normalized.append('Descansa - ' + line[len('Descansa '):])
+                i += 2
+                continue
+        normalized.append(line)
+        i += 1
+    return normalized
+
+
 def parse(path):
     with pdfplumber.open(path) as pdf:
         lines = [l.strip() for pg in pdf.pages for l in (pg.extract_text() or "").splitlines() if l.strip()]
 
-    lines = normalize_wrapped_results(lines)
+    lines = normalize_wrapped_results(normalize_wrapped_rest(lines))
 
     out = {"competicion": None, "division": None, "nombre_division": None, "temporada": None, "jornada": None,
            "fecha": None, "partidos": [], "descansa": None, "clasificacion": []}

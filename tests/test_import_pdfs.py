@@ -36,6 +36,79 @@ class ImportTests(unittest.TestCase):
         with contextlib.redirect_stdout(io.StringIO()):
             imp.run(self.root, **kw)
 
+    def test_actual_oro_j2_wrapped_rest(self):
+        d = parse(ROOT / 'pdfs/2026-2027/CLASIFICACION_1DVF7_J02_20261109.pdf')
+        imp.check_results(d)
+        self.assertEqual(d['descansa'], 'EL INTER NOVELLA & GARCIA OLD ROKERS')
+        self.assertEqual(len(d['partidos']), 6)
+
+    def test_unspecified_pending_keeps_confirmed_state(self):
+        for state in ('suspendido', 'aplazado'):
+            old = deepcopy(self.fixture)
+            old['partidos'][0].update(estado=state, goles_local=None, goles_visitante=None)
+            new = deepcopy(old)
+            new['partidos'][0]['estado'] = 'sin_resultado'
+            notes = imp.preserve_pending_states(old, new)
+            self.assertEqual(new['partidos'][0]['estado'], state)
+            self.assertEqual(len(notes), 1)
+            self.assertEqual(new['observaciones_importacion'], notes)
+
+    def test_scored_and_explicit_pending_states_are_not_overridden(self):
+        old = deepcopy(self.fixture)
+        old['partidos'][0].update(estado='suspendido', goles_local=None, goles_visitante=None)
+        played = deepcopy(self.fixture)
+        self.assertEqual(imp.preserve_pending_states(old, played), [])
+        self.assertEqual(played['partidos'][0]['estado'], 'jugado')
+        explicit = deepcopy(old)
+        explicit['partidos'][0]['estado'] = 'aplazado'
+        imp.preserve_pending_states(old, explicit)
+        self.assertEqual(explicit['partidos'][0]['estado'], 'aplazado')
+
+    def test_archive_move_requires_same_original_bytes(self):
+        import hashlib
+        source = 'pdfs/2026-2027/CLASIFICACION_FS_J06_20261108.pdf'
+        destination = 'archivo/pdfs/2026-2027/copia.pdf'
+        original = b'original-pdf'
+        archived = self.root / destination
+        archived.parent.mkdir(parents=True)
+        archived.write_bytes(original)
+        manifest = {source: {'destino': destination, 'sha256': hashlib.sha256(original).hexdigest()}}
+        (self.root / 'data/pdf-archive.json').write_text(json.dumps(manifest), encoding='utf-8')
+        changes = f'D\0{source}\0'.encode()
+        with patch.object(imp.subprocess, 'check_output', side_effect=[changes, original]):
+            imp.check_git_changes(self.root, 'base')
+        archived.write_bytes(b'changed')
+        with patch.object(imp.subprocess, 'check_output', side_effect=[changes, original]):
+            with self.assertRaisesRegex(ValueError, 'inmutables'):
+                imp.check_git_changes(self.root, 'base')
+
+    def test_actual_archived_copy_is_j5_and_integrity_matches(self):
+        manifest = imp.read(ROOT / 'data/pdf-archive.json')
+        source, entry = next(iter(manifest.items()))
+        self.assertFalse((ROOT / source).exists())
+        archived = ROOT / entry['destino']
+        self.assertEqual(imp.digest(archived), entry['sha256'])
+        self.assertEqual(imp.parse_fs(archived)['jornada'], 5)
+
+    def test_full_uploaded_season_preserves_later_plata_tables(self):
+        shutil.copytree(ROOT / 'pdfs', self.root / 'pdfs', dirs_exist_ok=True)
+        shutil.copytree(ROOT / 'archivo', self.root / 'archivo', dirs_exist_ok=True)
+        directory = self.root / 'data/2026-2027/2dvf7'
+        before = {n: imp.table_signature(imp.read(directory / f'j{n:02d}.json')) for n in (3, 4)}
+        self.run_import()
+        j2 = imp.read(directory / 'j02.json')
+        game = next(p for p in j2['partidos'] if p['local_id'] == 'galacticos-del-local')
+        self.assertEqual((game['goles_local'], game['goles_visitante'], game['estado']), (3, 2, 'jugado'))
+        for n in (3, 4):
+            self.assertEqual(before[n], imp.table_signature(imp.read(directory / f'j{n:02d}.json')))
+        oro = imp.read(self.root / 'data/2026-2027/1dvf7/j03.json')
+        game = next(p for p in oro['partidos'] if p['local_id'] == 'team-x-rest-kuntur-wasi')
+        self.assertEqual(game['estado'], 'suspendido')
+        self.assertFalse((self.root / 'data/2026-2027/fs/j06.json').exists())
+        before_repeat = self.snapshot()
+        self.run_import()
+        self.assertEqual(before_repeat, self.snapshot())
+
     def test_name_and_calendar_validation(self):
         for name in ('Jornada5_fs.pdf', 'HORARIOS_FS_J00_20261108.pdf', 'HORARIOS_FS_J06_20260230.pdf'):
             with self.assertRaises(ValueError):
