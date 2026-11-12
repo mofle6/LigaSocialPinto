@@ -104,7 +104,16 @@ class ImportTests(unittest.TestCase):
         oro = imp.read(self.root / 'data/2026-2027/1dvf7/j03.json')
         game = next(p for p in oro['partidos'] if p['local_id'] == 'team-x-rest-kuntur-wasi')
         self.assertEqual(game['estado'], 'suspendido')
-        self.assertFalse((self.root / 'data/2026-2027/fs/j06.json').exists())
+        # Archived mislabeled PDFs must not create rounds, but real new rounds are valid.
+        for path in (self.root / 'data/2026-2027/fs').glob('j*.json'):
+            result = imp.read(path)
+            if 'pdf_import' not in result:
+                continue
+            source = self.root / result['origen']
+            self.assertTrue(source.is_relative_to(self.root / 'pdfs'))
+            official = imp.parse_fs(source)
+            self.assertEqual(official['jornada'], result['jornada'])
+            self.assertEqual(imp.digest(source), result['pdf_import']['sha256'])
         before_repeat = self.snapshot()
         self.run_import()
         self.assertEqual(before_repeat, self.snapshot())
