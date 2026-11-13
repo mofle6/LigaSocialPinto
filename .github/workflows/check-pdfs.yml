@@ -25,7 +25,9 @@ jobs:
           args=()
           if [[ -n "$BASE" ]]; then args=(--base-ref "$BASE"); fi
           python scripts/import_pdfs.py "${args[@]}" | tee pdf-import-report.txt
-      - run: |
+      - env:
+          CUP_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
           python scripts/import_cup_pdfs.py
           python scripts/build_site.py
           python scripts/check_unified_site.py

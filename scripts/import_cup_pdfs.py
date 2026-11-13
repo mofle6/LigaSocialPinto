@@ -4,14 +4,26 @@ import copy
 from datetime import datetime
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
+import subprocess
 import unicodedata
 import pdfplumber
 
 ROOT = Path(__file__).resolve().parent.parent
 ROUNDS = {'RONDAPREVIA': 0, 'DIECISEISAVOS': 1, 'OCTAVOS': 2, 'CUARTOS': 3, 'SEMIFINALES': 4, 'FINAL': 5}
 NAME = re.compile(r'HORARIOS_COPAF7_('+'|'.join(ROUNDS)+r')_(\d{8})(?:_v(\d{2}))?\.pdf$')
+
+def guard_versions(base_ref):
+    """Keep imported revisions immutable even across independent CI builds."""
+    if not base_ref or set(base_ref)=={'0'}:return
+    if not re.fullmatch(r'[0-9a-fA-F]{40}',base_ref):raise ValueError('Referencia de comparación inválida')
+    changes=subprocess.check_output(['git','diff','--name-status','-z','--no-renames',base_ref,'HEAD','--','pdfs-copa/'],cwd=ROOT).decode('utf-8').split('\0')
+    for i in range(0,len(changes)-1,2):
+        status,path=changes[i:i+2]
+        if status in ('D','M','T') and NAME.fullmatch(Path(path).name):
+            raise ValueError(f'{path}: conserva la versión anterior y sube la corrección con fecha o revisión nueva')
 
 def normalize(s):
     return ' '.join(''.join(c for c in unicodedata.normalize('NFD',s.upper()) if not unicodedata.combining(c)).split())
@@ -86,7 +98,9 @@ def build(folder, base):
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--check',action='store_true')
+    parser.add_argument('--base-ref',default=os.environ.get('CUP_BASE'))
     opts=parser.parse_args()
+    guard_versions(opts.base_ref)
     staged=[]
     for target in sorted((ROOT/'data/copa').glob('*/competicion.json')):
         base=json.loads(target.read_text(encoding='utf-8'))

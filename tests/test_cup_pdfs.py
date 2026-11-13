@@ -3,9 +3,11 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
 from import_cup_pdfs import ROOT, build, parse_pdf
+from import_cup_pdfs import guard_versions
 
 class HorariosTests(unittest.TestCase):
     def setUp(self):
@@ -62,5 +64,13 @@ class HorariosTests(unittest.TestCase):
         current['rondas'][0]['fuente_horarios']=self.pdf.name
         current['rondas'][0]['horarios_sha256']='old-hash'
         with self.assertRaisesRegex(ValueError,'revisión nueva'):build(self.folder,current)
+
+    def test_git_guard_protects_pdf_versions_between_builds(self):
+        for status in ('D','M','T'):
+            payload=(status+'\0pdfs-copa/2026-2027/horarios/'+self.pdf.name+'\0').encode()
+            with patch('import_cup_pdfs.subprocess.check_output',return_value=payload):
+                with self.assertRaisesRegex(ValueError,'conserva la versión anterior'):guard_versions('a'*40)
+        with patch('import_cup_pdfs.subprocess.check_output',return_value=b'') as git:
+            guard_versions('a'*40);git.assert_called_once()
 
 if __name__=='__main__':unittest.main()
