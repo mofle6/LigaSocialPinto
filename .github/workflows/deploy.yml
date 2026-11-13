@@ -7,6 +7,8 @@ on:
       - main
     paths:
       - "pdfs/**"
+      - "pdfs-copa/**"
+      - "assets/**"
       - "data/**"
       - "scripts/**"
       - "templates/**"
@@ -67,7 +69,11 @@ jobs:
 
 
       - name: Generar web
-        run: python scripts/build_site.py
+        run: |
+          python scripts/import_cup_pdfs.py
+          python scripts/build_site.py
+          python scripts/check_unified_site.py
+          node tests/test_cup_engine.cjs
 
       - name: Comprobar archivos generados
         run: |

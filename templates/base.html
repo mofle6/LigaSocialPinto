@@ -125,9 +125,10 @@ main:has(.team-page){max-width:1120px}
 @media(max-width:600px){.team-hero{padding:16px;gap:18px}.team-crest{width:85px;height:85px}.team-identity{gap:12px}.team-identity h1{font-size:1.12rem}.team-division{font-size:.7rem}.team-fixtures{grid-template-columns:1fr}.team-panel{padding:15px 11px}.team-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px 10px}.team-stat strong{font-size:1.1rem}.team-history table th,.team-history table td{padding:9px 6px}.team-history table{font-size:.77rem}}
 
 </style>
+<link rel="stylesheet" href="{{ root }}assets/identidad.css">
 </head>
 <body>
-<header><a href="{{ root }}index.html">⚽ Liga Social Pinto</a></header>
+<header class="unified-header"><a class="unified-brand" href="{{ root }}index.html">Liga Social Pinto</a></header>
 <main>{% block content %}{% endblock %}</main>
 <footer class="site-footer"><p>Web independiente, sin ánimo de lucro y de carácter informativo. No pertenece al <a href="https://www.ayto-pinto.es/" target="_blank" rel="noopener noreferrer">Ayuntamiento de Pinto</a> ni a la <a href="https://www.rffm.es/" target="_blank" rel="noopener noreferrer">Real Federación de Fútbol de Madrid (RFFM)</a>. No sustituye la información oficial. Los datos se actualizarán los lunes.</p></footer>
 </body>
