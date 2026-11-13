@@ -1,0 +1,620 @@
+{
+  "competicion": "Copa Aficionados F7",
+  "temporada": "2026-2027",
+  "fuente": "CALENDARIO_COPAF7_RONDAPREVIA_20261113.pdf",
+  "equipos": [
+    {
+      "nombre": "ADYCTOS FC",
+      "codigo_oficial": "1040",
+      "division": "CUARTA AFICIONADOS F7",
+      "id": "t-1040"
+    },
+    {
+      "nombre": "AGRUPA2",
+      "codigo_oficial": "1115",
+      "division": "CUARTA AFICIONADOS F7",
+      "id": "t-1115"
+    },
+    {
+      "nombre": "AKAGAMI FC",
+      "codigo_oficial": "1041",
+      "division": "CUARTA AFICIONADOS F7",
+      "id": "t-1041"
+    },
+    {
+      "nombre": "AMIAIRE FC",
+      "codigo_oficial": "1027",
+      "division": "TERCERA AFICIONADOS F7",
+      "id": "t-1027"
+    },
+    {
+      "nombre": "ASTON BIRRA",
+      "codigo_oficial": "1014",
+      "division": "PRIMERA AFICIONADOS F7",
+      "id": "t-1014"
+    },
+    {
+      "nombre": "BAR LOS GEMELOS",
+      "codigo_oficial": "1047",
+      "division": "TERCERA AFICIONADOS F7",
+      "id": "t-1047"
+    },
+    {
+      "nombre": "BAYERN DE LOS CAIDOS FC",
+      "codigo_oficial": "1052",
+      "division": "CUARTA AFICIONADOS F7",
+      "id": "t-1052"
+    },
+    {
+      "nombre": "BEBESIKTAS",
+      "codigo_oficial": "1114",
+      "division": "CUARTA AFICIONADOS F7",
+      "id": "t-1114"
+    },
+    {
+      "nombre": "BORUSSIA DONUTS",
+      "codigo_oficial": "1009",
+      "division": "PRIMERA AFICIONADOS F7",
+      "id": "t-1009"
+    },
+    {
+      "nombre": "CC JUNIORS",
+      "codigo_oficial": "1015",
+      "division": "SEGUNDA AFICIONADOS F7",
+      "id": "t-1015"
+    },
+    {
+      "nombre": "CELTIC DE PINTO",
+      "codigo_oficial": "1028",
+      "division": "CUARTA AFICIONADOS F7",
+      "id": "t-1028"
+    },
+    {
+      "nombre": "CHELOFE",
+      "codigo_oficial": "1038",
+      "division": "TERCERA AFICIONADOS F7",
+      "id": "t-1038"
+    },
+    {
+      "nombre": "CRISTAL BALAS",
+      "codigo_oficial": "1046",
+      "division": "TERCERA AFICIONADOS F7",
+      "id": "t-1046"
+    },
+    {
+      "nombre": "DRAGONES FC",
+      "codigo_oficial": "1002",
+      "division": "SEGUNDA AFICIONADOS F7",
+      "id": "t-1002"
+    },
+    {
+      "nombre": "EL INTER NOVELLA & GARCIA OLD ROKERS",
+      "codigo_oficial": "1011",
+      "division": "PRIMERA AFICIONADOS F7",
+      "id": "t-1011"
+    },
+    {
+      "nombre": "EL PRADO FC",
+      "codigo_oficial": "1003",
+      "division": "TERCERA AFICIONADOS F7",
+      "id": "t-1003"
+    },
+    {
+      "nombre": "ESFINGER DE MILAN",
+      "codigo_oficial": "1051",
+      "division": "CUARTA AFICIONADOS F7",
+      "id": "t-1051"
+    },
+    {
+      "nombre": "FAVELA SEVEN",
+      "codigo_oficial": "1036",
+      "division": "SEGUNDA AFICIONADOS F7",
+      "id": "t-1036"
+    },
+    {
+      "nombre": "FC VIRGEN DE LA ASUNCION",
+      "codigo_oficial": "1042",
+      "division": "CUARTA AFICIONADOS F7",
+      "id": "t-1042"
+    },
+    {
+      "nombre": "FREEFURGO FC",
+      "codigo_oficial": "1030",
+      "division": "SEGUNDA AFICIONADOS F7",
+      "id": "t-1030"
+    },
+    {
+      "nombre": "FUSTER FC",
+      "codigo_oficial": "1043",
+      "division": "TERCERA AFICIONADOS F7",
+      "id": "t-1043"
+    },
+    {
+      "nombre": "GALACTICOS DEL LOCAL",
+      "codigo_oficial": "1018",
+      "division": "SEGUNDA AFICIONADOS F7",
+      "id": "t-1018"
+    },
+    {
+      "nombre": "GEERTAFE FC",
+      "codigo_oficial": "1031",
+      "division": "TERCERA AFICIONADOS F7",
+      "id": "t-1031"
+    },
+    {
+      "nombre": "GERMANS F.C.",
+      "codigo_oficial": "1113",
+      "division": "TERCERA AFICIONADOS F7",
+      "id": "t-1113"
+    },
+    {
+      "nombre": "HATTRICKI F. C.",
+      "codigo_oficial": "1016",
+      "division": "SEGUNDA AFICIONADOS F7",
+      "id": "t-1016"
+    },
+    {
+      "nombre": "KAMIKAZES-PANPINTAO",
+      "codigo_oficial": "1004",
+      "division": "SEGUNDA AFICIONADOS F7",
+      "id": "t-1004"
+    },
+    {
+      "nombre": "LA COMPAÑIA DEL BALON",
+      "codigo_oficial": "1001",
+      "division": "PRIMERA AFICIONADOS F7",
+      "id": "t-1001"
+    },
+    {
+      "nombre": "LA ESPERANZA ESTRELLA COJA CF",
+      "codigo_oficial": "1032",
+      "division": "TERCERA AFICIONADOS F7",
+      "id": "t-1032"
+    },
+    {
+      "nombre": "LA OSTRA",
+      "codigo_oficial": "1005",
+      "division": "PRIMERA AFICIONADOS F7",
+      "id": "t-1005"
+    },
+    {
+      "nombre": "LOS SOLFABIRRAS",
+      "codigo_oficial": "1019",
+      "division": "SEGUNDA AFICIONADOS F7",
+      "id": "t-1019"
+    },
+    {
+      "nombre": "MACABBI DE LEVANTAR",
+      "codigo_oficial": "1006",
+      "division": "PRIMERA AFICIONADOS F7",
+      "id": "t-1006"
+    },
+    {
+      "nombre": "MACAQUINHIOS FC",
+      "codigo_oficial": "1020",
+      "division": "SEGUNDA AFICIONADOS F7",
+      "id": "t-1020"
+    },
+    {
+      "nombre": "MACHOTES DE ANTONIO",
+      "codigo_oficial": "1007",
+      "division": "PRIMERA AFICIONADOS F7",
+      "id": "t-1007"
+    },
+    {
+      "nombre": "MALUEMDO",
+      "codigo_oficial": "1033",
+      "division": "SEGUNDA AFICIONADOS F7",
+      "id": "t-1033"
+    },
+    {
+      "nombre": "NEO BARETA",
+      "codigo_oficial": "1044",
+      "division": "CUARTA AFICIONADOS F7",
+      "id": "t-1044"
+    },
+    {
+      "nombre": "NORTE DE PATO",
+      "codigo_oficial": "1010",
+      "division": "PRIMERA AFICIONADOS F7",
+      "id": "t-1010"
+    },
+    {
+      "nombre": "NOTTINGHAM MIEDO",
+      "codigo_oficial": "1048",
+      "division": "CUARTA AFICIONADOS F7",
+      "id": "t-1048"
+    },
+    {
+      "nombre": "P.S. VETERANOS/DELAIRE 2000, SL",
+      "codigo_oficial": "1021",
+      "division": "SEGUNDA AFICIONADOS F7",
+      "id": "t-1021"
+    },
+    {
+      "nombre": "PADRENETA FC",
+      "codigo_oficial": "1049",
+      "division": "CUARTA AFICIONADOS F7",
+      "id": "t-1049"
+    },
+    {
+      "nombre": "PAISES PLAJOS",
+      "codigo_oficial": "1050",
+      "division": "TERCERA AFICIONADOS F7",
+      "id": "t-1050"
+    },
+    {
+      "nombre": "RAYO DE PINTO LEYENDS",
+      "codigo_oficial": "1035",
+      "division": "TERCERA AFICIONADOS F7",
+      "id": "t-1035"
+    },
+    {
+      "nombre": "RAYO VATICANO FC",
+      "codigo_oficial": "1023",
+      "division": "PRIMERA AFICIONADOS F7",
+      "id": "t-1023"
+    },
+    {
+      "nombre": "REFORMAS ROEX",
+      "codigo_oficial": "1008",
+      "division": "SEGUNDA AFICIONADOS F7",
+      "id": "t-1008"
+    },
+    {
+      "nombre": "TARAMBAINAS F7",
+      "codigo_oficial": "1024",
+      "division": "TERCERA AFICIONADOS F7",
+      "id": "t-1024"
+    },
+    {
+      "nombre": "TEAM X REST KUNTUR WASI",
+      "codigo_oficial": "1012",
+      "division": "PRIMERA AFICIONADOS F7",
+      "id": "t-1012"
+    },
+    {
+      "nombre": "THE CLOVER UFOS BURGUER",
+      "codigo_oficial": "1037",
+      "division": "SEGUNDA AFICIONADOS F7",
+      "id": "t-1037"
+    },
+    {
+      "nombre": "UD SARAGOZA",
+      "codigo_oficial": "1025",
+      "division": "PRIMERA AFICIONADOS F7",
+      "id": "t-1025"
+    },
+    {
+      "nombre": "UNITED FC",
+      "codigo_oficial": "1045",
+      "division": "CUARTA AFICIONADOS F7",
+      "id": "t-1045"
+    },
+    {
+      "nombre": "WEST HAMMOND",
+      "codigo_oficial": "1026",
+      "division": "PRIMERA AFICIONADOS F7",
+      "id": "t-1026"
+    },
+    {
+      "nombre": "YAYO VAYACAÑO CF",
+      "codigo_oficial": "1013",
+      "division": "PRIMERA AFICIONADOS F7",
+      "id": "t-1013"
+    },
+    {
+      "nombre": "ZORROS DE CHECOSLOVAQUIA",
+      "codigo_oficial": "1039",
+      "division": "TERCERA AFICIONADOS F7",
+      "id": "t-1039"
+    }
+  ],
+  "rondas": [
+    {
+      "id": "previa",
+      "nombre": "Ronda previa",
+      "fecha": "2026-11-21",
+      "partidos": [
+        {
+          "id": "previa-01",
+          "local": "GEERTAFE FC",
+          "visitante": "BEBESIKTAS",
+          "goles_local": null,
+          "goles_visitante": null,
+          "estado": "programado",
+          "hora": "15:00",
+          "campo": "CAMPO PATRICIA CHAMORRO F7 C1 - Hierba Artificial",
+          "siguiente_partido": null,
+          "fecha": "2026-11-21"
+        },
+        {
+          "id": "previa-07",
+          "local": "AMIAIRE FC",
+          "visitante": "P.S. VETERANOS/DELAIRE 2000, SL",
+          "goles_local": null,
+          "goles_visitante": null,
+          "estado": "programado",
+          "hora": "15:30",
+          "campo": "CAMPO PATRICIA CHAMORRO F7 C2 - Hierba Artificial",
+          "siguiente_partido": null,
+          "fecha": "2026-11-21"
+        },
+        {
+          "id": "previa-02",
+          "local": "CC JUNIORS",
+          "visitante": "ADYCTOS FC",
+          "goles_local": null,
+          "goles_visitante": null,
+          "estado": "programado",
+          "hora": "16:00",
+          "campo": "CAMPO PATRICIA CHAMORRO F7 C1 - Hierba Artificial",
+          "siguiente_partido": null,
+          "fecha": "2026-11-21"
+        },
+        {
+          "id": "previa-08",
+          "local": "GALACTICOS DEL LOCAL",
+          "visitante": "LA COMPAÑIA DEL BALON",
+          "goles_local": null,
+          "goles_visitante": null,
+          "estado": "programado",
+          "hora": "16:30",
+          "campo": "CAMPO PATRICIA CHAMORRO F7 C2 - Hierba Artificial",
+          "siguiente_partido": null,
+          "fecha": "2026-11-21"
+        },
+        {
+          "id": "previa-03",
+          "local": "FC VIRGEN DE LA ASUNCION",
+          "visitante": "REFORMAS ROEX",
+          "goles_local": null,
+          "goles_visitante": null,
+          "estado": "programado",
+          "hora": "17:00",
+          "campo": "CAMPO PATRICIA CHAMORRO F7 C1 - Hierba Artificial",
+          "siguiente_partido": null,
+          "fecha": "2026-11-21"
+        },
+        {
+          "id": "previa-19",
+          "local": "WEST HAMMOND",
+          "visitante": "FREEFURGO FC",
+          "goles_local": null,
+          "goles_visitante": null,
+          "estado": "programado",
+          "hora": "17:30",
+          "campo": "CAMPO PATRICIA CHAMORRO F7 C2 - Hierba Artificial",
+          "siguiente_partido": null,
+          "fecha": "2026-11-21"
+        },
+        {
+          "id": "previa-04",
+          "local": "LOS SOLFABIRRAS",
+          "visitante": "MACAQUINHIOS FC",
+          "goles_local": null,
+          "goles_visitante": null,
+          "estado": "programado",
+          "hora": "18:00",
+          "campo": "CAMPO PATRICIA CHAMORRO F7 C1 - Hierba Artificial",
+          "siguiente_partido": null,
+          "fecha": "2026-11-21"
+        },
+        {
+          "id": "previa-13",
+          "local": "EL INTER NOVELLA & GARCIA OLD ROKERS",
+          "visitante": "UD SARAGOZA",
+          "goles_local": null,
+          "goles_visitante": null,
+          "estado": "programado",
+          "hora": "18:30",
+          "campo": "CAMPO PATRICIA CHAMORRO F7 C2 - Hierba Artificial",
+          "siguiente_partido": null,
+          "fecha": "2026-11-21"
+        },
+        {
+          "id": "previa-16",
+          "local": "ZORROS DE CHECOSLOVAQUIA",
+          "visitante": "RAYO VATICANO FC",
+          "goles_local": null,
+          "goles_visitante": null,
+          "estado": "programado",
+          "hora": "20:00",
+          "campo": "ESTADIO RAFAEL MENDOZA F7 C2 - Hierba Artificial",
+          "siguiente_partido": null,
+          "fecha": "2026-11-21"
+        },
+        {
+          "id": "previa-18",
+          "local": "YAYO VAYACAÑO CF",
+          "visitante": "LA ESPERANZA ESTRELLA COJA CF",
+          "goles_local": null,
+          "goles_visitante": null,
+          "estado": "programado",
+          "hora": "20:00",
+          "campo": "ESTADIO RAFAEL MENDOZA F7 C1 - Hierba Artificial",
+          "siguiente_partido": null,
+          "fecha": "2026-11-21"
+        },
+        {
+          "id": "previa-17",
+          "local": "PADRENETA FC",
+          "visitante": "GERMANS F.C.",
+          "goles_local": null,
+          "goles_visitante": null,
+          "estado": "programado",
+          "hora": "21:00",
+          "campo": "ESTADIO RAFAEL MENDOZA F7 C1 - Hierba Artificial",
+          "siguiente_partido": null,
+          "fecha": "2026-11-21"
+        },
+        {
+          "id": "previa-09",
+          "local": "BAR LOS GEMELOS",
+          "visitante": "PAISES PLAJOS",
+          "goles_local": null,
+          "goles_visitante": null,
+          "estado": "programado",
+          "hora": "09:00",
+          "campo": "CAMPO PATRICIA CHAMORRO F7 C1 - Hierba Artificial",
+          "siguiente_partido": null,
+          "fecha": "2026-11-22"
+        },
+        {
+          "id": "previa-10",
+          "local": "UNITED FC",
+          "visitante": "TARAMBAINAS F7",
+          "goles_local": null,
+          "goles_visitante": null,
+          "estado": "programado",
+          "hora": "09:00",
+          "campo": "CAMPO PATRICIA CHAMORRO F7 C2 - Hierba Artificial",
+          "siguiente_partido": null,
+          "fecha": "2026-11-22"
+        },
+        {
+          "id": "previa-11",
+          "local": "KAMIKAZES-PANPINTAO",
+          "visitante": "NOTTINGHAM MIEDO",
+          "goles_local": null,
+          "goles_visitante": null,
+          "estado": "programado",
+          "hora": "10:00",
+          "campo": "CAMPO PATRICIA CHAMORRO F7 C1 - Hierba Artificial",
+          "siguiente_partido": null,
+          "fecha": "2026-11-22"
+        },
+        {
+          "id": "previa-12",
+          "local": "CHELOFE",
+          "visitante": "LA OSTRA",
+          "goles_local": null,
+          "goles_visitante": null,
+          "estado": "programado",
+          "hora": "10:00",
+          "campo": "CAMPO PATRICIA CHAMORRO F7 C2 - Hierba Artificial",
+          "siguiente_partido": null,
+          "fecha": "2026-11-22"
+        },
+        {
+          "id": "previa-05",
+          "local": "DRAGONES FC",
+          "visitante": "TEAM X REST KUNTUR WASI",
+          "goles_local": null,
+          "goles_visitante": null,
+          "estado": "programado",
+          "hora": "11:00",
+          "campo": "CAMPO PATRICIA CHAMORRO F7 C1 - Hierba Artificial",
+          "siguiente_partido": null,
+          "fecha": "2026-11-22"
+        },
+        {
+          "id": "previa-06",
+          "local": "BAYERN DE LOS CAIDOS FC",
+          "visitante": "EL PRADO FC",
+          "goles_local": null,
+          "goles_visitante": null,
+          "estado": "programado",
+          "hora": "11:00",
+          "campo": "CAMPO PATRICIA CHAMORRO F7 C2 - Hierba Artificial",
+          "siguiente_partido": null,
+          "fecha": "2026-11-22"
+        },
+        {
+          "id": "previa-14",
+          "local": "AKAGAMI FC",
+          "visitante": "THE CLOVER UFOS BURGUER",
+          "goles_local": null,
+          "goles_visitante": null,
+          "estado": "programado",
+          "hora": "12:00",
+          "campo": "CAMPO PATRICIA CHAMORRO F7 C1 - Hierba Artificial",
+          "siguiente_partido": null,
+          "fecha": "2026-11-22"
+        },
+        {
+          "id": "previa-15",
+          "local": "ASTON BIRRA",
+          "visitante": "NORTE DE PATO",
+          "goles_local": null,
+          "goles_visitante": null,
+          "estado": "programado",
+          "hora": "12:00",
+          "campo": "CAMPO PATRICIA CHAMORRO F7 C2 - Hierba Artificial",
+          "siguiente_partido": null,
+          "fecha": "2026-11-22"
+        },
+        {
+          "id": "previa-20",
+          "local": null,
+          "visitante": null,
+          "goles_local": null,
+          "goles_visitante": null,
+          "estado": "sin_asignar",
+          "hora": null,
+          "campo": null,
+          "siguiente_partido": null
+        }
+      ],
+      "fuente_horarios": "HORARIOS_COPAF7_RONDAPREVIA_20261113.pdf",
+      "horarios_sha256": "79b928f13cd9b89ff6d927a5234c99267fc6b5a77c9a0e80bcbcfa84e475f365"
+    },
+    {
+      "id": "dieciseisavos",
+      "nombre": "Dieciseisavos",
+      "fecha": "2027-02-06",
+      "numero_partidos": 16,
+      "emparejamientos_confirmados": false
+    },
+    {
+      "id": "octavos",
+      "nombre": "Octavos",
+      "fecha": "2027-05-15",
+      "numero_partidos": 8,
+      "emparejamientos_confirmados": false
+    },
+    {
+      "id": "cuartos",
+      "nombre": "Cuartos",
+      "fecha": "2027-05-16",
+      "numero_partidos": 4,
+      "emparejamientos_confirmados": false
+    },
+    {
+      "id": "semifinales",
+      "nombre": "Semifinales",
+      "fecha": "2027-06-19",
+      "numero_partidos": 2,
+      "emparejamientos_confirmados": false
+    },
+    {
+      "id": "final",
+      "nombre": "Final",
+      "fecha": "2027-06-20",
+      "numero_partidos": 1,
+      "emparejamientos_confirmados": false
+    }
+  ],
+  "equipos_sin_cruce_asignado_en_pdf": [
+    "AGRUPA2",
+    "BORUSSIA DONUTS",
+    "CELTIC DE PINTO",
+    "CRISTAL BALAS",
+    "ESFINGER DE MILAN",
+    "FAVELA SEVEN",
+    "FUSTER FC",
+    "HATTRICKI F. C.",
+    "MACABBI DE LEVANTAR",
+    "MACHOTES DE ANTONIO",
+    "MALUEMDO",
+    "NEO BARETA",
+    "RAYO DE PINTO LEYENDS"
+  ],
+  "advertencias": [
+    "La fecha corresponde a la ronda; el PDF no contiene hora o campo de los partidos.",
+    "Los 13 equipos sin cruce no se consideran clasificados automáticamente sin confirmación oficial.",
+    "No hay conexiones oficiales entre la previa y los dieciseisavos.",
+    "Existe un partido de previa con ambos equipos sin asignar."
+  ],
+  "sourceCommit": "7b4949294fa46131a25eea6c56c22f19fa59d487"
+}

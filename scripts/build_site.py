@@ -121,7 +121,7 @@ def main():
     # Copy static images into the published GitHub Pages artifact.
     assets = ROOT / "assets"
     if assets.exists():
-        shutil.copytree(assets, OUT / "assets", ignore=shutil.ignore_patterns(".gitkeep"))
+        shutil.copytree(assets, OUT / "assets", ignore=shutil.ignore_patterns(".gitkeep", "copa-f7"))
 
     index = []
     for temp in sorted(seasons, reverse=True):
@@ -153,6 +153,8 @@ def main():
                 render("equipo.html", base / "equipos" / f"{tid}.html", temporada=temp, div=div, nombre=name,
                        row=rows.get(tid), hist=team_history(jornadas, tid), extra=extra, upcoming=upcoming_for_team(upcoming, tid))
     render("index.html", OUT / "index.html", items=index)
+    from build_unified import integrate
+    integrate(ROOT, OUT, seasons, index, team_history, upcoming_for_team, prepare_schedule, aliases, display_names)
     (OUT / ".nojekyll").write_text("")
     print(f"Web generada: {sum(1 for _ in OUT.rglob('*.html'))} páginas")
 
