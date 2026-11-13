@@ -8,7 +8,7 @@ ROUND = re.compile(r"Jornada\s+(\d+)\s+\((\d{2}-\d{2}-\d{4})\)")
 MATCH = re.compile(r"^(.+?)\s+(\d+)\s*-\s*(\d+)\s+(.+)$")
 PENDING = re.compile(r"^(.+?)\s+-\s+(.+)$")
 SUSPENDED = re.compile(r"^(.+?)\s+(?:S\s*-|-\s*S)\s+(.+)$")
-ROW = re.compile(r"^(\d+)\s+(.+?)\s+\d+,\d{4}\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+((?:[GEP]\s*)+)\s+(\d+)$")
+ROW = re.compile(r"^(\d+)\s+(.+?)\s+\d+,\d{4}\s+(-?\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+((?:[GEP]\s*)+)\s+(\d+)$")
 
 def parse(path):
     with pdfplumber.open(path) as pdf:
