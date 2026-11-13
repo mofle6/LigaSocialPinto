@@ -14,3 +14,13 @@ class SeparateScoreTests(unittest.TestCase):
 
     def test_unknown_pair_rejected(self):
         with self.assertRaises(ValueError):normalize_wrapped_results(['UNKNOWN LA OSTRA','4 - 3','NEXT MATCH','1 LA OSTRA 1 3 0 1 2 6 8 E P P 0'])
+
+    def test_negative_points_from_official_sanction(self):
+        import import_pdfs as imp
+        pdf=Path(__file__).resolve().parents[1]/'pdfs/2026-2027/CLASIFICACION_1DVF7_J04_20261114.pdf'
+        data=imp.parse_f7(pdf)
+        imp.check_results(data)
+        team=next(r for r in data['clasificacion'] if r['equipo']=='BORUSSIA DONUTS')
+        self.assertEqual((team['pts'],team['sancion']),(-3,3))
+        team['gf']=-1
+        with self.assertRaises(ValueError):imp.check_results(data)

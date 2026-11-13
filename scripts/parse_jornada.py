@@ -14,7 +14,7 @@ RE_REST = re.compile(r"^(?:Descansa\s+-\s+(?P<right>.+)|(?P<left>.+?)\s+-\s+Desc
 RE_SUSPENDED = re.compile(r"^(?P<home>.+?)\s+(?:S\s*-|-\s*S)\s+(?P<away>.+)$")
 RE_PENDING = re.compile(r"^(?P<home>.+?)\s+-\s+(?P<away>.+)$")
 RE_ROW = re.compile(
-    r"^(?P<pos>\d+)\s+(?P<team>.+?)\s+(?P<pts>\d+)\s+(?P<j>\d+)\s+(?P<g>\d+)\s+(?P<e>\d+)\s+"
+    r"^(?P<pos>\d+)\s+(?P<team>.+?)\s+(?P<pts>-?\d+)\s+(?P<j>\d+)\s+(?P<g>\d+)\s+(?P<e>\d+)\s+"
     r"(?P<p>\d+)\s+(?P<gf>\d+)\s+(?P<gc>\d+)\s*(?P<form>(?:[GEP]\s?)*)\s+(?P<sanc>\d+)$"
 )
 
