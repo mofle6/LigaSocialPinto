@@ -3,5 +3,9 @@
     "destino": "archivo/pdfs/2026-2027/CLASIFICACION_FS_J05_20261108_copia-etiquetada-J06.pdf",
     "sha256": "41b270dba829646667137e814b9d6b4611970e5b056f8bf0c8da58fce0d08e4e",
     "motivo": "El nombre decía J6, pero encabezado y datos corresponden a J5. Copia conservada fuera de la importación activa; existe PDF J5 oficial validado."
+  },
+  "pdfs/CLASIFICACION_1DVF7_J03_20261113.pdf": {
+    "destino": "archivo/pdfs/2026-2027/reubicados/CLASIFICACION_1DVF7_J03_20261113.pdf",
+    "sha256": "cbeac30927c36b3990c04a68f2e011519f8444547de43863c758defe04f8f4e7"
   }
 }

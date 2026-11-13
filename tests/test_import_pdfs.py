@@ -103,7 +103,11 @@ class ImportTests(unittest.TestCase):
             self.assertEqual(before[n], imp.table_signature(imp.read(directory / f'j{n:02d}.json')))
         oro = imp.read(self.root / 'data/2026-2027/1dvf7/j03.json')
         game = next(p for p in oro['partidos'] if p['local_id'] == 'team-x-rest-kuntur-wasi')
-        self.assertEqual(game['estado'], 'suspendido')
+        # A later official PDF may resolve a previously suspended match.
+        source = imp.parse_f7(self.root / oro['origen'])
+        official = next(p for p in source['partidos'] if p['local_id'] == game['local_id'])
+        self.assertEqual((game['estado'], game['goles_local'], game['goles_visitante']),
+                         (official['estado'], official['goles_local'], official['goles_visitante']))
         # Archived mislabeled PDFs must not create rounds, but real new rounds are valid.
         for path in (self.root / 'data/2026-2027/fs').glob('j*.json'):
             result = imp.read(path)

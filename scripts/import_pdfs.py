@@ -88,7 +88,7 @@ def check_results(d):
         raise ValueError('Número de equipos incorrecto o clasificación duplicada')
     if sorted(r['pos'] for r in rows) != list(range(1, len(rows) + 1)):
         raise ValueError('Posiciones de clasificación inválidas')
-    if any(type(r[k]) is not int or r[k] < 0 for r in rows for k in STATS):
+    if any(type(r[k]) is not int or (r[k] < 0 and k != 'pts') for r in rows for k in STATS):
         raise ValueError('Estadísticas negativas o no enteras')
     check_teams(d, known)
     for p in d['partidos']:
