@@ -1,5 +1,5 @@
 """Apply the shared identity to freshly generated data; no preview snapshots."""
-import copy, html, json, os, re, shutil
+import copy, hashlib, html, json, os, re, shutil
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 LABELS={'1dvf7':'Primera F7 · Oro','2dvf7':'Segunda F7 · Plata','3dvf7':'Tercera F7 · Bronce','4dvf7':'Cuarta F7 · Zinc','f11':'Primera F11','fs':'Fútbol Sala'}
@@ -45,6 +45,8 @@ def integrate(root,out,seasons,index,history_for,upcoming_for,prepare,aliases,di
             switch='<nav class="competition-switch" role="tablist" aria-label="Competición de la ficha"><button type="button" role="tab" data-competition="liga" aria-selected="true">Liga</button><button type="button" role="tab" data-competition="copa" aria-selected="false" tabindex="-1">Copa</button></nav>'
             text=text.replace('<div class="team-page">',f'<div class="team-page" data-cup-team="{tid}">'+switch,1)
             text=text.replace('</body>','<script src="../../copa-f7/datos.js"></script><script src="../../copa-f7/motor.js"></script><script src="../../../assets/ficha-equipo.js"></script></body>')
+        version=hashlib.sha256((root/'assets/ficha-equipo.js').read_bytes()).hexdigest()[:12]
+        text=text.replace('assets/ficha-equipo.js"',f'assets/ficha-equipo.js?v={version}"')
         page.write_text(text,encoding='utf-8')
     env=Environment(loader=FileSystemLoader(root/'templates'),autoescape=select_autoescape(['html']))
     env.filters['fecha']=lambda iso:'/'.join(reversed(iso.split('-'))) if iso else ''
