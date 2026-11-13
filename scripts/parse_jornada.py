@@ -33,6 +33,15 @@ def normalize_wrapped_results(lines):
             i += 1
             continue
         prefix, suffix = normalized[i - 1], normalized[i + 1]
+        complete = {(home, away) for home in known for away in known
+                    if home != away and prefix == home + ' ' + away}
+        if len(complete) == 1:
+            home, away = complete.pop()
+            normalized[i-1:i+1] = [f'{home} {score[1]} - {score[2]} {away}']
+            i = max(1, i - 1)
+            continue
+        if len(complete) > 1:
+            raise ValueError('Equipos ambiguos en resultado separado: ' + prefix)
         candidates = set()
         for home in known:
             for away in known:
