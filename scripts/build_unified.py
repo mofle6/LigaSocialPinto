@@ -1,5 +1,6 @@
 """Apply the shared identity to freshly generated data; no preview snapshots."""
 import copy, hashlib, html, json, os, re, shutil
+from notices import load_notices, active_notices
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 LABELS={'1dvf7':'Primera F7 · Oro','2dvf7':'Segunda F7 · Plata','3dvf7':'Tercera F7 · Bronce','4dvf7':'Cuarta F7 · Zinc','f11':'Primera F11','fs':'Fútbol Sala'}
@@ -49,5 +50,6 @@ def integrate(root,out,seasons,index,history_for,upcoming_for,prepare,aliases,di
         text=text.replace('assets/ficha-equipo.js"',f'assets/ficha-equipo.js?v={version}"')
         page.write_text(text,encoding='utf-8')
     env=Environment(loader=FileSystemLoader(root/'templates'),autoescape=select_autoescape(['html']))
+    env.globals['identity_version']=hashlib.sha256((root/'assets/identidad.css').read_bytes()).hexdigest()[:12]
     env.filters['fecha']=lambda iso:'/'.join(reversed(iso.split('-'))) if iso else ''
-    (out/'index.html').write_text(env.get_template('index.html').render(items=index,cup_seasons={k[0] for k in cup_ids},root='./'),encoding='utf-8')
+    (out/'index.html').write_text(env.get_template('index.html').render(items=index,cup_seasons={k[0] for k in cup_ids},root='./',avisos=active_notices(load_notices(root))),encoding='utf-8')

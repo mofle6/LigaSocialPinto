@@ -9,7 +9,22 @@ from parse_jornada import slug
 HEADER = re.compile(r"AFICIONADO F7,\s*(\dDVF7)\s+(.+?)\s+Temporada\s+(\d{4}-\d{4})", re.I)
 DATE = re.compile(r"^\d{2}-\d{2}-\d{4}$")
 TIME = re.compile(r"^\d{2}:\d{2}$")
-FIELD = re.compile(r"Campo:\s*CAMPO\s+(.+?)\s+F7\s+(C[12])\s*-", re.I)
+FIELD = re.compile(r"Campo:\s*(?:CAMPO|ESTADIO)\s+(.+?)\s+F7\s+(C[123])\s*-", re.I)
+F7_FIELDS = {
+    'principes-de-asturias': ('Príncipes De Asturias', {'C1', 'C2', 'C3'}),
+    'patricia-chamorro': ('Patricia Chamorro', {'C1', 'C2'}),
+    'rafael-mendoza': ('Estadio Rafael Mendoza', {'C1', 'C2'}),
+}
+
+def parse_f7_field(text):
+    match = FIELD.search(text)
+    if not match:
+        raise ValueError('Formato de campo F7 no reconocido')
+    field = F7_FIELDS.get(slug(match[1]))
+    court = match[2].upper()
+    if not field or court not in field[1]:
+        raise ValueError('Campo o pista F7 no configurados')
+    return field[0], court
 
 def parse_f11(lines):
     header = next((m for line in lines if (m := re.search(r"PRIMERA AFICIONADOS F11,.*?Temporada\s+(\d{4}-\d{4})", line))), None)
@@ -95,11 +110,11 @@ def parse(path):
             visitante = " ".join(w["text"] for w in right)
             field_words = sorted((w for w in words if top - 1 <= w["top"] <= top + 2 and w["x0"] >= fw["x0"]), key=lambda w: w["x0"])
             field_text = " ".join(w["text"] for w in field_words)
-            field = FIELD.search(field_text)
-            if not local or not visitante or not field:
+            if not local or not visitante:
                 raise ValueError("No se pudieron leer equipos o campo: " + field_text)
+            field, court = parse_f7_field(field_text)
             date = "-".join(reversed(dates[0]["text"].split("-")))
-            games.append({"local": local, "local_id": slug(local), "visitante": visitante, "visitante_id": slug(visitante), "fecha": date, "hora": times[0]["text"], "campo": field[1].title().replace("Principes", "Príncipes"), "pista": field[2]})
+            games.append({"local": local, "local_id": slug(local), "visitante": visitante, "visitante_id": slug(visitante), "fecha": date, "hora": times[0]["text"], "campo": field, "pista": court})
     if len(games) != 6:
         raise ValueError(f"Se esperaban 6 encuentros, encontrados {len(games)}")
     rest = next((line[len("Descansa "):].strip() for line in lines if line.startswith("Descansa ")), None)

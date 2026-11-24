@@ -1,0 +1,6 @@
+{% for aviso in avisos|default([]) %}
+<aside class="competition-notice" role="note" aria-labelledby="notice-{{ aviso.id }}">
+  <h2 id="notice-{{ aviso.id }}">{{ aviso.titulo }}</h2>
+  {% for parrafo in aviso.parrafos %}<p>{{ parrafo }}</p>{% endfor %}
+</aside>
+{% endfor %}

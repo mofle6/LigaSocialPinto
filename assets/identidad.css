@@ -65,3 +65,10 @@ td.rank-cell{position:relative;padding-left:15px}
 /* Trim small source-image edges without changing card geometry. */
 .competition-photo{overflow:hidden;display:block}
 .competition-photo img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.04);transform-origin:center}
+
+/* Time-sensitive competition information, shared by home and affected leagues. */
+.competition-notice{margin:20px 0 28px;padding:18px 20px;border:1px solid var(--line);border-radius:8px;background:var(--raised);color:var(--fg)}
+.competition-notice h2{font-size:1.05rem;line-height:1.4;margin:0 0 10px}
+.competition-notice p{font-size:.9rem;line-height:1.65;margin:8px 0 0;max-width:90ch}
+.schedule-hold{padding:12px 0;color:var(--fg)}
+@media(max-width:600px){.competition-notice{padding:15px 16px;margin:16px 0 22px}.competition-notice p{font-size:.85rem}}

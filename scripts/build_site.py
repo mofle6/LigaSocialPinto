@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """Genera la web estática en site/ a partir de data/."""
-import json, shutil
+import json, shutil, hashlib
 from pathlib import Path
+from notices import load_notices, active_notices, apply_schedule_hold
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA, OUT = ROOT / "data", ROOT / "site"
 
 env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape(["html"]))
+env.globals["identity_version"] = hashlib.sha256((ROOT / "assets/identidad.css").read_bytes()).hexdigest()[:12]
 env.filters["fecha"] = lambda iso: "/".join(reversed(iso.split("-"))) if iso else ""
 
 def load(path, default):
@@ -43,7 +45,7 @@ def prepare_schedule(schedule, aliases, display_names):
     return schedule
 
 def upcoming_for_team(schedule, tid):
-    if not schedule:
+    if not schedule or schedule.get("suspendida"):
         return None
     if schedule.get("descansa_id") == tid:
         return {"descansa": True, "jornada": schedule["jornada"], "fecha": schedule["fecha"]}
@@ -106,6 +108,7 @@ def team_history(jornadas, tid):
 def main():
     aliases = load(DATA / "alias.json", {})
     display_names = load(DATA / "display_names.json", {})
+    notices_config = load_notices(ROOT)
     seasons = {}
     for f in sorted(DATA.glob("*/*/j*.json")):
         d = json.loads(f.read_text("utf-8"))
@@ -132,7 +135,7 @@ def main():
             last = jornadas[max(jornadas)]
             schedules = []
             for path in sorted((DATA / temp / code / "proximas").glob("j*.json")):
-                schedule = prepare_schedule(load(path, {}), aliases, display_names)
+                schedule = apply_schedule_hold(prepare_schedule(load(path, {}), aliases, display_names), notices_config)
                 if schedule.get("jornada", 0) > max(jornadas):
                     schedules.append(schedule)
             upcoming = min(schedules, key=lambda x: x["jornada"]) if schedules else None
@@ -144,7 +147,7 @@ def main():
             names.update({r["equipo_id"]: r["equipo"] for r in last["clasificacion"]})
             index.append({"temporada": temp, "code": code, "nombre": div["nombre"], "ultima": last})
 
-            render("division.html", base / "index.html", temporada=temp, div=div, last=last, jornadas=sorted(jornadas), upcoming=upcoming)
+            render("division.html", base / "index.html", temporada=temp, div=div, last=last, jornadas=sorted(jornadas), upcoming=upcoming, avisos=active_notices(notices_config, temp, code))
             for n, j in jornadas.items():
                 render("jornada.html", base / f"jornada-{n:02d}.html", temporada=temp, div=div, j=j)
             rows = {r["equipo_id"]: r for r in last["clasificacion"]}

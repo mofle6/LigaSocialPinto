@@ -5,7 +5,9 @@
 <p class="crumbs"><a href="{{ root }}index.html">Inicio</a></p>
 <h1>{{ div.nombre }}</h1>
 <p class="muted">Temporada {{ temporada }} · Clasificación tras la jornada {{ last.jornada }} ({{ last.fecha|fecha }})</p>
-{% if upcoming %}
+{% include '_avisos.html' %}
+{% if upcoming and upcoming.suspendida %}<p class="schedule-hold"><strong>Jornada {{ upcoming.jornada }} de F11 suspendida.</strong> Nueva fecha pendiente de confirmación.</p>{% endif %}
+{% if upcoming and not upcoming.suspendida %}
 <section class="upcoming">
 <h2>Próxima jornada · J{{ upcoming.jornada }}</h2>
 {% if last.division in ["f11", "fs"] %}

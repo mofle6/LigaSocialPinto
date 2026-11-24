@@ -6,6 +6,7 @@
 {% endmacro %}
 {% block content %}
 <section class="home-intro"><div><h1>Clasificaciones y resultados</h1><p>Todas las competiciones de Pinto, en el mismo lugar. Sigue tu liga o descubre el camino de tu equipo en la Copa.</p></div></section>
+{% include '_avisos.html' %}
 {% for temp in items|map(attribute='temporada')|unique %}
 {% set leagues=items|selectattr('temporada','equalto',temp)|list %}
 <p class="season-heading">Temporada {{ temp }}</p>
