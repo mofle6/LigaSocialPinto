@@ -1,6 +1,25 @@
+{% macro texto_destacado(partes) -%}
+{% for parte in partes %}{% if parte.destacado %}<strong>{{ parte.texto }}</strong>{% else %}{{ parte.texto }}{% endif %}{% endfor %}
+{%- endmacro %}
 {% for aviso in avisos|default([]) %}
 <aside class="competition-notice" role="note" aria-labelledby="notice-{{ aviso.id }}">
-  <h2 id="notice-{{ aviso.id }}">{{ aviso.titulo }}</h2>
-  {% for parrafo in aviso.parrafos %}<p>{{ parrafo }}</p>{% endfor %}
+  <div class="notice-heading">
+    <h2 id="notice-{{ aviso.id }}">{{ aviso.titulo }}</h2>
+    {% if aviso.jornada %}<p class="notice-period"><strong>{{ aviso.jornada }}</strong> · <strong>{{ aviso.periodo }}</strong></p>{% endif %}
+  </div>
+  {% if aviso.traslados %}
+  <p class="notice-intro">{{ texto_destacado(aviso.introduccion) }}</p>
+  <dl class="notice-fixtures">
+    {% for traslado in aviso.traslados %}<div>
+      <dt>{{ traslado.liga }}</dt>
+      <dd><strong>{{ traslado.fecha }}</strong></dd>
+      <dd><strong>{{ traslado.campo }} · {{ traslado.pistas }}</strong></dd>
+    </div>{% endfor %}
+  </dl>
+  <p class="notice-suspension"><strong>{{ aviso.suspension.titulo }}</strong> · <strong>{{ aviso.suspension.periodo }}</strong><span>{{ aviso.suspension.detalle }}</span></p>
+  <p class="notice-reminder">{{ texto_destacado(aviso.recordatorio) }}</p>
+  {% else %}
+  {% for parrafo in aviso.parrafos|default([]) %}<p>{{ parrafo }}</p>{% endfor %}
+  {% endif %}
 </aside>
 {% endfor %}
