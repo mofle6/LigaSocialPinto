@@ -4,12 +4,77 @@
       "id": "renovacion-cesped-f7-20261124",
       "activo": true,
       "temporada": "2026-2027",
-      "divisiones": ["1dvf7", "2dvf7", "f11"],
+      "divisiones": [
+        "1dvf7",
+        "2dvf7",
+        "f11"
+      ],
       "titulo": "Cambio temporal de campos · F7 y F11",
-      "parrafos": [
-        "Por la renovación del césped del campo de F7, Primera y Segunda F7 jugarán temporalmente en los campos de F11 divididos. El traslado afectará a varias jornadas: consulta siempre el campo, la pista y la hora de tu partido.",
-        "J6 de F7 · 28 y 29 de noviembre: Primera F7 jugará el domingo 29 en Príncipes de Asturias C2 y C3; Segunda F7, el sábado 28 en el Estadio Rafael Mendoza C1 y C2.",
-        "La jornada de F11 del fin de semana del 28 y 29 de noviembre queda suspendida para permitir estos encuentros. Su nueva fecha está pendiente de confirmación."
+      "introduccion": [
+        {
+          "texto": "Por la "
+        },
+        {
+          "texto": "renovación del césped",
+          "destacado": true
+        },
+        {
+          "texto": " del campo de F7, "
+        },
+        {
+          "texto": "Primera y Segunda F7",
+          "destacado": true
+        },
+        {
+          "texto": " jugarán temporalmente en los "
+        },
+        {
+          "texto": "campos de F11 divididos",
+          "destacado": true
+        },
+        {
+          "texto": "."
+        }
+      ],
+      "jornada": "Jornada 6 de F7",
+      "periodo": "28 y 29 de noviembre",
+      "traslados": [
+        {
+          "liga": "Primera F7",
+          "fecha": "Domingo 29 de noviembre",
+          "campo": "Príncipes de Asturias",
+          "pistas": "C2 y C3"
+        },
+        {
+          "liga": "Segunda F7",
+          "fecha": "Sábado 28 de noviembre",
+          "campo": "Estadio Rafael Mendoza",
+          "pistas": "C1 y C2"
+        }
+      ],
+      "suspension": {
+        "titulo": "F11 · Jornada suspendida",
+        "periodo": "28 y 29 de noviembre",
+        "detalle": "Nueva fecha pendiente de confirmación."
+      },
+      "recordatorio": [
+        {
+          "texto": "El traslado afectará a "
+        },
+        {
+          "texto": "varias jornadas",
+          "destacado": true
+        },
+        {
+          "texto": ". Consulta siempre el "
+        },
+        {
+          "texto": "campo, la pista y la hora",
+          "destacado": true
+        },
+        {
+          "texto": " de tu partido."
+        }
       ]
     }
   ],
@@ -17,7 +82,10 @@
     {
       "temporada": "2026-2027",
       "division": "f11",
-      "fechas": ["2026-11-28", "2026-11-29"]
+      "fechas": [
+        "2026-11-28",
+        "2026-11-29"
+      ]
     }
   ]
 }
