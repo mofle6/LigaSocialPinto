@@ -1,0 +1,23 @@
+{
+  "avisos": [
+    {
+      "id": "renovacion-cesped-f7-20261124",
+      "activo": true,
+      "temporada": "2026-2027",
+      "divisiones": ["1dvf7", "2dvf7", "f11"],
+      "titulo": "Cambio temporal de campos · F7 y F11",
+      "parrafos": [
+        "Por la renovación del césped del campo de F7, Primera y Segunda F7 jugarán temporalmente en los campos de F11 divididos. El traslado afectará a varias jornadas: consulta siempre el campo, la pista y la hora de tu partido.",
+        "J6 de F7 · 28 y 29 de noviembre: Primera F7 jugará el domingo 29 en Príncipes de Asturias C2 y C3; Segunda F7, el sábado 28 en el Estadio Rafael Mendoza C1 y C2.",
+        "La jornada de F11 del fin de semana del 28 y 29 de noviembre queda suspendida para permitir estos encuentros. Su nueva fecha está pendiente de confirmación."
+      ]
+    }
+  ],
+  "suspensiones": [
+    {
+      "temporada": "2026-2027",
+      "division": "f11",
+      "fechas": ["2026-11-28", "2026-11-29"]
+    }
+  ]
+}
